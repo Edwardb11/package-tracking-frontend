@@ -25,10 +25,10 @@ const Register = () => {
                 </h1>
                 <p>Ingresa tus datos para registrarte</p>
               </div>
-              <form>
+              <form className="text-gray-700">
                 <div className="flex -mx-3">
                   <div className="w-1/2 px-3 mb-5">
-                    <label htmlFor="" className="text-xs font-semibold px-1">
+                    <label htmlFor="" className="text-sm font-semibold px-1">
                       Nombre
                     </label>
                     <div className="flex">
@@ -43,7 +43,7 @@ const Register = () => {
                     </div>
                   </div>
                   <div className="w-1/2 px-3 mb-5">
-                    <label htmlFor="" className="text-xs font-semibold px-1">
+                    <label htmlFor="" className="text-sm font-semibold px-1">
                       Apellido
                     </label>
                     <div className="flex">
@@ -60,7 +60,7 @@ const Register = () => {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label htmlFor="" className="text-xs font-semibold px-1">
+                    <label htmlFor="" className="text-sm font-semibold px-1">
                       Correo Electrónico
                     </label>
                     <div className="flex">
@@ -77,7 +77,7 @@ const Register = () => {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-12">
-                    <label htmlFor="" className="text-xs font-semibold px-1">
+                    <label htmlFor="" className="text-sm font-semibold px-1">
                       Contraseña
                     </label>
                     <div className="flex">

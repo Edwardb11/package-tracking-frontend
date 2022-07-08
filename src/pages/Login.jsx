@@ -26,10 +26,10 @@ const Login = () => {
                 </h1>
                 <p>Ingrese su información para iniciar sesión</p>
               </div>
-              <form>
+              <form className="text-gray-700">
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label htmlFor="" className="text-xs font-semibold px-1">
+                    <label htmlFor="" className="text-sm font-semibold px-1">
                       Correo Electrónico
                     </label>
                     <div className="flex">
@@ -46,7 +46,7 @@ const Login = () => {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-12">
-                    <label htmlFor="" className="text-xs font-semibold px-1">
+                    <label htmlFor="" className="text-sm font-semibold px-1">
                       Contraseña
                     </label>
                     <div className="flex">
