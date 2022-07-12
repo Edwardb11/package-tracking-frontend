@@ -26,25 +26,13 @@ __Mobile__
 Clone the project
 
 ```bash
-  git clone https://github.com/Edwardb11/package-tracking-system
+  git clone https://github.com/Edwardb11/package-tracking-frontend
 ```
 
 Go to the project directory
 
 ```bash
-  cd package-tracking-system
-```
-
-Go to project frontend
-
-```bash
-  cd package-tracking-system/client
-```
-
-Go to project backend
-
-```bash
-  cd package-tracking-system/server
+  cd package-tracking-frontend
 ```
 
 Install dependencies
@@ -53,7 +41,7 @@ Install dependencies
   npm install
 ```
 
-Start the server (_Frontend || Backend_)
+Start the server _Frontend_
 
 ```bash
   npm start
@@ -75,7 +63,7 @@ NODE_ENV=development
 Go to project docs
 
 ```bash
-  cd package-tracking-system/doc
+  cd package-tracking-frontend/doc
 ```
 
 
