@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleEmail=(e) => setEmail(e.target.value);
+  const handlePassword=(e) => setPassword(e.target.value);
   return (
     <>
       <style
@@ -38,6 +44,8 @@ const Login = () => {
                       </div>
                       <input
                         type="email"
+                        value={email}
+                        onChange={handleEmail}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -55,6 +63,8 @@ const Login = () => {
                       </div>
                       <input
                         type="password"
+                        value={password}
+                        onChange={handlePassword}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />

@@ -1,8 +1,16 @@
 import React from "react";
 import Imagen from "../components/Imagen";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
+  const [name, setName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [sex, setSex] = useState("")
+  const [phone, setPhone] = useState("")
+  const [date, setDate] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   return (
     <>
       <style
@@ -37,6 +45,7 @@ const Register = () => {
                       </div>
                       <input
                         type="text"
+                        value={name}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="John"
                       />
@@ -52,6 +61,7 @@ const Register = () => {
                       </div>
                       <input
                         type="text"
+                        value={lastName}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Smith"
                       />
@@ -84,8 +94,9 @@ const Register = () => {
                       </div>
                       <input
                         type="text"
+                        value={phone}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                        placeholder="849-856-4014"
+                        placeholder="849-826-4011"
                       />
                     </div>
                   </div>
@@ -101,6 +112,7 @@ const Register = () => {
                       </div>
                       <input
                         type="date"
+                        value={date}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="849-856-4014"
                       />
@@ -118,6 +130,7 @@ const Register = () => {
                       </div>
                       <input
                         type="email"
+                        value={email}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -135,6 +148,7 @@ const Register = () => {
                       </div>
                       <input
                         type="password"
+                        value={password}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
