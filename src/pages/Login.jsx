@@ -1,14 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 import Imagen from "../components/Imagen";
-import { useState } from "react";
+
 
 const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleEmail=(e) => setEmail(e.target.value);
-  const handlePassword=(e) => setPassword(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+
+  const Auth = async (e) => {
+    e.preventDefault();
+    if (email.trim() === "") {
+      return;
+    }
+
+    if (password.trim().length < 2) {
+      return;
+    }
+    try {
+         const data = await axios.post('http://localhost:5000/login', {
+            email: email,
+            password: password
+        });
+        console.log(data)
+        console.log("entro")
+        history.push("/");
+    } catch (error) {
+        if (error.response) {
+          console.log(error)
+        }
+    }
+}
   return (
     <>
       <style
@@ -32,7 +58,7 @@ const Login = () => {
                 </h1>
                 <p>Ingrese su información para iniciar sesión</p>
               </div>
-              <form className="text-gray-700">
+              <form onSubmit={Auth} className="text-gray-700">
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-sm font-semibold px-1">
@@ -43,9 +69,10 @@ const Login = () => {
                         <i className="mdi mdi-email-outline text-gray-400 text-lg" />
                       </div>
                       <input
-                        type="email"
+                        type="text"
                         value={email}
                         onChange={handleEmail}
+                        required
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -65,6 +92,7 @@ const Login = () => {
                         type="password"
                         value={password}
                         onChange={handlePassword}
+                        required
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
