@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
+import { useDispatch } from "react-redux";
+import { login } from "../actions/authActions";
 
 
 const Login = () => {
-  const history = useHistory();
+  const dispatch = useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,19 +22,7 @@ const Login = () => {
     if (password.trim().length < 2) {
       return;
     }
-    try {
-         const data = await axios.post('http://localhost:5000/login', {
-            email: email,
-            password: password
-        });
-        console.log(data)
-        console.log("entro")
-        history.push("/");
-    } catch (error) {
-        if (error.response) {
-          console.log(error)
-        }
-    }
+dispatch(login({email,password}))
 }
   return (
     <>
