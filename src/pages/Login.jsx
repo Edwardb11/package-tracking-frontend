@@ -4,9 +4,8 @@ import Imagen from "../components/Imagen";
 import { useDispatch } from "react-redux";
 import { login } from "../actions/authActions";
 
-
 const Login = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,8 +21,8 @@ const Login = () => {
     if (password.trim().length < 2) {
       return;
     }
-dispatch(login({email,password}))
-}
+    dispatch(login({ email, password }));
+  };
   return (
     <>
       <style
