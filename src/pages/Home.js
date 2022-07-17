@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <div>
       Bienvenido NOMBRE: {name} EMAIL-{email} USERID-{userId}
-    <Link to={NoFound}>No FOUND</Link>
+      <Link to="/NoFound">No FOUND</Link>
     </div>
   );
 };

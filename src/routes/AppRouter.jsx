@@ -23,6 +23,7 @@ const AppRouter = () => {
         <PublicRouter path="/auth" component={AuthRouter} log={log} />
         <PrivateRouter exact path="/" log={log} component={Home} />
         <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />
+        <PrivateRouter exact path="*" log={log} component={NoFound} />
       </Switch>
     </Router>
   );
