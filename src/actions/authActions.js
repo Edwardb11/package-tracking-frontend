@@ -3,7 +3,6 @@ import setAuthorizationToken from "../utils/setAuthorizationToken";
 import { url } from "../api/api";
 import { types } from "../types/types";
 
-
 export function logout() {
   return (dispatch) => {
     localStorage.removeItem("jwtToken");
@@ -19,13 +18,12 @@ export function login(data) {
       const token = res.data.accessToken;
       localStorage.setItem("jwtToken", token);
       setAuthorizationToken(token);
-      dispatch(setCurrentUser(res.data.id,res.data.login));
+      dispatch(setCurrentUser(res.data.id, res.data.login));
     });
   };
 }
 
-
-export function setCurrentUser(id,login) {
+export function setCurrentUser(id, login) {
   return {
     type: types.login,
     payload: {
