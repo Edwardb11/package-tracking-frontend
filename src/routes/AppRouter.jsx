@@ -1,20 +1,25 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
+
+
 import Home from "../pages/Home";
 import PrivateRouter from "./PrivateRouter";
-
 import AuthRouter from "./AuthRouter";
 import PublicRouter from "./PublicRouter";
 import { store } from "../store/store";
 
 const AppRouter = () => {
-  const state = store.getState();
+  const state = store.getState()
   const [log, setLog] = useState(false);
-console.log(state.payload.login);
-  useEffect(() => {
-      setLog(state.payload.login)
-  }, [state])
-  
+
+useEffect(() => {
+  if ((state?.auth?.login || !state?.payload?.login) && localStorage.getItem("jwtToken")) {
+    // console.log( store.getState()  );
+    setLog(true)
+  }else{
+    setLog(false)
+  }
+}, [state])
   return (
     <Router>
       <Switch>
