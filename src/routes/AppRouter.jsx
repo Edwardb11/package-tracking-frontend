@@ -8,22 +8,22 @@ import PublicRouter from "./PublicRouter";
 import NoFound from "../pages/NoFound";
 
 const AppRouter = () => {
-  const [log, setLog] = useState(false);
-
+  const [log, setLog] = useState(null);
+  const Auth = localStorage.getItem("jwtToken");
   useEffect(() => {
-    if (localStorage.getItem("jwtToken")) {
-      setLog(true);
-    } else {
-      setLog(false);
+    if (Auth) {
+      return () => setLog(true);
     }
-  }, []);
+    return () => setLog(false);
+  }, [Auth]);
+
   return (
     <Router>
       <Switch>
         <PublicRouter path="/auth" component={AuthRouter} log={log} />
-        <PrivateRouter exact path="/" log={log} component={Home} />
+        <PrivateRouter exact path="/" component={Home} log={log} />
         <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />
-        <PrivateRouter exact path="*" log={log} component={NoFound} />
+        <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
     </Router>
   );
