@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import { useDispatch } from "react-redux";
 import { login } from "../actions/authActions";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,22 @@ const Login = () => {
   const Auth = async (e) => {
     e.preventDefault();
     if (email.trim() === "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Correo electrónico inválido',
+        text: 'Por favor introduzca un correo válido.',
+        showConfirmButton: true,
+      })
       return;
     }
 
     if (password.trim().length < 2) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Contraseña débil',
+        text: 'La contraseña debe ser mayor de 6 caracteres.',
+        showConfirmButton: true,
+      })
       return;
     }
     dispatch(login({ email, password }));

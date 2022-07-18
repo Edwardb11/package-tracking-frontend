@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import { url } from "../api/api";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const history = useHistory()
@@ -18,12 +19,22 @@ const Register = () => {
   const Register = (e) => {
     e.preventDefault();
     if (email.trim() === "") {
-      console.log("email")
+      Swal.fire({
+        icon: 'error',
+        title: 'Correo electrónico inválido',
+        text: 'Por favor introduzca un correo válido.',
+        showConfirmButton: true,
+      })
       return;
     }
 
-    if (password.trim().length < 2) {
-      console.log("pas")
+    if (password.trim().length < 6) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Contraseña débil',
+        text: 'La contraseña debe ser mayor de 6 caracteres.',
+        showConfirmButton: true,
+      })
       return;
     }
     console.log("entro")
@@ -37,9 +48,34 @@ const Register = () => {
         email: email,
         password: password,
       });
+      let timerInterval;
+      Swal.fire({
+        icon: 'success',
+        title: '¡Registro exitoso!',
+        text: 'Por favor inicie sesión.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading()
+          const b = Swal.getHtmlContainer().querySelector('b')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      })
       history.push("/auth/login")
     } catch (error) {
       if (error.response) {
+        Swal.fire({
+          icon: 'error',
+          title: '¡Ups! Ha ocurrido un error',
+          text: 'Ha ocurrido un error al registrar a un nuevo usuario, intente más tarde.',
+          showConfirmButton: true,
+        })
         console.log(error);
       }
     }
