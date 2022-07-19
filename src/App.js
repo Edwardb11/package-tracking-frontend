@@ -3,13 +3,13 @@ import User from "./context/userContext";
 import AppRouter from "./routes/AppRouter";
 
 const App = () => {
-  // const [user,setUser]=useState()
-  const usuario = { name: 'Edu', modoOscuro: true };
+  const [user, setUser] = useState({});
+  const [log, setLog] = useState("false");
 
   return (
-  <User.Provider value={usuario}>
+    <User.Provider value={{ user, setUser, log, setLog }}>
       <AppRouter />
-  </User.Provider>
+    </User.Provider>
   );
 };
 

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import Swal from "sweetalert2";
 import axios from "axios";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 import { url } from "../api/api";
+import User from "../context/userContext";
 
 const Login = () => {
-  const history = useHistory();
+  const { setLog } = useContext(User);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -65,7 +66,9 @@ const Login = () => {
               clearInterval(timerInterval);
             },
           });
-          history.push("/");
+          setInterval(() => {
+            setLog(true);
+          }, 2000);
         })
         .catch((error) => {
           if (error.response) {

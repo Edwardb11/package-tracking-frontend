@@ -17,7 +17,7 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-    const user =useContext(User)
+  const { user } = useContext(User);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (

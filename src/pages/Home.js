@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import jwt_decode from "jwt-decode";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import User from "../context/userContext";
 
 const Home = () => {
-  const [name, setName] = useState("");
   const [token, setToken] = useState("");
-  const [userId, setUserId] = useState("");
-  const [email, setEmail] = useState("");
-  const history = useHistory();
+  const { setUser } = useContext(User);
   useEffect(() => {
     refreshToken();
   });
@@ -17,20 +15,23 @@ const Home = () => {
       const token = localStorage.getItem("jwtToken");
       setToken(token);
       const decoded = jwt_decode(token);
-      setName(decoded.name);
-      setEmail(decoded.email);
-      setUserId(decoded.userId);
+      setUser({
+        name: decoded.name,
+        email: decoded.email,
+        userId: decoded.userId,
+      });
     } catch (error) {
       if (error.response) {
-        history.push("/");
+        console.log(error.response);
       }
     }
   };
+  const { user } = useContext(User);
 
   return (
     <div>
-      <NavBar/>
-      Bienvenido NOMBRE: {name} EMAIL-{email} USERID-{userId}
+      <NavBar />
+      Bienvenido NOMBRE: {user.name} EMAIL-{user.email} USERID-{user.userId}
       <Link to="/NoFound">No FOUND</Link>
     </div>
   );
