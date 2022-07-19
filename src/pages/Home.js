@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { Link, useHistory } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const Home = () => {
   const [name, setName] = useState("");
@@ -28,6 +29,7 @@ const Home = () => {
 
   return (
     <div>
+      <NavBar/>
       Bienvenido NOMBRE: {name} EMAIL-{email} USERID-{userId}
       <Link to="/NoFound">No FOUND</Link>
     </div>
