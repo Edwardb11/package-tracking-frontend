@@ -60,13 +60,13 @@ const Login = () => {
               const b = Swal.getHtmlContainer().querySelector("b");
               timerInterval = setInterval(() => {
                 b.textContent = Swal.getTimerLeft();
-              }, 100);
+              }, 2000);
             },
             willClose: () => {
               clearInterval(timerInterval);
+              setLog(true);
             },
           });
-              setLog(true);
 
         })
         .catch((error) => {

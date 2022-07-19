@@ -11,7 +11,7 @@ import User from "../context/userContext";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
-  if (localStorage.getItem("jwtToken" && log)) {
+  if (localStorage.getItem("jwtToken")) {
     setLog(true);
   }
   return (

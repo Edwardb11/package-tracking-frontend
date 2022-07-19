@@ -11,27 +11,31 @@ const Home = () => {
   const [userId, setUserId] = useState("");
   const { user, setUser } = useContext(User);
 
-
-  const refreshToken =  () => {
+  const refreshToken = async () => {
     try {
       const token = localStorage.getItem("jwtToken");
       setToken(token);
       const decoded = jwt_decode(token);
-      setName(decoded.name);
-      setEmail(decoded.email);
-      setUserId(decoded.userId);
-      // setUser({name:decoded.name,email:decoded.email,userId:decoded.userId});
+      return setUser({
+        name: decoded.name,
+        email: decoded.email,
+        userId: decoded.userId,
+      });
     } catch (error) {
       if (error.response) {
         console.log(error.response);
       }
     }
   };
-
+  
   useEffect(() => {
-    refreshToken()
-    console.log('otro')
-  });
+    let isEmpty = JSON.stringify(user) === "{}";
+    if (isEmpty) {
+      refreshToken();
+    } else {
+      return () => {};
+    }
+  }, [user, refreshToken]);
 
   return (
     <div>
