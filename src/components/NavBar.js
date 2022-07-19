@@ -4,20 +4,26 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import User from "../context/userContext";
+import setAuthorizationToken from "../utils/setAuthorizationToken";
 
 const navigation = [
   { name: "Inicio", href: "#", current: true },
   { name: "Seguimiento", href: "#", current: false },
-  { name: "Historial", href: "#", current: false },
   { name: "Agregar", href: "/NoFound", current: false },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 export default function NavBar() {
-  const { user } = useContext(User);
+  const { user, setLog, setUser } = useContext(User);
+  const logout = () => {
+    localStorage.removeItem("jwtToken");
+    setAuthorizationToken(false);
+    setUser({});
+    setLog(false);
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -68,7 +74,7 @@ export default function NavBar() {
                   type="button"
                   className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
-                  <span>Bienvenid@ {user.name}</span>
+                  <span>Bienvenido {user.name}</span>
                 </button>
 
                 {/* Profile dropdown */}
@@ -108,28 +114,16 @@ export default function NavBar() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            to="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Configuración
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="#"
+                          <a
+                            onClick={logout}
+                            href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Cerrar Sesión
-                          </Link>
+                          </a>
                         )}
                       </Menu.Item>
                     </Menu.Items>

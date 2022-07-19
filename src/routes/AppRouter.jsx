@@ -10,7 +10,10 @@ import { useContext } from "react";
 import User from "../context/userContext";
 
 const AppRouter = () => {
-  const { log } = useContext(User);
+  const { log, setLog } = useContext(User);
+  if (localStorage.getItem("jwtToken" && log)) {
+    setLog(true);
+  }
   return (
     <Router>
       <Switch>

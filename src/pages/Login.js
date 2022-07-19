@@ -66,9 +66,8 @@ const Login = () => {
               clearInterval(timerInterval);
             },
           });
-          setInterval(() => {
-            setLog(true);
-          }, 2000);
+              setLog(true);
+
         })
         .catch((error) => {
           if (error.response) {
@@ -79,11 +78,13 @@ const Login = () => {
               showConfirmButton: true,
             });
             console.log(error);
+            setLog(false)
           }
         });
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.msg);
+        setLog(false)
       }
     }
   };

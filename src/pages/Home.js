@@ -6,27 +6,32 @@ import User from "../context/userContext";
 
 const Home = () => {
   const [token, setToken] = useState("");
-  const { setUser } = useContext(User);
-  useEffect(() => {
-    refreshToken();
-  });
-  const refreshToken = async () => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [userId, setUserId] = useState("");
+  const { user, setUser } = useContext(User);
+
+
+  const refreshToken =  () => {
     try {
       const token = localStorage.getItem("jwtToken");
       setToken(token);
       const decoded = jwt_decode(token);
-      setUser({
-        name: decoded.name,
-        email: decoded.email,
-        userId: decoded.userId,
-      });
+      setName(decoded.name);
+      setEmail(decoded.email);
+      setUserId(decoded.userId);
+      // setUser({name:decoded.name,email:decoded.email,userId:decoded.userId});
     } catch (error) {
       if (error.response) {
         console.log(error.response);
       }
     }
   };
-  const { user } = useContext(User);
+
+  useEffect(() => {
+    refreshToken()
+    console.log('otro')
+  });
 
   return (
     <div>
