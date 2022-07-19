@@ -15,7 +15,7 @@ const Register = () => {
   const [date, setDate] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+console.log(sex)
   const Register = (e) => {
     e.preventDefault();
     if (email.trim() === "") {
@@ -44,9 +44,13 @@ const Register = () => {
   const Auth = async()=>{
     try {
       await axios.post(`${url}/register`, {
-        name: name,
-        email: email,
-        password: password,
+        nombres: name,
+        apellidos: lastName,
+        correo_electronico:email,
+        contrasena: password,
+        sexo:sex,
+        celular:phone,
+        fecha_nacimiento:date
       });
       let timerInterval;
       Swal.fire({
@@ -151,10 +155,10 @@ const Register = () => {
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         <i className="mdi mdi-fingerprint text-gray-400 text-lg" />
                       </div>
-                      <select className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500">
+                      <select onChange={(e)=>setSex(e.target.value)} className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500">
                         <option disabled>Selecione</option>
-                        <option value="m">Masculino</option>
-                        <option value="f">Femenino</option>
+                        <option value="m"  >Masculino</option>
+                        <option value="f" >Femenino</option>
                       </select>
                     </div>
                   </div>

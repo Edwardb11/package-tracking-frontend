@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { Link, useHistory } from "react-router-dom";
-import NoFound from "./NoFound";
 
 const Home = () => {
   const [name, setName] = useState("");
