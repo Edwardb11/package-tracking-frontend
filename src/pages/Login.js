@@ -1,8 +1,89 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Imagen from "../components/Imagen";
+import Swal from "sweetalert2";
+import axios from "axios";
+import setAuthorizationToken from "../utils/setAuthorizationToken";
+import { url } from "../api/api";
 
 const Login = () => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+
+  const Auth = async (e) => {
+    e.preventDefault();
+    if (email.trim() === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Correo electrónico inválido",
+        text: "Por favor introduzca un correo válido.",
+        showConfirmButton: true,
+      });
+      return;
+    }
+
+    if (password.trim().length < 2) {
+      Swal.fire({
+        icon: "error",
+        title: "Contraseña débil",
+        text: "La contraseña debe ser mayor de 6 caracteres.",
+        showConfirmButton: true,
+      });
+      return;
+    }
+    try {
+      await axios
+        .post(`${url}/login`, {
+          correo_electronico: email,
+          contrasena: password,
+        })
+        .then((res) => {
+          console.log(res.data.accessToken);
+          const token = res.data.accessToken;
+          localStorage.setItem("jwtToken", token);
+          setAuthorizationToken(token);
+          let timerInterval;
+          Swal.fire({
+            icon: "success",
+            title: "¡Inicio de sesión exitoso!",
+            text: "Espere mientras cargan sus datos.",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              const b = Swal.getHtmlContainer().querySelector("b");
+              timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft();
+              }, 100);
+            },
+            willClose: () => {
+              clearInterval(timerInterval);
+            },
+          });
+          history.push("/");
+        })
+        .catch((error) => {
+          if (error.response) {
+            Swal.fire({
+              icon: "error",
+              title: "¡Ups! Ha ocurrido un error",
+              text: "Ha ocurrido un error al registrar a un nuevo usuario, intente más tarde.",
+              showConfirmButton: true,
+            });
+            console.log(error);
+          }
+        });
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.msg);
+      }
+    }
+  };
   return (
     <>
       <style
@@ -26,7 +107,7 @@ const Login = () => {
                 </h1>
                 <p>Ingrese su información para iniciar sesión</p>
               </div>
-              <form className="text-gray-700">
+              <form onSubmit={Auth} className="text-gray-700">
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-sm font-semibold px-1">
@@ -37,7 +118,10 @@ const Login = () => {
                         <i className="mdi mdi-email-outline text-gray-400 text-lg" />
                       </div>
                       <input
-                        type="email"
+                        type="text"
+                        value={email}
+                        onChange={handleEmail}
+                        required
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -55,6 +139,9 @@ const Login = () => {
                       </div>
                       <input
                         type="password"
+                        value={password}
+                        onChange={handlePassword}
+                        required
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
