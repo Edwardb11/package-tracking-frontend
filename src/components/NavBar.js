@@ -1,8 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
+import User from "../context/userContext";
 
 const navigation = [
   { name: "Inicio", href: "#", current: true },
@@ -15,7 +16,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar({ name }) {
+export default function NavBar() {
+    const user =useContext(User)
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -66,7 +68,7 @@ export default function NavBar({ name }) {
                   type="button"
                   className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
-                  <span>Bienvenid@ {name}</span>
+                  <span>Bienvenid@ {user.name}</span>
                 </button>
 
                 {/* Profile dropdown */}
