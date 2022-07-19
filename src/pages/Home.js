@@ -20,6 +20,7 @@ const Home = () => {
         name: decoded.name,
         email: decoded.email,
         userId: decoded.userId,
+        sexo: decoded.sexo,
       });
     } catch (error) {
       if (error.response) {
@@ -40,7 +41,7 @@ const Home = () => {
   return (
     <div>
       <NavBar />
-      Bienvenido NOMBRE: {user.name} EMAIL-{user.email} USERID-{user.userId}
+      Bienvenido NOMBRE: {user.name} EMAIL-{user.email} USERID-{user.userId} - sexo -{user.sexo} -
       <Link to="/NoFound">No FOUND</Link>
     </div>
   );
