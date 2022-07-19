@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import Swal from "sweetalert2";
 import axios from "axios";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 import { url } from "../api/api";
+import User from "../context/userContext";
 
 const Login = () => {
-  const history = useHistory();
+  const { setLog } = useContext(User);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -59,13 +60,14 @@ const Login = () => {
               const b = Swal.getHtmlContainer().querySelector("b");
               timerInterval = setInterval(() => {
                 b.textContent = Swal.getTimerLeft();
-              }, 100);
+              }, 2000);
             },
             willClose: () => {
               clearInterval(timerInterval);
+              setLog(true);
             },
           });
-          history.push("/");
+
         })
         .catch((error) => {
           if (error.response) {
@@ -76,11 +78,13 @@ const Login = () => {
               showConfirmButton: true,
             });
             console.log(error);
+            setLog(false)
           }
         });
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.msg);
+        setLog(false)
       }
     }
   };
