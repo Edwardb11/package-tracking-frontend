@@ -27,7 +27,7 @@ const Login = () => {
       return;
     }
 
-    if (password.trim().length < 2) {
+    if (password.trim().length < 6) {
       Swal.fire({
         icon: "error",
         title: "Contraseña débil",
@@ -74,7 +74,7 @@ const Login = () => {
             Swal.fire({
               icon: "error",
               title: "¡Ups! Ha ocurrido un error",
-              text: "Ha ocurrido un error al registrar a un nuevo usuario, intente más tarde.",
+              text: "Ha ocurrido un error al intentar iniciar sesión, intente más tarde.",
               showConfirmButton: true,
             });
             console.log(error);
@@ -122,7 +122,7 @@ const Login = () => {
                         <i className="mdi mdi-email-outline text-gray-400 text-lg" />
                       </div>
                       <input
-                        type="text"
+                        type="email"
                         value={email}
                         onChange={handleEmail}
                         required

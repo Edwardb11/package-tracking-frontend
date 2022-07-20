@@ -155,9 +155,9 @@ console.log(sex)
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         <i className="mdi mdi-fingerprint text-gray-400 text-lg" />
                       </div>
-                      <select onChange={(e)=>setSex(e.target.value)} className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500">
+                      <select onChange={(e)=>setSex (e.target.value)} className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" required>
                         <option disabled>Selecione</option>
-                        <option value="m"  >Masculino</option>
+                        <option value="m" selected  >Masculino</option>
                         <option value="f" >Femenino</option>
                       </select>
                     </div>
@@ -176,6 +176,7 @@ console.log(sex)
                         onChange={(e)=>setPhone(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="849-826-4011"
+                        required
                       />
                     </div>
                   </div>
@@ -195,6 +196,7 @@ console.log(sex)
                         onChange={(e)=>setDate(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="849-856-4014"
+                        required
                       />
                     </div>
                   </div>
