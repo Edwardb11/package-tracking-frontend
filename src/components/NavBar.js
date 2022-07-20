@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
@@ -16,6 +16,20 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function NavBar() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [widthState, setWidthState] = useState(false);
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    if (width < 500) {
+      return setWidthState(true);
+    } else {
+      return setWidthState(false);
+    }
+  }, [setWidthState, width]);
   const { user, setLog, setUser } = useContext(User);
   const logout = () => {
     localStorage.removeItem("jwtToken");
@@ -69,8 +83,14 @@ export default function NavBar() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <span className="capitalize font-bold  p-1 text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto ">
+                <span
+                  className={
+                    !widthState
+                      ? "capitalize font-bold  p-1 text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      : "invisible"
+                  }
+                >
                   {" "}
                   {user.sexo === "m" ? "Bienvenido " : "Bienvenida "}
                   {user.name}
@@ -120,16 +140,15 @@ export default function NavBar() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
+                          <div
                             onClick={logout}
-                            href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-4 py-2 text-sm text-gray-700 cursor-pointer	 "
                             )}
                           >
                             Cerrar Sesión
-                          </a>
+                          </div>
                         )}
                       </Menu.Item>
                     </Menu.Items>
