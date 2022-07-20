@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import User from "../context/userContext";
 import LandingPage from "../components/LandingPage";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [token, setToken] = useState("");
@@ -30,8 +31,7 @@ const Home = () => {
     <div>
       <NavBar />
       <LandingPage/>
-      Bienvenido NOMBRE: {user.name} EMAIL-{user.email} USERID-{user.userId} - sexo -{user.sexo} -
-      <Link to="/NoFound">No FOUND</Link>
+      <Footer/>
     </div>
   );
 };
