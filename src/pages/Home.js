@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import jwt_decode from "jwt-decode";
-import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import User from "../context/userContext";
 import LandingPage from "../components/LandingPage";
@@ -25,13 +24,13 @@ const Home = () => {
     } else {
       return () => {};
     }
-  }, [user,setUser]);
+  }, [user, setUser]);
 
   return (
     <div>
       <NavBar />
-      <LandingPage/>
-      <Footer/>
+      <LandingPage />
+      <Footer />
     </div>
   );
 };

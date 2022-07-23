@@ -24,7 +24,7 @@ export default function NavBar() {
   };
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    if (width < 500) {
+    if (width < 700) {
       return setWidthState(true);
     } else {
       return setWidthState(false);
@@ -58,11 +58,6 @@ export default function NavBar() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <span className="text-white"> Seguimiento de paquetes</span>
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://pngimg.com/uploads/gps/gps_PNG29.png"
-                    alt="Workflow"
-                  />
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">

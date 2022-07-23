@@ -67,7 +67,6 @@ const Login = () => {
               setLog(true);
             },
           });
-
         })
         .catch((error) => {
           if (error.response) {
@@ -78,13 +77,13 @@ const Login = () => {
               showConfirmButton: true,
             });
             console.log(error);
-            setLog(false)
+            setLog(false);
           }
         });
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.msg);
-        setLog(false)
+        setLog(false);
       }
     }
   };

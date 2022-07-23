@@ -71,12 +71,14 @@ const LandingPage = () => {
             <p className="mb-2 text-sm font-semibold leading-none text-left text-indigo-600 uppercase">
               Soporte{" "}
             </p>
-            <h3 className="mt-2 text-2xl sm:text-left md:text-4xl">Tienes problemas con algún paquete?
- </h3>
+            <h3 className="mt-2 text-2xl sm:text-left md:text-4xl">
+              Tienes problemas con algún paquete?
+            </h3>
             <p className="mt-5 text-lg text-gray-700 text md:text-left">
-            Llama a nuestro centro de soporte. 
-            <button className="bg-orange-700 text-white">+ 1 (829) 444 - 3323</button>
-
+              Llama a nuestro centro de soporte.
+              <button className="bg-orange-700 text-white">
+                + 1 (829) 444 - 3323
+              </button>
             </p>
           </div>
         </div>
