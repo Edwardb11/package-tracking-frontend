@@ -7,7 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [sex, setSex] = useState("");
@@ -15,75 +15,75 @@ const Register = () => {
   const [date, setDate] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-console.log(sex)
+  console.log(sex);
   const Register = (e) => {
     e.preventDefault();
     if (email.trim() === "") {
       Swal.fire({
-        icon: 'error',
-        title: 'Correo electrónico inválido',
-        text: 'Por favor introduzca un correo válido.',
+        icon: "error",
+        title: "Correo electrónico inválido",
+        text: "Por favor introduzca un correo válido.",
         showConfirmButton: true,
-      })
+      });
       return;
     }
 
     if (password.trim().length < 6) {
       Swal.fire({
-        icon: 'error',
-        title: 'Contraseña débil',
-        text: 'La contraseña debe ser mayor de 6 caracteres.',
+        icon: "error",
+        title: "Contraseña débil",
+        text: "La contraseña debe ser mayor de 6 caracteres.",
         showConfirmButton: true,
-      })
+      });
       return;
     }
-    console.log("entro")
-    Auth({name,email,password})
+    console.log("entro");
+    Auth({ name, email, password });
   };
 
-  const Auth = async()=>{
+  const Auth = async () => {
     try {
       await axios.post(`${url}/register`, {
         nombres: name,
         apellidos: lastName,
-        correo_electronico:email,
+        correo_electronico: email,
         contrasena: password,
-        sexo:sex,
-        celular:phone,
-        fecha_nacimiento:date
+        sexo: sex,
+        celular: phone,
+        fecha_nacimiento: date,
       });
       let timerInterval;
       Swal.fire({
-        icon: 'success',
-        title: '¡Registro exitoso!',
-        text: 'Por favor inicie sesión.',
+        icon: "success",
+        title: "¡Registro exitoso!",
+        text: "Por favor inicie sesión.",
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
         didOpen: () => {
-          Swal.showLoading()
-          const b = Swal.getHtmlContainer().querySelector('b')
+          Swal.showLoading();
+          const b = Swal.getHtmlContainer().querySelector("b");
           timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft()
-          }, 100)
+            b.textContent = Swal.getTimerLeft();
+          }, 100);
         },
         willClose: () => {
-          clearInterval(timerInterval)
-        }
-      })
-      history.push("/auth/login")
+          clearInterval(timerInterval);
+        },
+      });
+      history.push("/auth/login");
     } catch (error) {
       if (error.response) {
         Swal.fire({
-          icon: 'error',
-          title: '¡Ups! Ha ocurrido un error',
-          text: 'Ha ocurrido un error al registrar a un nuevo usuario, intente más tarde.',
+          icon: "error",
+          title: "¡Ups! Ha ocurrido un error",
+          text: "Ha ocurrido un error al registrar a un nuevo usuario, intente más tarde.",
           showConfirmButton: true,
-        })
+        });
         console.log(error);
       }
     }
-  }
+  };
 
   return (
     <>
@@ -120,7 +120,7 @@ console.log(sex)
                       <input
                         type="text"
                         value={name}
-                        onChange={(e)=>setName(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="John"
                         required
@@ -138,7 +138,7 @@ console.log(sex)
                       <input
                         type="text"
                         value={lastName}
-                        onChange={(e)=>setLastName(e.target.value)}
+                        onChange={(e) => setLastName(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Smith"
                         required
@@ -155,10 +155,16 @@ console.log(sex)
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         <i className="mdi mdi-fingerprint text-gray-400 text-lg" />
                       </div>
-                      <select onChange={(e)=>setSex(e.target.value)} className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500">
+                      <select
+                        onChange={(e) => setSex(e.target.value)}
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                        required
+                      >
                         <option disabled>Selecione</option>
-                        <option value="m"  >Masculino</option>
-                        <option value="f" >Femenino</option>
+                        <option value="m" selected>
+                          Masculino
+                        </option>
+                        <option value="f">Femenino</option>
                       </select>
                     </div>
                   </div>
@@ -173,9 +179,10 @@ console.log(sex)
                       <input
                         type="text"
                         value={phone}
-                        onChange={(e)=>setPhone(e.target.value)}
+                        onChange={(e) => setPhone(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="849-826-4011"
+                        required
                       />
                     </div>
                   </div>
@@ -192,9 +199,10 @@ console.log(sex)
                       <input
                         type="date"
                         value={date}
-                        onChange={(e)=>setDate(e.target.value)}
+                        onChange={(e) => setDate(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="849-856-4014"
+                        required
                       />
                     </div>
                   </div>
@@ -211,7 +219,7 @@ console.log(sex)
                       <input
                         type="email"
                         value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                         required
@@ -231,7 +239,7 @@ console.log(sex)
                       <input
                         type="password"
                         value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                         required
