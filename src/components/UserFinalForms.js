@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserFinalForms = () => {
+const UserFinalForms = ({props}) => {
   return (
     <div className="grid gap-6 mb-6 lg:grid-cols-2">
       <div>
@@ -77,7 +77,7 @@ const UserFinalForms = () => {
         <input
           type="text"
           name="ubicacion"
-          className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Ej:Cutupu, La Vega"
           required
         />

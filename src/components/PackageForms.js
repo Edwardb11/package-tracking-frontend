@@ -3,6 +3,16 @@ import UserFinalForms from "./UserFinalForms";
 
 function PackageForms() {
   const [viewForm, setViewForm] = useState(false);
+  const [namePackage, setNamePackage] = useState("");
+  const [amount, setAmount] = useState("");
+  const [weight, setWeight] = useState("");
+  const [type, setType] = useState("");
+  const [userFinal, setUserFinal] = useState("");
+
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [sex, setSex] = useState("");
+  const [phone, setPhone] = useState("");
   const handleAdd = () => {
     setViewForm(!viewForm);
   };
@@ -21,6 +31,8 @@ function PackageForms() {
               <input
                 type="text"
                 id="nombre"
+                value={namePackage}
+                onChange={() => setNamePackage((e) => e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:Computadora"
                 required
@@ -37,6 +49,7 @@ function PackageForms() {
                 id="tipo"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
+                onChange={() => setType((e) => e.target.value)}
               >
                 <option disabled>Selecione</option>
                 <option value="1" selected>
@@ -58,6 +71,8 @@ function PackageForms() {
               <input
                 type="text"
                 id="cantidad"
+                value={amount}
+                onChange={() => setAmount((e) => e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:10"
                 required
@@ -73,6 +88,8 @@ function PackageForms() {
               <input
                 type="number"
                 name="peso"
+                value={weight}
+                onChange={() => setWeight((e) => e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:10"
                 required
@@ -94,7 +111,7 @@ function PackageForms() {
             </button>
           </div>
           {viewForm ? (
-<UserFinalForms/>
+            <UserFinalForms />
           ) : (
             <div>
               <p className="text-sm text-justify mb-2">
@@ -110,6 +127,7 @@ function PackageForms() {
                 id="tipo"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
+                onChange={() => setUserFinal((e) => e.target.value)}
               >
                 <option disabled>Selecione</option>
                 <option value="1" selected>
