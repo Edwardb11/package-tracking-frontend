@@ -9,10 +9,6 @@ function PackageForms() {
   const [type, setType] = useState("");
   const [userFinal, setUserFinal] = useState("");
 
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [sex, setSex] = useState("");
-  const [phone, setPhone] = useState("");
   const handleAdd = () => {
     setViewForm(!viewForm);
   };
@@ -32,7 +28,7 @@ function PackageForms() {
                 type="text"
                 id="nombre"
                 value={namePackage}
-                onChange={() => setNamePackage((e) => e.target.value)}
+                onChange={(e) => setNamePackage( e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:Computadora"
                 required
@@ -49,7 +45,7 @@ function PackageForms() {
                 id="tipo"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
-                onChange={() => setType((e) => e.target.value)}
+                onChange={(e) => setType( e.target.value)}
               >
                 <option disabled>Selecione</option>
                 <option value="1" selected>
@@ -69,10 +65,10 @@ function PackageForms() {
                 Cantidad (LB)
               </label>
               <input
-                type="text"
+                type="number"
                 id="cantidad"
                 value={amount}
-                onChange={() => setAmount((e) => e.target.value)}
+                onChange={(e) => setAmount( e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:10"
                 required
@@ -89,7 +85,7 @@ function PackageForms() {
                 type="number"
                 name="peso"
                 value={weight}
-                onChange={() => setWeight((e) => e.target.value)}
+                onChange={(e) => setWeight( e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:10"
                 required
@@ -127,7 +123,7 @@ function PackageForms() {
                 id="tipo"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
-                onChange={() => setUserFinal((e) => e.target.value)}
+                onChange={(e) => setUserFinal(e.target.value)}
               >
                 <option disabled>Selecione</option>
                 <option value="1" selected>
