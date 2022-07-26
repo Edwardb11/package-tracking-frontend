@@ -8,7 +8,6 @@ function PackageForms() {
   const [weight, setWeight] = useState("");
   const [type, setType] = useState("");
   const [userFinal, setUserFinal] = useState("");
-
   const handleAdd = () => {
     setViewForm(!viewForm);
   };
@@ -28,7 +27,7 @@ function PackageForms() {
                 type="text"
                 id="nombre"
                 value={namePackage}
-                onChange={(e) => setNamePackage( e.target.value)}
+                onChange={(e) => setNamePackage(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:Computadora"
                 required
@@ -45,7 +44,7 @@ function PackageForms() {
                 id="tipo"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
-                onChange={(e) => setType( e.target.value)}
+                onChange={(e) => setType(e.target.value)}
               >
                 <option disabled>Selecione</option>
                 <option value="1" selected>
@@ -68,7 +67,7 @@ function PackageForms() {
                 type="number"
                 id="cantidad"
                 value={amount}
-                onChange={(e) => setAmount( e.target.value)}
+                onChange={(e) => setAmount(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:10"
                 required
@@ -85,7 +84,7 @@ function PackageForms() {
                 type="number"
                 name="peso"
                 value={weight}
-                onChange={(e) => setWeight( e.target.value)}
+                onChange={(e) => setWeight(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ej:10"
                 required
@@ -106,40 +105,43 @@ function PackageForms() {
               {!viewForm ? "Agregar usuario" : "Cerrar"}
             </button>
           </div>
-          {viewForm ? (
-            <UserFinalForms />
-          ) : (
+
+          {!viewForm && (
             <div>
-              <p className="text-sm text-justify mb-2">
-                ¿Habías agregado a alguien anteriormente? Seleccionalo{" "}
-              </p>
-              <label
-                htmlFor="user_final"
-                className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
+              <div>
+                <p className="text-sm text-justify mb-2">
+                  ¿Habías agregado a alguien anteriormente? Seleccionalo{" "}
+                </p>
+                <label
+                  htmlFor="user_final"
+                  className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
+                >
+                  Usuario final
+                </label>
+                <select
+                  id="tipo"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                  onChange={(e) => setUserFinal(e.target.value)}
+                >
+                  <option disabled>Selecione</option>
+                  <option value="1" selected>
+                    No tienes personas agregadas
+                  </option>
+                  <option value="2">Una persona</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                className="text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Usuario final
-              </label>
-              <select
-                id="tipo"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required
-                onChange={(e) => setUserFinal(e.target.value)}
-              >
-                <option disabled>Selecione</option>
-                <option value="1" selected>
-                  No tienes personas agregadas
-                </option>
-                <option value="2">Una persona</option>
-              </select>
+                Agregar paquete
+              </button>
             </div>
           )}
-          <button
-            type="submit"
-            className="text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Agregar paquete
-          </button>
         </form>
+        {viewForm && <UserFinalForms />}
       </div>
     </>
   );
