@@ -11,6 +11,7 @@ import User from "../context/userContext";
 import Faq from "../pages/Faq";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import About from "../pages/About";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -25,6 +26,7 @@ const AppRouter = () => {
         <PrivateRouter exact path="/" component={Home} log={log} />
         <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />
         <PrivateRouter exact path="/faq" log={log} component={Faq} />
+        <PrivateRouter exact path="/about" log={log} component={About} />
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
       <Footer />
