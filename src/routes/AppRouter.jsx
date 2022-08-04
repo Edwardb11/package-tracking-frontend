@@ -8,6 +8,9 @@ import PublicRouter from "./PublicRouter";
 import NoFound from "../pages/NoFound";
 import { useContext } from "react";
 import User from "../context/userContext";
+import Faq from "../pages/Faq";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -16,12 +19,15 @@ const AppRouter = () => {
   }
   return (
     <Router>
+      <NavBar />
       <Switch>
         <PublicRouter path="/auth" component={AuthRouter} log={log} />
         <PrivateRouter exact path="/" component={Home} log={log} />
         <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />
+        <PrivateRouter exact path="/faq" log={log} component={Faq} />
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

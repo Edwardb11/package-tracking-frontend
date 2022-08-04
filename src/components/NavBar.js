@@ -7,7 +7,7 @@ import User from "../context/userContext";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 
 const navigation = [
-  { name: "Inicio", href: "#", current: true },
+  { name: "Inicio", href: "/", current: true },
   { name: "Seguimiento", href: "#", current: false },
   { name: "Agregar", href: "/NoFound", current: false },
 ];
