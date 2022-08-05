@@ -7,9 +7,9 @@ import User from "../context/userContext";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 
 const navigation = [
-  { name: "Inicio", href: "/" },
-  { name: "Seguimiento", href: "/noFound" },
-  { name: "Agregar", href: "/package" },
+  { name: "Inicio", href: "/", current: true },
+  { name: "Seguimiento", href: "#", current: false },
+  { name: "Agregar", href: "/package", current: false },
 ];
 
 function classNames(...classes) {

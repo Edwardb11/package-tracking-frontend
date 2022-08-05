@@ -28,7 +28,7 @@ const Footer = () => {
               </span>
 
               <span className="my-2">
-                <Link className="text-blue-700  text-md hover:text-blue-500">
+                <Link to="/faq" className="text-blue-700  text-md hover:text-blue-500"> 
                   Preguntas frecuentes
                 </Link>
               </span>
@@ -43,16 +43,16 @@ const Footer = () => {
                 Acerca de nosotros
               </span>
               <span className="my-2">
-                <Link className="text-blue-700  text-md hover:text-blue-500">
-                  Que hacemos?
+                <Link to="/about" className="text-blue-700  text-md hover:text-blue-500">
+                ¿Quiénes somos?
+                </Link>
+              </span>
+              <span className="my-2">
+                <Link to="/NoFound" className="text-blue-700  text-md hover:text-blue-500">
+                404
                 </Link>
               </span>
 
-              <span className="my-2">
-                <Link className="text-blue-700  text-md hover:text-blue-500">
-                  Quiénes somos?
-                </Link>
-              </span>
             </div>
           </div>
         </div>
