@@ -1,8 +1,11 @@
 import React from "react";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 import fondo from "../img/fondo.jpeg";
 const About = () => {
   return (
     <>
+      <NavBar />
       <link
         rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
@@ -11,8 +14,8 @@ const About = () => {
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css"
       />
-      <main>
-        <section className="relative block h-500-px">
+      <div className="mt-20">
+        <section className="relative  h-500-px  ">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{ backgroundImage: `url(${fondo})` }}
@@ -23,7 +26,7 @@ const About = () => {
             />
           </div>
           <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+            className="top-auto bottom-0 left-0 right-0 w-full absolute  pointer-events-none overflow-hidden h-70-px"
             style={{ transform: "translateZ(0px)" }}
           >
             <svg
@@ -82,7 +85,8 @@ const About = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
+      <Footer />
     </>
   );
 };

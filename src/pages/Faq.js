@@ -1,8 +1,11 @@
 import React from "react";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 const Faq = () => {
   return (
     <div>
+      <NavBar/>
       <div>
         <section className="text-gray-700">
           <div className="container px-5 py-24 mx-auto">
@@ -84,6 +87,7 @@ const Faq = () => {
           </div>
         </section>
       </div>
+      <Footer/>
     </div>
   );
 };

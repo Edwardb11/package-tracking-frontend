@@ -1,9 +1,12 @@
 import React from "react";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 import PackageForms from "../components/PackageForms";
 
 function Package() {
   return (
     <>
+    <NavBar/>
       <div className="py-20 bg-white">
         <div className="flex flex-col px-8 mx-auto space-y-12 max-w-7xl xl:px-12">
           <div className="relative">
@@ -20,6 +23,7 @@ function Package() {
         </div>
         <PackageForms />
       </div>
+      <Footer/>
     </>
   );
 }

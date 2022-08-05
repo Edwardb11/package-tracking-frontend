@@ -21,7 +21,6 @@ const AppRouter = () => {
   }
   return (
     <Router>
-      <NavBar />
       <Switch>
         <PublicRouter path="/auth" component={AuthRouter} log={log} />
         <PrivateRouter exact path="/" component={Home} log={log} />
@@ -31,7 +30,6 @@ const AppRouter = () => {
         <PrivateRouter exact path="/package" log={log} component={Package} />
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
-      <Footer />
     </Router>
   );
 };
