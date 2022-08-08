@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import jwt_decode from "jwt-decode";
 import User from "../context/userContext";
 import LandingPage from "../components/LandingPage";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [token, setToken] = useState("");
@@ -26,7 +28,9 @@ const Home = () => {
 
   return (
     <div>
+      <NavBar />
       <LandingPage />
+      <Footer />
     </div>
   );
 };
