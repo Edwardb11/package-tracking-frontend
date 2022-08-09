@@ -66,13 +66,13 @@ const TableInfo = () => {
                       {items.nombre}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      {items.cantidad}
+                    #  {items.cantidad}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      {items.peso}
+                      {items.peso} LB
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      {items.costo || "No definido"}
+                   {items.costo || "No definido"}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
                       {items.usuario_final.id_usuario_final}

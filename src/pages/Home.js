@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 const Home = () => {
   const [token, setToken] = useState("");
   const { user, setUser } = useContext(User);
-
+  console.log(token);
   useEffect(() => {
     let isEmpty = JSON.stringify(user) === "{}";
     if (isEmpty) {
