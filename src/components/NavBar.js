@@ -8,7 +8,7 @@ import setAuthorizationToken from "../utils/setAuthorizationToken";
 
 const navigation = [
   { name: "Inicio", href: "/", current: true },
-  { name: "Seguimiento", href: "#", current: false },
+  { name: "Seguimiento", href: "/tracking", current: false },
   { name: "Agregar", href: "/package", current: false },
 ];
 
