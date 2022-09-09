@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 const Home = () => {
   const [token, setToken] = useState("");
   const { user, setUser } = useContext(User);
-  console.log(token);
   useEffect(() => {
     let isEmpty = JSON.stringify(user) === "{}";
     if (isEmpty) {
@@ -18,7 +17,7 @@ const Home = () => {
       return setUser({
         name: decoded.name,
         email: decoded.email,
-        userId: decoded.userId,
+        userId: decoded.clienteId || decoded.StaffId ,
         sexo: decoded.sexo,
       });
     } else {

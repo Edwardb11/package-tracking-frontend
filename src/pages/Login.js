@@ -40,7 +40,7 @@ const Login = () => {
       await axios
         .post(`${url}/login`, {
           correo_electronico: email,
-          contrasena: password,
+          contraseña: password,
         })
         .then((res) => {
           console.log(res.data.accessToken);
