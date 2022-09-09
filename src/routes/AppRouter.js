@@ -12,6 +12,7 @@ import Faq from "../pages/Faq";
 import About from "../pages/About";
 import Package from "../pages/Package";
 import Tracking from "../pages/Tracking";
+import MyPackages from "../pages/MyPackages";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -28,6 +29,7 @@ const AppRouter = () => {
         <PrivateRouter exact path="/about" log={log} component={About} />
         <PrivateRouter exact path="/package" log={log} component={Package} />
         <PrivateRouter exact path="/tracking" log={log} component={Tracking} />
+        <PrivateRouter exact path="/myPackages" log={log} component={MyPackages} />
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
     </Router>
