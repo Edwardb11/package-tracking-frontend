@@ -27,11 +27,11 @@ const Login = () => {
       return;
     }
 
-    if (password.trim().length < 6) {
+    if (password === '') {
       Swal.fire({
         icon: "error",
-        title: "Contraseña débil",
-        text: "La contraseña debe ser mayor de 6 caracteres.",
+        title: "Error!",
+        text: "La contraseña es obligatoria",
         showConfirmButton: true,
       });
       return;
