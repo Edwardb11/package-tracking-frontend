@@ -12,7 +12,7 @@ const Footer = () => {
                 Seguimiento de paquetes
               </span>
               <span className="my-2">
-                <Link className="text-blue-700  text-md hover:text-blue-500">
+                <Link to="/tracking" className="text-blue-700  text-md hover:text-blue-500">
                   Seguimiento
                 </Link>
               </span>

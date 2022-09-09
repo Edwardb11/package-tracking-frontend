@@ -9,10 +9,9 @@ import NoFound from "../pages/NoFound";
 import { useContext } from "react";
 import User from "../context/userContext";
 import Faq from "../pages/Faq";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 import About from "../pages/About";
 import Package from "../pages/Package";
+import Tracking from "../pages/Tracking";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -28,6 +27,7 @@ const AppRouter = () => {
         <PrivateRouter exact path="/faq" log={log} component={Faq} />
         <PrivateRouter exact path="/about" log={log} component={About} />
         <PrivateRouter exact path="/package" log={log} component={Package} />
+        <PrivateRouter exact path="/tracking" log={log} component={Tracking} />
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
     </Router>
