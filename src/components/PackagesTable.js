@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import User from "../context/userContext";
 import { url } from "../api/api";
 
-const TablePackages = () => {
+const PackagesTable = () => {
   const { user } = useContext(User);
   const userId = user.userId;
   const [data, setData] = useState({ data: [] });
@@ -119,4 +119,4 @@ const TablePackages = () => {
   );
 };
 
-export default TablePackages;
+export default PackagesTable;

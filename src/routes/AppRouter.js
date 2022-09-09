@@ -11,7 +11,7 @@ import User from "../context/userContext";
 import Faq from "../pages/Faq";
 import About from "../pages/About";
 import Package from "../pages/Package";
-import Tracking from "../pages/Tracking";
+import Tracking from "../pages/TrackingUPS";
 import MyPackages from "../pages/MyPackages";
 
 const AppRouter = () => {

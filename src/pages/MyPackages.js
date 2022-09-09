@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import TablePackages from "../components/Table";
+import PackagesTable from "../components/PackagesTable";
 
 const MyPackages = () => {
   return (
@@ -21,7 +21,7 @@ const MyPackages = () => {
           </div>
         </div>
       </div>
-      <TablePackages />
+      <PackagesTable />
 
       <Footer />
     </>
