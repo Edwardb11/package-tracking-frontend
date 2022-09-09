@@ -16,7 +16,7 @@ const TableInfo = () => {
     } else {
       return () => {};
     }
-  }, [data, setData]);
+  }, [data, setData,isEmpty,userId]);
 
   console.log(data);
   return (
