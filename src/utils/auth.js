@@ -34,8 +34,8 @@ export const Auth = async (email, password, setLog) => {
         // console.log(res.data.accessToken);
         const token = res.data.accessToken;
         sessionStorage.setItem("jwtToken", token);
-        Cookies.get("refreshToken");
-        Cookies.set("refreshToken", token);
+        Cookies.get("jwtToken");
+        Cookies.set("jwtToken", token);
         setAuthorizationToken(token);
 
         let timerInterval;
@@ -70,6 +70,7 @@ export const Auth = async (email, password, setLog) => {
           console.log(error);
           setLog(false);
         }
+        console.log(error)
       });
   } catch (error) {
     if (error.response) {
