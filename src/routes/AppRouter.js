@@ -13,11 +13,14 @@ import About from "../pages/About";
 import Package from "../pages/Package";
 import Tracking from "../pages/TrackingUPS";
 import MyPackages from "../pages/MyPackages";
+import DecodeToken from "../hooks/DecodeToken";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
-  if (sessionStorage.getItem("jwtToken")) {
+  const token = sessionStorage.getItem("jwtToken");
+  if (token) {
     setLog(true);
+    DecodeToken(token);
   }
   return (
     <Router>
@@ -29,7 +32,12 @@ const AppRouter = () => {
         <PrivateRouter exact path="/about" log={log} component={About} />
         <PrivateRouter exact path="/package" log={log} component={Package} />
         <PrivateRouter exact path="/tracking" log={log} component={Tracking} />
-        <PrivateRouter exact path="/myPackages" log={log} component={MyPackages} />
+        <PrivateRouter
+          exact
+          path="/myPackages"
+          log={log}
+          component={MyPackages}
+        />
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>
     </Router>

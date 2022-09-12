@@ -37,7 +37,6 @@ export const Auth = async (email, password, setLog) => {
         Cookies.get("jwtToken");
         Cookies.set("jwtToken", token);
         setAuthorizationToken(token);
-
         let timerInterval;
         Swal.fire({
           icon: "success",
