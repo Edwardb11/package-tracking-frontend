@@ -60,17 +60,32 @@ export const Auth = async (email, password, setLog) => {
         });
       })
       .catch((error) => {
-        if (error.response) {
+        if (error.response.status === 400) {
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups! Contraseña inválida",
+            text: error.response.data.msg,
+            showConfirmButton: true,
+          });
+          console.log(error);
+          setLog(false);
+        } else if (error.response.status === 404) {
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups! Correo electrónico inválido",
+            text: error.response.data.msg,
+            showConfirmButton: true,
+          });
+          setLog(false);
+        } else if (error.response) {
           Swal.fire({
             icon: "error",
             title: "¡Ups! Ha ocurrido un error",
             text: "Ha ocurrido un error al intentar iniciar sesión, intente más tarde.",
             showConfirmButton: true,
           });
-          console.log(error);
           setLog(false);
         }
-        console.log(error)
       });
   } catch (error) {
     if (error.response) {
