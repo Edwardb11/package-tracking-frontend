@@ -62,7 +62,7 @@ export const Auth = async (email, password, setLog) => {
         if (error.response.status === 400) {
           Swal.fire({
             icon: "error",
-            title: "¡Ups! Contraseña inválida",
+            title: "¡Error!",
             text: error.response.data.msg,
             showConfirmButton: true,
           });
@@ -71,24 +71,29 @@ export const Auth = async (email, password, setLog) => {
         } else if (error.response.status === 404) {
           Swal.fire({
             icon: "error",
-            title: "¡Ups! Correo electrónico inválido",
+            title: "¡Error!",
             text: error.response.data.msg,
             showConfirmButton: true,
           });
           setLog(false);
         } else if (error.response) {
           Swal.fire({
+            title: "¡Error!",
+            text: "Lo sentimos, estamos teniendo problemas para iniciar su sesión. Vuelva a intentarlo mas tarde.",
             icon: "error",
-            title: "¡Ups! Ha ocurrido un error",
-            text: "Ha ocurrido un error al intentar iniciar sesión, intente más tarde.",
-            showConfirmButton: true,
+            confirmButtonText: "OK",
           });
           setLog(false);
         }
       });
   } catch (error) {
     if (error.response) {
-      console.log(error.response.data.msg);
+      Swal.fire({
+        title: "¡Error!",
+        text: "Lo sentimos, estamos teniendo problemas para iniciar su sesión. Vuelva a intentarlo mas tarde.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
       setLog(false);
     }
   }
