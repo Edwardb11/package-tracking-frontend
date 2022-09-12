@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     let isEmpty = JSON.stringify(user) === "{}";
     if (isEmpty) {
-      const token = localStorage.getItem("jwtToken");
+      const token = sessionStorage.getItem("jwtToken");
       setToken(token);
       const decoded = jwt_decode(token);
       return setUser({

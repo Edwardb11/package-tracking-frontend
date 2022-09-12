@@ -45,7 +45,7 @@ const Login = () => {
         .then((res) => {
           console.log(res.data.accessToken);
           const token = res.data.accessToken;
-          localStorage.setItem("jwtToken", token);
+          sessionStorage.setItem("jwtToken", token);
           setAuthorizationToken(token);
           let timerInterval;
           Swal.fire({

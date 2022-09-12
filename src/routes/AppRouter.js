@@ -16,7 +16,7 @@ import MyPackages from "../pages/MyPackages";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
-  if (localStorage.getItem("jwtToken")) {
+  if (sessionStorage.getItem("jwtToken")) {
     setLog(true);
   }
   return (

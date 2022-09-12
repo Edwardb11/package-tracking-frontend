@@ -33,7 +33,7 @@ export default function NavBar() {
   }, [setWidthState, width]);
   const { user, setLog, setUser } = useContext(User);
   const logout = () => {
-    localStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("jwtToken");
     setAuthorizationToken(false);
     setUser({});
     setLog(false);
