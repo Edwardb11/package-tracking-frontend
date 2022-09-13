@@ -16,9 +16,9 @@ const PackagesTable = () => {
     } else {
       return () => {};
     }
-  }, [data, setData,isEmpty,userId]);
+  }, [data, setData, isEmpty, userId]);
 
-  console.log(data);
+  // console.log(data );
   return (
     <>
       <div className="w-2/3 mx-auto">
@@ -42,7 +42,7 @@ const PackagesTable = () => {
                   Costo de envio
                 </th>
                 <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
-                  Pagar
+                  Proceder al pago
                 </th>
                 <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
                   Mas informacion
@@ -66,10 +66,19 @@ const PackagesTable = () => {
                       {items.peso} LB
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      {items.costo || "No definido"}
+                      {items.facturas[0]?.cantidad_a_pagar || "No definido"}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      <button className="border-blue-500 disabled bg-blue-500  text-white   font-bold py-2 px-4 rounded inline-flex items-center hover:border-blue-600 hover:bg-blue-600">
+                      <button
+                        className={`text-white  font-bold py-2 px-4 rounded inline-flex items-center 
+                        ${
+                          items.facturas[0]?.id_factura == null
+                            ? " bg-blue-300  hover:bg-blue-200 cursor-not-allowed "
+                            : " bg-blue-500  cursor-pointer  hover:bg-blue-600"
+                        }
+                        `}
+                        disabled={items.facturas[0]?.id_factura == null}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -84,8 +93,9 @@ const PackagesTable = () => {
                             d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
                           />
                         </svg>
-
-                        {/* <span>Pagar</span> */}
+                        <span>
+                          Pagar factura {items.facturas[0]?.id_factura || 0}
+                        </span>
                       </button>{" "}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
