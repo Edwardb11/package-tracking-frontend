@@ -1,33 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import jwt_decode from "jwt-decode";
-import User from "../context/userContext";
+import React from "react";
 import LandingPage from "../components/LandingPage";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 const Home = () => {
-  const [token, setToken] = useState("");
-  const { user, setUser } = useContext(User);
-  console.log(token);
-  useEffect(() => {
-    let isEmpty = JSON.stringify(user) === "{}";
-    if (isEmpty) {
-      const token = localStorage.getItem("jwtToken");
-      setToken(token);
-      const decoded = jwt_decode(token);
-      return setUser({
-        name: decoded.name,
-        email: decoded.email,
-        userId: decoded.userId,
-        sexo: decoded.sexo,
-      });
-    } else {
-      return () => {};
-    }
-  }, [user, setUser]);
-
   return (
-    <div>
+    <div> 
       <NavBar />
       <LandingPage />
       <Footer />

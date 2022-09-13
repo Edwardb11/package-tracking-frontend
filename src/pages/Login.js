@@ -1,11 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
-import Swal from "sweetalert2";
-import axios from "axios";
-import setAuthorizationToken from "../utils/setAuthorizationToken";
-import { url } from "../api/api";
 import User from "../context/userContext";
+import { Auth } from "../utils/auth";
 
 const Login = () => {
   const { setLog } = useContext(User);
@@ -15,77 +12,9 @@ const Login = () => {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
-  const Auth = async (e) => {
+  const Validate = async (e) => {
     e.preventDefault();
-    if (email.trim() === "") {
-      Swal.fire({
-        icon: "error",
-        title: "Correo electrónico inválido",
-        text: "Por favor introduzca un correo válido.",
-        showConfirmButton: true,
-      });
-      return;
-    }
-
-    if (password.trim().length < 6) {
-      Swal.fire({
-        icon: "error",
-        title: "Contraseña débil",
-        text: "La contraseña debe ser mayor de 6 caracteres.",
-        showConfirmButton: true,
-      });
-      return;
-    }
-    try {
-      await axios
-        .post(`${url}/login`, {
-          correo_electronico: email,
-          contrasena: password,
-        })
-        .then((res) => {
-          console.log(res.data.accessToken);
-          const token = res.data.accessToken;
-          localStorage.setItem("jwtToken", token);
-          setAuthorizationToken(token);
-          let timerInterval;
-          Swal.fire({
-            icon: "success",
-            title: "¡Inicio de sesión exitoso!",
-            text: "Espere mientras cargan sus datos.",
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-              Swal.showLoading();
-              const b = Swal.getHtmlContainer().querySelector("b");
-              timerInterval = setInterval(() => {
-                b.textContent = Swal.getTimerLeft();
-              }, 2000);
-            },
-            willClose: () => {
-              clearInterval(timerInterval);
-              setLog(true);
-            },
-          });
-        })
-        .catch((error) => {
-          if (error.response) {
-            Swal.fire({
-              icon: "error",
-              title: "¡Ups! Ha ocurrido un error",
-              text: "Ha ocurrido un error al intentar iniciar sesión, intente más tarde.",
-              showConfirmButton: true,
-            });
-            console.log(error);
-            setLog(false);
-          }
-        });
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.msg);
-        setLog(false);
-      }
-    }
+    Auth(email, password, setLog);
   };
   return (
     <>
@@ -110,7 +39,7 @@ const Login = () => {
                 </h1>
                 <p>Ingrese su información para iniciar sesión</p>
               </div>
-              <form onSubmit={Auth} className="text-gray-700">
+              <form onSubmit={Validate} className="text-gray-700">
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-sm font-semibold px-1">

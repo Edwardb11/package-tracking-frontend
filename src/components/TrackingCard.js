@@ -1,6 +1,14 @@
 import React from "react";
 
 const TrackingCard = () => {
+  const data ={
+    package:[
+      {
+        id_paquete:1
+      }
+    ]
+  }
+  console.log(data.package[0].id_paquete)
   return (
     <>
       <div className="container mx-auto my-40">
@@ -15,7 +23,7 @@ const TrackingCard = () => {
             </div>
             <div className="mt-16">
               <h1 className="font-bold text-center text-3xl text-gray-900">
-                Nombre del paquete
+                Nombre del paquete:{}
               </h1>
               <p className="text-center text-sm text-gray-400 font-medium">
                 Tipo de paquete
