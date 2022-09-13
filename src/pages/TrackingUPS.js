@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import TableInfo from "../components/TableInfo";
 import TrackingCard from "../components/TrackingCard";
 
 const Tracking = () => {
@@ -54,7 +53,6 @@ const Tracking = () => {
         </div>
       </div>
 
-      {viewForm && (
         <>
           <div className="mx-96 text-center">
             <div className="flex flex-col mx-auto space-y-12 max-w-7xl xl:px-12">
@@ -71,8 +69,6 @@ const Tracking = () => {
           </div>
           <TrackingCard />{" "}
         </>
-      )}
-      <TableInfo />
 
       <Footer />
     </>

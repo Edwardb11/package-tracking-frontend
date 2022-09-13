@@ -4,11 +4,12 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, NavLink } from "react-router-dom";
 import User from "../context/userContext";
-import setAuthorizationToken from "../utils/setAuthorizationToken";
+import { logout } from "../utils/auth";
 
 const navigation = [
   { name: "Inicio", href: "/", current: true },
   { name: "Seguimiento", href: "/tracking", current: false },
+  { name: "Mis paquetes", href: "/myPackages", current: false },
   { name: "Agregar", href: "/package", current: false },
 ];
 
@@ -31,12 +32,6 @@ export default function NavBar() {
     }
   }, [setWidthState, width]);
   const { user, setLog, setUser } = useContext(User);
-  const logout = () => {
-    localStorage.removeItem("jwtToken");
-    setAuthorizationToken(false);
-    setUser({});
-    setLog(false);
-  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -132,7 +127,7 @@ export default function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            onClick={logout}
+                            onClick={() => logout(user, setLog, setUser)}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700 cursor-pointer	 "

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import User from "../context/userContext";
 import { url } from "../api/api";
 
-const TableInfo = () => {
+const PackagesTable = () => {
   const { user } = useContext(User);
   const userId = user.userId;
   const [data, setData] = useState({ data: [] });
@@ -16,7 +16,7 @@ const TableInfo = () => {
     } else {
       return () => {};
     }
-  }, [data, setData]);
+  }, [data, setData,isEmpty,userId]);
 
   console.log(data);
   return (
@@ -119,4 +119,4 @@ const TableInfo = () => {
   );
 };
 
-export default TableInfo;
+export default PackagesTable;
