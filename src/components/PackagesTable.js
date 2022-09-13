@@ -70,7 +70,7 @@ const PackagesTable = () => {
                       {items.facturas[0]?.cantidad_a_pagar || "No definido"}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      <Link to={`/payment/${items.facturas[0]?.id_factura}`}>
+                      <Link to={`/packagePayment/${items.facturas[0]?.id_factura}`}>
                       <button
                         className={`text-white  font-bold py-2 px-4 rounded inline-flex items-center 
                         ${
