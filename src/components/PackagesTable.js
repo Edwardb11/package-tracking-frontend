@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import User from "../context/userContext";
 import { url } from "../api/api";
+import { Link } from "react-router-dom";
 
 const PackagesTable = () => {
   const { user } = useContext(User);
@@ -69,6 +70,7 @@ const PackagesTable = () => {
                       {items.facturas[0]?.cantidad_a_pagar || "No definido"}
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
+                      <Link to={`/payment/${items.facturas[0]?.id_factura}`}>
                       <button
                         className={`text-white  font-bold py-2 px-4 rounded inline-flex items-center 
                         ${
@@ -95,8 +97,11 @@ const PackagesTable = () => {
                         </svg>
                         <span>
                           Pagar factura {items.facturas[0]?.id_factura || 0}
+                          
                         </span>
-                      </button>{" "}
+                      </button>
+                      </Link>
+
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
                       <button class="border-blue-500 bg-blue-500 text-white   font-bold py-2 px-4 rounded inline-flex items-center hover:border-blue-600 hover:bg-blue-600">
