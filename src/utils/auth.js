@@ -100,18 +100,26 @@ export const Auth = async (email, password, setLog) => {
 };
 
 export const logout = async (user, setLog, setUser) => {
-  try {
-    await axios
-      .delete(`${url}/logout/${user.userId}`)
-      .then(
-        () => setAuthorizationToken(false),
-        sessionStorage.removeItem("jwtToken"),
-        Cookies.remove("jwtToken")
-      );
-    // console.log(data);
-    setLog(false);
-    setUser({});
-  } catch (error) {
-    console.log(error);
-  }
+  Swal.fire({
+    title: "¿Estás seguro de cerrar sesión?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios
+        .delete(`${url}/logout/${user.userId}`)
+        .then(
+          () => setAuthorizationToken(false),
+          sessionStorage.removeItem("jwtToken"),
+          Cookies.remove("jwtToken")
+        );
+      // console.log(data);
+      setLog(false);
+      setUser({});
+    }
+  });
 };
