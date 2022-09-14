@@ -12,10 +12,10 @@ function PackagePay() {
           <div className="relative">
             <h2 className="w-full text-3xl font-bold text-center sm:text-4xl md:text-5xl">
               {" "}
-              Factura del paquete
+              Pago del paquete
             </h2>
             <p className="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">
-              En esta sección podrás obtener información de la factura de su
+              En esta sección podrás obtener información de lo facturado por su
               paquete, para proceder al pago solo necesitas completar la
               transacción para que este paquete sea enviado.
             </p>

@@ -36,10 +36,9 @@ const PayBill = async (paymentMethod, id, amount, AmountPay) => {
       Swal.fire({
         icon: "error",
         title: "¡Ups! Ha ocurrido un error",
-        text: "Ha ocurrido un error al agregar a un nuevo usuario, intente más tarde.",
+        text: "Ha ocurrido un error al realizar la transacción",
         showConfirmButton: true,
       });
-      console.log(error);
     }
   }
 
