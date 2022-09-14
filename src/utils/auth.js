@@ -115,11 +115,10 @@ export const logout = async (user, setLog, setUser) => {
         .then(
           () => setAuthorizationToken(false),
           sessionStorage.removeItem("jwtToken"),
-          Cookies.remove("jwtToken")
+          Cookies.remove("jwtToken"),
+          setLog(false),
+          setUser({})
         );
-      // console.log(data);
-      setLog(false);
-      setUser({});
     }
   });
 };
