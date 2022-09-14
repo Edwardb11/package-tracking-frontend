@@ -1,9 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { url } from "../api/api";
 
 const PackagePayment = () => {
-  const id = useParams();
+  const { id } = useParams();
+  const [amount, setAmount] = useState();
+  const [data, setData] = useState({});
   console.log(id);
+  console.log(data);
+  useEffect(() => {
+    let isEmpty = JSON.stringify(data) === "{}";
+    if (isEmpty) {
+      axios.get(`${url}/getInvoice/${id}`).then((res) => setData(res));
+      console.log("Nueva");
+    }
+    return () => {};
+  }, [data, id]);
+
+  const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
+  const PackageName = data.data?.invoice[0]?.paquete.nombre;
+  const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
+
+  const Validate = async (e) => {
+    e.preventDefault();
+    if (amount < AmountPay) {
+      console.log("Cantidad menor");
+    } else if (amount > AmountPay) {
+      console.log("Cantidad mayor");
+    }
+    if (amount == AmountPay) {
+      console.log("igual");
+    }
+    // PayBill(id);
+  };
   return (
     <>
       <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
@@ -14,31 +44,25 @@ const PackagePayment = () => {
             </h2>
             <div className="px-4 sm:px-0 mt-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">
-                Paquete
+                Tracking
               </h3>
-              <p className="mt-1 text-base text-gray-600">
-                Informacion del paquete{" "}
-              </p>
+              <p className="mt-1 text-base text-gray-600">{PackageTracking}</p>
             </div>
             <div className="px-4 sm:px-0 mt-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Nombre del paquete
               </h3>
-              <p className="mt-1 text-base text-gray-600">
-                Informacion del paquete{" "}
-              </p>
+              <p className="mt-1 text-base text-gray-600">{PackageName}</p>
             </div>
             <div className="px-4 sm:px-0 mt-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Monto a pagar
               </h3>
-              <p className="mt-1 text-base text-gray-600">
-                Informacion del paquete{" "}
-              </p>
+              <p className="mt-1 text-base text-gray-600">{AmountPay}</p>
             </div>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form >
+            <form onSubmit={Validate}>
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
@@ -51,6 +75,8 @@ const PackagePayment = () => {
                       </label>
                       <input
                         id="amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
                         type="number"
                         name="amount"
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
