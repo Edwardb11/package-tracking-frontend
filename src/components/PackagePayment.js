@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import { url } from "../api/api";
+import PayBill from "../hooks/PayBill";
 
 const PackagePayment = () => {
   const { id } = useParams();
   const [amount, setAmount] = useState();
+  const [paymentMethod, setPaymentMethod] = useState(1);
   const [data, setData] = useState({});
   console.log(id);
   console.log(data);
@@ -24,15 +27,8 @@ const PackagePayment = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    if (amount < AmountPay) {
-      console.log("Cantidad menor");
-    } else if (amount > AmountPay) {
-      console.log("Cantidad mayor");
-    }
-    if (amount == AmountPay) {
-      console.log("igual");
-    }
-    // PayBill(id);
+
+    PayBill(paymentMethod, id, amount, AmountPay);
   };
   return (
     <>
@@ -79,6 +75,7 @@ const PackagePayment = () => {
                         onChange={(e) => setAmount(e.target.value)}
                         type="number"
                         name="amount"
+                        required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
@@ -93,6 +90,9 @@ const PackagePayment = () => {
                       <select
                         id="paymentMethod"
                         name="paymentMethod"
+                        value={paymentMethod}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        required
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
                         <option value="1" defaultChecked>
