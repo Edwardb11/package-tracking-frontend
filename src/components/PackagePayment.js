@@ -1,42 +1,55 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
+import { useHistory, useParams } from "react-router-dom";
 import { url } from "../api/api";
 import PayBill from "../hooks/PayBill";
 
 const PackagePayment = () => {
+  const history = useHistory();
   const { id } = useParams();
   const [amount, setAmount] = useState();
+  const [paid, setPaid] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(1);
   const [data, setData] = useState({});
-  console.log(id);
-  console.log(data);
+
   useEffect(() => {
     let isEmpty = JSON.stringify(data) === "{}";
-    if (isEmpty) {
-      axios.get(`${url}/getInvoice/${id}`).then((res) => setData(res));
-      console.log("Nueva");
-    }
-    return () => {};
-  }, [data, id]);
+    axios.get(`${url}/getPaymentTransaction/${id}`).then((response) => {
+      setPaid(response.data?.paid);
+      if (isEmpty) {
+        if (paid) {
+          history.push(`/packageBill/${id}`);
+          return;
+        } else {
+          axios.get(`${url}/getInvoice/${id}`).then((res) => setData(res));
+        }
+      }
+    });
 
-  const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
-  const PackageName = data.data?.invoice[0]?.paquete.nombre;
-  const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
+    return () => {};
+  }, [data, id, paid,history]);
+  console.log(paid);
+  console.log(paid);
+
+  //   const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
+  //   const PackageName = data.data?.invoice[0]?.paquete.nombre;
+  //   const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
+  const PackageTracking = " data.data?.invoice[0]?.paquete.id_paquete";
+  const PackageName = "data.data?.invoice[0]?.paquete.nombre";
+  const AmountPay = "data.data?.invoice[0]?.cantidad_a_pagar";
 
   const Validate = async (e) => {
     e.preventDefault();
-
     PayBill(paymentMethod, id, amount, AmountPay);
   };
+
   return (
     <>
       <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <h2 className="text-2xl font-medium leading-6 text-gray-900">
-              Factura
+              Información
             </h2>
             <div className="px-4 sm:px-0 mt-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">

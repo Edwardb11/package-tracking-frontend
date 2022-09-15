@@ -15,6 +15,7 @@ import Tracking from "../pages/TrackingUPS";
 import MyPackages from "../pages/MyPackages";
 import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
+import PackageBill from "../pages/PackageBill";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -26,22 +27,33 @@ const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <PublicRouter path="/auth" component={AuthRouter} log={log} />
-        <PrivateRouter exact path="/" component={Home} log={log} />
-        <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />
-        <PrivateRouter exact path="/faq" log={log} component={Faq} />
-        <PrivateRouter exact path="/about" log={log} component={About} />
-        <PrivateRouter exact path="/package" log={log} component={Package} />
-        <PrivateRouter exact path="/tracking" log={log} component={Tracking} />
-        <PrivateRouter exact path="/packagePayment/:id" log={log} component={PackagePay} />
+        <PublicRouter path="/auth" component={AuthRouter} log={log} />{" "}
+        <PrivateRouter exact path="/" component={Home} log={log} />{" "}
+        <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />{" "}
+        <PrivateRouter exact path="/faq" log={log} component={Faq} />{" "}
+        <PrivateRouter exact path="/about" log={log} component={About} />{" "}
+        <PrivateRouter exact path="/package" log={log} component={Package} />{" "}
+        <PrivateRouter exact path="/tracking" log={log} component={Tracking} />{" "}
+        <PrivateRouter
+          exact
+          path="/packagePayment/:id"
+          log={log}
+          component={PackagePay}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/packageBill/:id"
+          log={log}
+          component={PackageBill}
+        />{" "}
         <PrivateRouter
           exact
           path="/myPackages"
           log={log}
           component={MyPackages}
-        />
-        <PrivateRouter path="*" log={log} component={NoFound} />
-      </Switch>
+        />{" "}
+        <PrivateRouter path="*" log={log} component={NoFound} />{" "}
+      </Switch>{" "}
     </Router>
   );
 };
