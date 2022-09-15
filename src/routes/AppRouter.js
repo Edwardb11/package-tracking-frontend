@@ -15,7 +15,7 @@ import Tracking from "../pages/TrackingUPS";
 import MyPackages from "../pages/MyPackages";
 import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
-import PackageBill from "../pages/PackageBill";
+import PackageInvoice from "../pages/PackageInvoice";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -42,9 +42,9 @@ const AppRouter = () => {
         />{" "}
         <PrivateRouter
           exact
-          path="/packageBill/:id"
+          path="/packageInvoice/:id"
           log={log}
-          component={PackageBill}
+          component={PackageInvoice}
         />{" "}
         <PrivateRouter
           exact

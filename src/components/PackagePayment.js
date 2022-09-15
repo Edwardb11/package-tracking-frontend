@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { url } from "../api/api";
-import PayBill from "../hooks/PayBill";
+import PayBill from "../utils/PayBill";
 
 const PackagePayment = () => {
   const history = useHistory();
@@ -18,7 +18,7 @@ const PackagePayment = () => {
       setPaid(response.data?.paid);
       if (isEmpty) {
         if (paid) {
-          history.push(`/packageBill/${id}`);
+          history.push(`/packageInvoice/${id}`);
           return;
         } else {
           axios.get(`${url}/getInvoice/${id}`).then((res) => setData(res));
@@ -31,12 +31,10 @@ const PackagePayment = () => {
   console.log(paid);
   console.log(paid);
 
-  //   const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
-  //   const PackageName = data.data?.invoice[0]?.paquete.nombre;
-  //   const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
-  const PackageTracking = " data.data?.invoice[0]?.paquete.id_paquete";
-  const PackageName = "data.data?.invoice[0]?.paquete.nombre";
-  const AmountPay = "data.data?.invoice[0]?.cantidad_a_pagar";
+    const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
+    const PackageName = data.data?.invoice[0]?.paquete.nombre;
+    const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
+
 
   const Validate = async (e) => {
     e.preventDefault();
