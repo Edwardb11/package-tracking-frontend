@@ -8,14 +8,13 @@ const PackagePayment = () => {
   const history = useHistory();
   const { id } = useParams();
   const [amount, setAmount] = useState();
-  const [paid, setPaid] = useState(false);
+  const [paid, setPaid] = useState();
   const [paymentMethod, setPaymentMethod] = useState(1);
   const [data, setData] = useState({});
-
   useEffect(() => {
-    let isEmpty = JSON.stringify(data) === "{}";
-    axios.get(`${url}/getPaymentTransaction/${id}`).then((response) => {
-      setPaid(response.data?.paid);
+    axios.get(`${url}/getPaymentTransaction/${id}`).then((res) => {
+      setPaid(res.data.paid);
+      let isEmpty = JSON.stringify(data) === "{}";
       if (isEmpty) {
         if (paid) {
           history.push(`/packageInvoice/${id}`);
@@ -27,14 +26,11 @@ const PackagePayment = () => {
     });
 
     return () => {};
-  }, [data, id, paid,history]);
-  console.log(paid);
-  console.log(paid);
+  }, [data, id, paid, history]);
 
-    const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
-    const PackageName = data.data?.invoice[0]?.paquete.nombre;
-    const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
-
+  const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
+  const PackageName = data.data?.invoice[0]?.paquete.nombre;
+  const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
 
   const Validate = async (e) => {
     e.preventDefault();
