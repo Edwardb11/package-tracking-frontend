@@ -20,7 +20,9 @@ const ShowInvoice = () => {
   console.log(data);
 
   const Package = data?.data?.transaction[0]?.factura.paquete?.nombre;
-  // const Transaction = data.data?.invoice[0].paquete.nombre;
+  const Transaction = data?.data?.transaction[0]?.id_transaccion;
+  const PaymentMethod = data?.data?.transaction[0]?.metodos_de_pago?.nombre
+  const Invoice = data?.data?.transaction[0]?.factura?.id_factura;
   const PackageAmount = data?.data?.transaction[0]?.factura.cantidad_a_pagar;
   const PackageQuantity = data?.data?.transaction[0]?.factura.paquete?.cantidad;
   const PackageTracking =
@@ -108,12 +110,34 @@ const ShowInvoice = () => {
             </div>
           </div>
           <div className="w-full h-0.5 bg-indigo-500" />
-          <h6 className="font-bold">
-            Transaccion:
-            <span className="text-sm font-medium">
-              {data?.data?.transaction[0]?.id_transaccion}
-            </span>
-          </h6>
+          <div className="flex justify-between">
+            <div>
+              <h6 className="font-bold">
+                Transaccion:
+                <span className="text-sm font-medium">
+                  {Transaction}
+                </span>
+              </h6>
+            </div>
+            <div className="w-40">
+              <h6 className="font-bold">
+                Factura:
+                <span className="font-bold font-medium">
+                  {" "}
+                  {Invoice}
+                </span>
+              </h6>
+            </div>
+            <div className="w-40">
+              <h6 className="font-bold">
+                Metodo de pago:
+                <span className="font-bold font-medium">
+                  {" "}
+                  {PaymentMethod}
+                </span>
+              </h6>
+            </div>
+          </div>
           <div className="flex justify-between p-4">
             <div>
               <h6 className="font-bold">
@@ -123,7 +147,7 @@ const ShowInvoice = () => {
                 </span>
               </h6>
               <h6 className="font-bold">
-                Factura pagado:{" "}
+                Factura pagada:{" "}
                 <span className="text-sm font-medium">
                   {" "}
                   {convertDate(data?.data?.transaction[0]?.creado)}
