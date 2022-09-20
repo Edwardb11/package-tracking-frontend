@@ -1,5 +1,14 @@
 import React from "react";
 
+const Quantitys = [];
+const Quantity = () => {
+  for (let i = 0; i < 100; i++) {
+    Quantitys.push(i);
+  }
+  return Quantitys;
+};
+Quantity();
+
 const PackageForms = () => {
   return (
     <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
@@ -56,13 +65,16 @@ const PackageForms = () => {
                         className="block text-sm font-medium ">
                         Cantidad (Unidad) *{" "}
                       </label>
-                      <input
+                      <select
                         type="number"
                         name="namePackage"
                         placeholder="Ej: 10"
                         required
-                        className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
-                      />
+                        className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
+                        {Quantitys.map((item) => {
+                          return <option value={item}>{item}</option>;
+                        })}
+                      </select>
                     </div>
                     <div className="col-span-6">
                       <label
