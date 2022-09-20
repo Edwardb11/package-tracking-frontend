@@ -11,26 +11,40 @@ const ShowInvoice = () => {
   useEffect(() => {
     let isEmpty = JSON.stringify(data) === "{}";
     if (isEmpty) {
-      axios.get(`${url}/getInvoice/${id}`).then((res) => setData(res));
+      axios
+        .get(`${url}/getPaymentTransaction/${id}`)
+        .then((res) => setData(res));
     }
     return () => {};
   }, [data, id]);
+  console.log(data);
 
-  const Package = data.data?.invoice[0].paquete.nombre;
-  const PackageAmount = data.data?.invoice[0].cantidad_a_pagar;
-  const PackageQuantity = data.data?.invoice[0].paquete.cantidad;
-  const PackageTracking = data.data?.invoice[0].id_paquete;
-  const clientName = data?.data?.invoice[0]?.paquete?.cliente.nombres;
-  const clientLastName = data?.data?.invoice[0]?.paquete?.cliente.apellidos;
-  const clientPhone = data?.data?.invoice[0]?.paquete?.cliente.celular;
-  const endUserName = data?.data?.invoice[0]?.paquete?.usuario_finale.nombres;
+  const Package = data?.data?.transaction[0]?.factura.paquete?.nombre;
+  const Transaction = data?.data?.transaction[0]?.id_transaccion;
+  const PaymentMethod = data?.data?.transaction[0]?.metodos_de_pago?.nombre
+  const Invoice = data?.data?.transaction[0]?.factura?.id_factura;
+  const PackageAmount = data?.data?.transaction[0]?.factura.cantidad_a_pagar;
+  const PackageQuantity = data?.data?.transaction[0]?.factura.paquete?.cantidad;
+  const PackageTracking =
+    data?.data?.transaction[0]?.factura.paquete?.id_paquete;
+  const clientName =
+    data?.data?.transaction[0]?.factura.paquete?.cliente.nombres;
+  const clientLastName =
+    data?.data?.transaction[0]?.factura.paquete?.cliente.apellidos;
+  const clientPhone =
+    data?.data?.transaction[0]?.factura.paquete?.cliente.celular;
+  const endUserName =
+    data?.data?.transaction[0]?.factura.paquete?.usuario_finale.nombres;
   const endUserLastName =
-    data?.data?.invoice[0]?.paquete?.usuario_finale.apellidos;
-  const endUserPhone = data?.data?.invoice[0]?.paquete?.usuario_finale.celular;
+    data?.data?.transaction[0]?.factura.paquete?.usuario_finale.apellidos;
+  const endUserPhone =
+    data?.data?.transaction[0]?.factura.paquete?.usuario_finale.celular;
   const endUserLocation =
-    data?.data?.invoice[0]?.paquete?.usuario_finale.ubicacion;
+    data?.data?.transaction[0]?.factura.paquete?.usuario_finale.ubicacion;
 
   const subTotal = PackageAmount - 100;
+
+  console.log(data?.data?.transaction[0]?.factura.paquete?.nombre);
   return (
     <>
       <div className="flex items-center justify-center mb-10 ">
@@ -44,8 +58,7 @@ const ShowInvoice = () => {
                 Si necesita saber el estado de su paquete solo pulse 👉{" "}
                 <Link
                   className="outline-none bg-transprent text-xs font-bold text-blue-500 uppercase focus:outline-none"
-                  to={"/tracking"}
-                >
+                  to={"/tracking"}>
                   Seguimiento del paquete
                 </Link>
               </p>
@@ -58,8 +71,7 @@ const ShowInvoice = () => {
                     className="w-6 h-6 text-blue-600"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -76,8 +88,7 @@ const ShowInvoice = () => {
                     className="w-6 h-6 text-blue-600"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -99,19 +110,47 @@ const ShowInvoice = () => {
             </div>
           </div>
           <div className="w-full h-0.5 bg-indigo-500" />
+          <div className="flex justify-between">
+            <div>
+              <h6 className="font-bold">
+                Transaccion:
+                <span className="text-sm font-medium">
+                  {Transaction}
+                </span>
+              </h6>
+            </div>
+            <div className="w-40">
+              <h6 className="font-bold">
+                Factura:
+                <span className="font-bold font-medium">
+                  {" "}
+                  {Invoice}
+                </span>
+              </h6>
+            </div>
+            <div className="w-40">
+              <h6 className="font-bold">
+                Metodo de pago:
+                <span className="font-bold font-medium">
+                  {" "}
+                  {PaymentMethod}
+                </span>
+              </h6>
+            </div>
+          </div>
           <div className="flex justify-between p-4">
             <div>
               <h6 className="font-bold">
                 Factura creada:
                 <span className="text-sm font-medium">
-                  {convertDate(data.data?.invoice[0].creado)}
+                  {convertDate(data?.data?.transaction[0]?.factura.creado)}
                 </span>
               </h6>
               <h6 className="font-bold">
-                Paquete creado:{" "}
+                Factura pagada:{" "}
                 <span className="text-sm font-medium">
                   {" "}
-                  {convertDate(data.data?.invoice[0].paquete.creado)}
+                  {convertDate(data?.data?.transaction[0]?.creado)}
                 </span>
               </h6>
             </div>
@@ -169,7 +208,6 @@ const ShowInvoice = () => {
                       <b>${subTotal}</b>
                     </td>
                   </tr>
-                  {/*end tr*/}
                   <tr>
                     <th colSpan={2} />
                     <td className="text-sm font-bold">
@@ -179,7 +217,6 @@ const ShowInvoice = () => {
                       <b>${100}</b>
                     </td>
                   </tr>
-                  {/*end tr*/}
                   <tr className="text-white bg-gray-800">
                     <th colSpan={2} />
                     <td className="text-sm font-bold">
@@ -189,7 +226,6 @@ const ShowInvoice = () => {
                       <b>${PackageAmount}</b>
                     </td>
                   </tr>
-                  {/*end tr*/}
                 </tbody>
               </table>
             </div>
