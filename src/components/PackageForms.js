@@ -8,7 +8,11 @@ const PackageForms = () => {
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form>
               <div className="shadow overflow-hidden sm:rounded-md">
-                  <h1 className="text-center font-medium text-medium">Complete el siguiente formulario para agregar un paquete</h1>
+                <h1 className="text-center font-medium text-xl">
+                  Complete el siguiente formulario para agregar un paquete
+                </h1>
+                <div className="w-full h-0.5 bg-indigo-500" />
+
                 <div className="px-2 py-2 bg-white sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6">
@@ -155,8 +159,7 @@ const PackageForms = () => {
                         name="namePackage"
                         placeholder="Ej: 10"
                         required
-                        className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
-                      >
+                        className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
                         <option>Masculino</option>
                         <option>Femenino</option>
                       </select>
