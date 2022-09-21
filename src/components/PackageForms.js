@@ -1,21 +1,37 @@
-import React from "react";
-
-const Quantitys = [];
-const Quantity = () => {
-  for (let i = 0; i < 100; i++) {
-    Quantitys.push(i);
-  }
-  return Quantitys;
-};
-Quantity();
+import React, { useState } from "react";
 
 const PackageForms = () => {
+  const Quantitys = [];
+  const Quantity = () => {
+    for (let i = 0; i < 100; i++) {
+      Quantitys.push(i);
+    }
+    return Quantitys;
+  };
+  Quantity();
+
+  const Validate = async (e) => {
+    e.preventDefault();
+  };
+  const [namePackage, setNamePackage] = useState("");
+  const [weightPackage, setWeightPackage] = useState("");
+  const [quantityPackage, setQuantityPackage] = useState(0);
+  const [provinceLocated, setProvinceLocated] = useState("");
+  const [houseNumberLocated, setHouseNumberLocated] = useState(0);
+  const [municipalityLocated, setMunicipalityLocated] = useState("");
+  const [nameUser, setNameUser] = useState("");
+  const [lastNameUser, setLastNameUser] = useState("");
+  const [sexUser, setSexUser] = useState("m");
+  const [phoneUser, setPhoneUser] = useState("");
+  const [houseDestination, setHouseDestination] = useState(0);
+  const [destinationMunicipality, setDestinationMunicipality] = useState("");
+  const [destinationProvince, setDestinationProvince] = useState(0);
   return (
     <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
       <div className="mt-10 sm:mt-0">
         <div className="md:grid md:grid-cols-1 md:gap-6">
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form>
+            <form onSubmit={Validate}>
               <div className="shadow overflow-hidden sm:rounded-md">
                 <h1 className="text-center font-medium text-xl">
                   Complete el siguiente formulario para agregar un paquete
@@ -40,6 +56,8 @@ const PackageForms = () => {
                       <input
                         type="text"
                         id="namePackage"
+                        value={namePackage}
+                        onChange={(e) => setNamePackage(e.target.value)}
                         placeholder="Ej: Mesa Gaming"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -54,6 +72,8 @@ const PackageForms = () => {
                       <input
                         type="number"
                         id="weight"
+                        value={weightPackage}
+                        onChange={(e) => setWeightPackage(e.target.value)}
                         placeholder="Ej: 10 LB"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -69,6 +89,8 @@ const PackageForms = () => {
                         type="number"
                         id="quantity"
                         placeholder="Ej: 10"
+                        value={quantityPackage}
+                        onChange={(e) => setQuantityPackage(e.target.value)}
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
                         {Quantitys.map((item) => {
@@ -92,6 +114,8 @@ const PackageForms = () => {
                       <input
                         type="text"
                         id="province"
+                        value={provinceLocated}
+                        onChange={(e) => setProvinceLocated(e.target.value)}
                         placeholder="Ej: La Vega"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -106,6 +130,8 @@ const PackageForms = () => {
                       <input
                         id="Municipality"
                         type="text"
+                        value={municipalityLocated}
+                        onChange={(e) => setMunicipalityLocated(e.target.value)}
                         placeholder="Ej: Rio verde arriba"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -113,13 +139,15 @@ const PackageForms = () => {
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="houseNumber"
+                        htmlFor="houseNumberLocated"
                         className="block text-sm font-medium text-gray-700">
                         Numero casa*{" "}
                       </label>
                       <input
                         type="number"
-                        id="houseNumber"
+                        id="houseNumberLocated"
+                        value={houseNumberLocated}
+                        onChange={(e) => setHouseNumberLocated(e.target.value)}
                         placeholder="Ej: 50"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -141,6 +169,8 @@ const PackageForms = () => {
                       <input
                         type="text"
                         id="nameUser"
+                        value={nameUser}
+                        onChange={(e) => setNameUser(e.target.value)}
                         placeholder="Ej: Juan"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -155,6 +185,8 @@ const PackageForms = () => {
                       <input
                         type="text"
                         id="lastNameUser"
+                        value={lastNameUser}
+                        onChange={(e) => setLastNameUser(e.target.value)}
                         placeholder="Ej: Perez Diaz"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -168,10 +200,12 @@ const PackageForms = () => {
                       </label>
                       <select
                         id="sex"
+                        value={sexUser}
+                        onChange={(e) => setSexUser(e.target.value)}
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
-                        <option>Masculino</option>
-                        <option>Femenino</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Femenino</option>
                       </select>
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-1">
@@ -183,6 +217,8 @@ const PackageForms = () => {
                       <input
                         type="text"
                         id="phoneUser"
+                        value={phoneUser}
+                        onChange={(e) => setPhoneUser(e.target.value)}
                         placeholder="Ej: 809-293-9028"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -204,6 +240,8 @@ const PackageForms = () => {
                       <input
                         type="text"
                         id="destinationLocationProvince"
+                        value={destinationProvince}
+                        onChange={(e) => setDestinationProvince(e.target.value)}
                         placeholder="Ej: Azua"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -219,6 +257,10 @@ const PackageForms = () => {
                         type="text"
                         id="destinationLocationMunicipality"
                         placeholder="Ej: Guayabal"
+                        value={destinationMunicipality}
+                        onChange={(e) =>
+                          setDestinationMunicipality(e.target.value)
+                        }
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
@@ -232,6 +274,8 @@ const PackageForms = () => {
                       <input
                         type="number"
                         id="houseNumberDestination"
+                        value={houseDestination}
+                        onChange={(e) => setHouseDestination(e.target.value)}
                         placeholder="Ej: 10"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
