@@ -26,20 +26,20 @@ const PackageForms = () => {
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6">
                       <label
-                        htmlFor="street_address"
+                        htmlFor="namePackage"
                         className="block text-sm font-medium ">
                         Información del paquete{" "}
                       </label>
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                       <label
-                        htmlFor="city"
+                        htmlFor="namePackage"
                         className="block text-sm font-medium text-gray-700">
                         Nombre*
                       </label>
                       <input
                         type="text"
-                        name="namePackage"
+                        id="namePackage"
                         placeholder="Ej: Mesa Gaming"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -47,13 +47,13 @@ const PackageForms = () => {
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="state"
+                        htmlFor="weight"
                         className="block text-sm font-medium text-gray-700">
                         Peso (LB)*
                       </label>
                       <input
                         type="number"
-                        name="namePackage"
+                        id="weight"
                         placeholder="Ej: 10 LB"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
@@ -61,13 +61,13 @@ const PackageForms = () => {
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="postal_code"
+                        htmlFor="quantity"
                         className="block text-sm font-medium ">
                         Cantidad (Unidad) *{" "}
                       </label>
                       <select
                         type="number"
-                        name="namePackage"
+                        id="quantity"
                         placeholder="Ej: 10"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
@@ -78,98 +78,96 @@ const PackageForms = () => {
                     </div>
                     <div className="col-span-6">
                       <label
-                        htmlFor="street_address"
+                        htmlFor="province"
                         className="block text-sm font-medium ">
                         Ubicación del paquete{" "}
                       </label>
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                       <label
-                        htmlFor="city"
+                        htmlFor="province"
                         className="block text-sm font-medium text-gray-700">
                         Provincia*
                       </label>
                       <input
                         type="text"
-                        name="namePackage"
-                        placeholder="Ej: Mesa Gaming"
+                        id="province"
+                        placeholder="Ej: La Vega"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="state"
+                        htmlFor="Municipality"
                         className="block text-sm font-medium text-gray-700">
                         Municipio*
                       </label>
                       <input
-                        type="number"
-                        name="namePackage"
-                        placeholder="Ej: 10 LB"
+                        id="Municipality"
+                        type="text"
+                        placeholder="Ej: Rio verde arriba"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="postal_code"
+                        htmlFor="houseNumber"
                         className="block text-sm font-medium text-gray-700">
                         Numero casa*{" "}
                       </label>
                       <input
                         type="number"
-                        name="namePackage"
-                        placeholder="Ej: 10"
+                        id="houseNumber"
+                        placeholder="Ej: 50"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6">
                       <label
-                        htmlFor="street_address"
+                        htmlFor="endUser"
                         className="block text-sm font-medium ">
                         Información del usuario final{" "}
                       </label>
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                       <label
-                        htmlFor="city"
+                        htmlFor="nameUser"
                         className="block text-sm font-medium text-gray-700">
                         Nombre*
                       </label>
                       <input
                         type="text"
-                        name="namePackage"
-                        placeholder="Ej: Mesa Gaming"
+                        id="nameUser"
+                        placeholder="Ej: Juan"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="state"
+                        htmlFor="lastNameUser"
                         className="block text-sm font-medium text-gray-700">
                         Apellido*
                       </label>
                       <input
-                        type="number"
-                        name="namePackage"
-                        placeholder="Ej: 10 LB"
+                        type="text"
+                        id="lastNameUser"
+                        placeholder="Ej: Perez Diaz"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-1">
                       <label
-                        htmlFor="postal_code"
+                        htmlFor="sex"
                         className="block text-sm font-medium text-gray-700">
                         Sexo*{" "}
                       </label>
                       <select
-                        type="number"
-                        name="namePackage"
-                        placeholder="Ej: 10"
+                        id="sex"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
                         <option>Masculino</option>
@@ -178,62 +176,62 @@ const PackageForms = () => {
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-1">
                       <label
-                        htmlFor="postal_code"
+                        htmlFor="phoneUser"
                         className="block text-sm font-medium text-gray-700">
                         Celular*{" "}
                       </label>
                       <input
-                        type="number"
-                        name="namePackage"
-                        placeholder="Ej: 10"
+                        type="text"
+                        id="phoneUser"
+                        placeholder="Ej: 809-293-9028"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6">
                       <label
-                        htmlFor="street_address"
+                        htmlFor="destinationLocationProvince"
                         className="block text-sm font-medium ">
                         Ubicación de destino{" "}
                       </label>
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                       <label
-                        htmlFor="city"
+                        htmlFor="destinationLocationProvince"
                         className="block text-sm font-medium text-gray-700">
                         Provincia*
                       </label>
                       <input
                         type="text"
-                        name="namePackage"
-                        placeholder="Ej: Mesa Gaming"
+                        id="destinationLocationProvince"
+                        placeholder="Ej: Azua"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="state"
+                        htmlFor="destinationLocationMunicipality"
                         className="block text-sm font-medium text-gray-700">
                         Municipio*
                       </label>
                       <input
-                        type="number"
-                        name="namePackage"
-                        placeholder="Ej: 10 LB"
+                        type="text"
+                        id="destinationLocationMunicipality"
+                        placeholder="Ej: Guayabal"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
-                        htmlFor="postal_code"
+                        htmlFor="houseNumberDestination"
                         className="block text-sm font-medium text-gray-700">
                         Numero casa*{" "}
                       </label>
                       <input
                         type="number"
-                        name="namePackage"
+                        id="houseNumberDestination"
                         placeholder="Ej: 10"
                         required
                         className="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
