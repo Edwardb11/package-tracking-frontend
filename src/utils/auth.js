@@ -122,3 +122,6 @@ export const logout = async (user, setLog, setUser) => {
     }
   });
 };
+
+export const AuthAdmin = async (email, password, setLog) => {
+}

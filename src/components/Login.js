@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import User from "../context/userContext";
-import { Auth } from "../utils/auth";
+import { Auth, AuthAdmin } from "../utils/auth";
 
-const Login = () => {
+const Login = ({ admin }) => {
+  console.log(admin);
   const { setLog } = useContext(User);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +15,11 @@ const Login = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    Auth(email, password, setLog);
+    if (admin) {
+      AuthAdmin(email, password, setLog);
+    } else {
+      Auth(email, password, setLog);
+    }
   };
   return (
     <>
@@ -27,8 +32,7 @@ const Login = () => {
       <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
-          style={{ maxWidth: 1000 }}
-        >
+          style={{ maxWidth: 1000 }}>
           <div className="md:flex w-full">
             <Imagen />
             <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
@@ -87,13 +91,15 @@ const Login = () => {
                     </button>
                   </div>
                 </div>
-                <div className="w-full px-3 mb-5 text-center text-sm">
-                  ¿No tienes cuenta?
-                  <Link to="/auth/register" className="text-indigo-600">
-                    {" "}
-                    Registrate
-                  </Link>
-                </div>
+                {!admin && (
+                  <div className="w-full px-3 mb-5 text-center text-sm">
+                    ¿No tienes cuenta?
+                    <Link to="/auth/register" className="text-indigo-600">
+                      {" "}
+                      Registrate
+                    </Link>
+                  </div>
+                )}
               </form>
             </div>
           </div>
