@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { url } from "../api/api";
 
 const AddPackage = async (
+  ClientId,
   namePackage,
   weightPackage,
   quantityPackage,
@@ -118,9 +119,16 @@ const AddPackage = async (
     });
     return;
   }
-  const location = `${provinceLocated}${municipalityLocated} Casa:${houseNumberLocated}`;
+
+  //   Concatenate drop and pick up location
+  const locationPackage = `${provinceLocated} ${municipalityLocated} Casa:${houseNumberLocated}`;
   const locationDestination = `${destinationProvince} ${destinationMunicipality} Casa:${houseDestination}`;
+
+  // Generate package code
+
+  //   Logic to save end user and package (different paths related by id)
   try {
+    let idUserFinal = "";
     await axios
       .post(`${url}/addEndUsers`, {
         nombres: nameUser,
@@ -130,8 +138,26 @@ const AddPackage = async (
         celular: phoneUser,
       })
       .then((res) => {
-        console.log(res.data.id);
+        idUserFinal = res.data.id;
+        return idUserFinal;
       });
+    if (idUserFinal !== "") {
+      await axios.post(`${url}/package`, {
+        id_paquete: "aaHAKD",
+        id_cliente: ClientId,
+        id_usuario_final: idUserFinal,
+        nombre: namePackage,
+        peso: weightPackage,
+        cantidad: quantityPackage,
+        ubicacion: locationPackage,
+      });
+    }
+    Swal.fire({
+      icon: "error",
+      title: "¡bn",
+      text: "Ha ocurrido un error al realizar la transacción",
+      showConfirmButton: true,
+    });
   } catch (error) {
     if (error.response) {
       Swal.fire({

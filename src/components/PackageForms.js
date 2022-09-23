@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AddPackage from "../utils/AddPackage";
+import User from "../context/userContext";
 
 const PackageForms = () => {
   const Quantitys = [];
@@ -9,7 +10,10 @@ const PackageForms = () => {
     }
     return Quantitys;
   };
+  
   Quantity();
+
+  const { user } = useContext(User);
 
   const [namePackage, setNamePackage] = useState("");
   const [weightPackage, setWeightPackage] = useState("");
@@ -21,13 +25,16 @@ const PackageForms = () => {
   const [lastNameUser, setLastNameUser] = useState("");
   const [sexUser, setSexUser] = useState("m");
   const [phoneUser, setPhoneUser] = useState("");
-  const [houseDestination, setHouseDestination] = useState(0);
+  const [houseDestination, setHouseDestination] = useState(1);
   const [destinationMunicipality, setDestinationMunicipality] = useState("");
   const [destinationProvince, setDestinationProvince] = useState("");
 
   const Validate = async (e) => {
     e.preventDefault();
-   await AddPackage(
+    console.log("klk");
+    const ClientId = user.userId;
+    AddPackage(
+      ClientId,
       namePackage,
       weightPackage,
       quantityPackage,
@@ -42,7 +49,9 @@ const PackageForms = () => {
       destinationMunicipality,
       destinationProvince
     );
+    console.log("aaaa");
   };
+
   return (
     <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
       <div className="mt-10 sm:mt-0">
