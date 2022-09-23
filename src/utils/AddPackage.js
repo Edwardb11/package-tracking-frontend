@@ -1,4 +1,6 @@
+import axios from "axios";
 import Swal from "sweetalert2";
+import { url } from "../api/api";
 
 const AddPackage = async (
   namePackage,
@@ -19,7 +21,7 @@ const AddPackage = async (
   if (provinceLocated.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "La provincia no puede estar vacia.",
+      text: "La provincia no puede estar vacía.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -27,23 +29,15 @@ const AddPackage = async (
   } else if (municipalityLocated.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "El municipio no puede estar vacio.",
+      text: "El municipio no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
     return;
-  } else if (houseNumberLocated.trim() === " ") {
+  } else if (houseNumberLocated <= 0) {
     Swal.fire({
       title: "¡Error!",
-      text: "Numero de casa requerido.",
-      icon: "warning",
-      confirmButtonText: "OK",
-    });
-    return;
-  } else if (houseNumberLocated.trim() <= 0) {
-    Swal.fire({
-      title: "¡Error!",
-      text: "Numero de casa invalido",
+      text: "Numero de casa inválido",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -51,7 +45,7 @@ const AddPackage = async (
   } else if (namePackage.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "Nombre del paquete no puede estar vacio.",
+      text: "Nombre del paquete no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -59,15 +53,7 @@ const AddPackage = async (
   } else if (weightPackage.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "Nombre del paquete no puede estar vacio.",
-      icon: "warning",
-      confirmButtonText: "OK",
-    });
-    return;
-  } else if (quantityPackage.trim() === " ") {
-    Swal.fire({
-      title: "¡Error!",
-      text: "Nombre del paquete no puede estar vacio.",
+      text: "Peso del paquete no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -78,7 +64,7 @@ const AddPackage = async (
   else if (nameUser.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "Nombre del usuario final no puede estar vacio.",
+      text: "Nombre del usuario final no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -86,7 +72,7 @@ const AddPackage = async (
   } else if (lastNameUser.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "Apellido del usuario final no puede estar vacio.",
+      text: "Apellido del usuario final no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -94,7 +80,7 @@ const AddPackage = async (
   } else if (sexUser.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "Sexo del usuario final no puede estar vacio.",
+      text: "Sexo del usuario final no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -102,15 +88,15 @@ const AddPackage = async (
   } else if (phoneUser.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "Celular del usuario final no puede estar vacio.",
+      text: "Celular del usuario final no puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
     return;
-  } else if (houseDestination.trim() === " ") {
+  } else if (houseDestination <= 0) {
     Swal.fire({
       title: "¡Error!",
-      text: "Numero de casa de destino requerido.",
+      text: "Número de  casa de destino  inválido.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -118,7 +104,7 @@ const AddPackage = async (
   } else if (destinationMunicipality.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "El municipio no puede estar vacio.",
+      text: "El municipio de destino puede estar vacío.",
       icon: "warning",
       confirmButtonText: "OK",
     });
@@ -126,11 +112,35 @@ const AddPackage = async (
   } else if (destinationProvince.trim() === " ") {
     Swal.fire({
       title: "¡Error!",
-      text: "La provincia no puede estar vacia.",
+      text: "La provincia de destino no puede estar vacíA.",
       icon: "warning",
       confirmButtonText: "OK",
     });
     return;
+  }
+  const location = `${provinceLocated}${municipalityLocated} Casa:${houseNumberLocated}`;
+  const locationDestination = `${destinationProvince} ${destinationMunicipality} Casa:${houseDestination}`;
+  try {
+    await axios
+      .post(`${url}/addEndUsers`, {
+        nombres: nameUser,
+        apellidos: lastNameUser,
+        sexo: sexUser,
+        ubicacion: locationDestination,
+        celular: phoneUser,
+      })
+      .then((res) => {
+        console.log(res.data.id);
+      });
+  } catch (error) {
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups! Ha ocurrido un error",
+        text: "Ha ocurrido un error al realizar la transacción",
+        showConfirmButton: true,
+      });
+    }
   }
 };
 

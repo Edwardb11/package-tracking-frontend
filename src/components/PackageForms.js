@@ -23,7 +23,7 @@ const PackageForms = () => {
   const [phoneUser, setPhoneUser] = useState("");
   const [houseDestination, setHouseDestination] = useState(0);
   const [destinationMunicipality, setDestinationMunicipality] = useState("");
-  const [destinationProvince, setDestinationProvince] = useState(0);
+  const [destinationProvince, setDestinationProvince] = useState("");
 
   const Validate = async (e) => {
     e.preventDefault();
