@@ -121,8 +121,8 @@ const AddPackage = async (
   }
 
   //   Concatenate drop and pick up location
-  const locationPackage = `${provinceLocated} ${municipalityLocated} Casa:${houseNumberLocated}`;
-  const locationDestination = `${destinationProvince} ${destinationMunicipality} Casa:${houseDestination}`;
+  const locationPackage = `${provinceLocated}, ${municipalityLocated}, Casa:${houseNumberLocated}`;
+  const locationDestination = `${destinationProvince}, ${destinationMunicipality}, Casa:${houseDestination}`;
 
   // Generate package code
 
