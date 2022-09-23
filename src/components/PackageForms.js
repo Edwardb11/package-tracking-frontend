@@ -32,9 +32,9 @@ const PackageForms = () => {
   const Validate = async (e) => {
     e.preventDefault();
     console.log("klk");
-    const ClientId = user.userId;
+    const clientId = user.userId;
     AddPackage(
-      ClientId,
+      clientId,
       namePackage,
       weightPackage,
       quantityPackage,

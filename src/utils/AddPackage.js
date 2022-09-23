@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { url } from "../api/api";
 
 const AddPackage = async (
-  ClientId,
+  clientId,
   namePackage,
   weightPackage,
   quantityPackage,
@@ -129,6 +129,10 @@ const AddPackage = async (
   //   Logic to save end user and package (different paths related by id)
   try {
     let idUserFinal = "";
+
+    // CODE PACKAGE
+    const packageId = Date.now();
+
     await axios
       .post(`${url}/addEndUsers`, {
         nombres: nameUser,
@@ -143,8 +147,8 @@ const AddPackage = async (
       });
     if (idUserFinal !== "") {
       await axios.post(`${url}/package`, {
-        id_paquete: "aaHAKD",
-        id_cliente: ClientId,
+        id_paquete: packageId,
+        id_cliente: clientId,
         id_usuario_final: idUserFinal,
         nombre: namePackage,
         peso: weightPackage,
