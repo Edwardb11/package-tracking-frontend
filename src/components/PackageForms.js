@@ -1,23 +1,21 @@
 import React, { useState } from "react";
+import AddPackage from "../utils/AddPackage";
 
 const PackageForms = () => {
   const Quantitys = [];
   const Quantity = () => {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 1; i < 100; i++) {
       Quantitys.push(i);
     }
     return Quantitys;
   };
   Quantity();
 
-  const Validate = async (e) => {
-    e.preventDefault();
-  };
   const [namePackage, setNamePackage] = useState("");
   const [weightPackage, setWeightPackage] = useState("");
-  const [quantityPackage, setQuantityPackage] = useState(0);
+  const [quantityPackage, setQuantityPackage] = useState(1);
   const [provinceLocated, setProvinceLocated] = useState("");
-  const [houseNumberLocated, setHouseNumberLocated] = useState(0);
+  const [houseNumberLocated, setHouseNumberLocated] = useState(1);
   const [municipalityLocated, setMunicipalityLocated] = useState("");
   const [nameUser, setNameUser] = useState("");
   const [lastNameUser, setLastNameUser] = useState("");
@@ -26,6 +24,25 @@ const PackageForms = () => {
   const [houseDestination, setHouseDestination] = useState(0);
   const [destinationMunicipality, setDestinationMunicipality] = useState("");
   const [destinationProvince, setDestinationProvince] = useState(0);
+
+  const Validate = async (e) => {
+    e.preventDefault();
+   await AddPackage(
+      namePackage,
+      weightPackage,
+      quantityPackage,
+      provinceLocated,
+      houseNumberLocated,
+      municipalityLocated,
+      nameUser,
+      lastNameUser,
+      sexUser,
+      phoneUser,
+      houseDestination,
+      destinationMunicipality,
+      destinationProvince
+    );
+  };
   return (
     <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
       <div className="mt-10 sm:mt-0">
@@ -147,6 +164,7 @@ const PackageForms = () => {
                         type="number"
                         id="houseNumberLocated"
                         value={houseNumberLocated}
+                        min={0}
                         onChange={(e) => setHouseNumberLocated(e.target.value)}
                         placeholder="Ej: 50"
                         required
