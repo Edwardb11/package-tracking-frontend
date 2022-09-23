@@ -10,7 +10,7 @@ const PackageForms = () => {
     }
     return Quantitys;
   };
-  
+
   Quantity();
 
   const { user } = useContext(User);
@@ -99,6 +99,7 @@ const PackageForms = () => {
                         type="number"
                         id="weight"
                         value={weightPackage}
+                        min={0}
                         onChange={(e) => setWeightPackage(e.target.value)}
                         placeholder="Ej: 10 LB"
                         required
@@ -302,6 +303,7 @@ const PackageForms = () => {
                         type="number"
                         id="houseNumberDestination"
                         value={houseDestination}
+                        min={0}
                         onChange={(e) => setHouseDestination(e.target.value)}
                         placeholder="Ej: 10"
                         required

@@ -153,9 +153,9 @@ const AddPackage = async (
       });
     }
     Swal.fire({
-      icon: "error",
-      title: "¡bn",
-      text: "Ha ocurrido un error al realizar la transacción",
+      icon: "success",
+      title: "¡Paquete agregado!",
+      text: "Paquete agregado con éxito!",
       showConfirmButton: true,
     });
   } catch (error) {
