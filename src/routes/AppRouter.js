@@ -16,6 +16,7 @@ import MyPackages from "../pages/MyPackages";
 import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
 import PackageInvoice from "../pages/PackageInvoice";
+import AdminView from "../admin/AdminView";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -52,7 +53,15 @@ const AppRouter = () => {
           log={log}
           component={MyPackages}
         />{" "}
-        <PrivateRouter path="*" log={log} component={NoFound} />{" "}
+        {/* ADMIN */}
+        <PrivateRouter
+          exact
+          path="/admin"
+          log={log}
+          component={AdminView}
+        />{" "}
+        {/* 404 */}
+        <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>{" "}
     </Router>
   );
