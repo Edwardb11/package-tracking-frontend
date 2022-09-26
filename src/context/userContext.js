@@ -2,8 +2,8 @@ import { createContext } from "react";
 
 const User = createContext({
   log: false,
-  setLog: () => {},
-  user: { name: "", userId: "", email: "" },
+  setAdmin: () => {},
+  user: { name: "", userId: "", email: "", rol: "" },
   setUser: () => {},
 });
 

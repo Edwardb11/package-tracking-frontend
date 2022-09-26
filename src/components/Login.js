@@ -35,7 +35,6 @@ const Login = ({ admin }) => {
     return () => {};
   }, [history]);
 
-  console.log(active);
   return (
     <>
       <style

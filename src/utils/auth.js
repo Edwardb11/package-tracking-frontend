@@ -150,7 +150,6 @@ export const AuthAdmin = async (email, password, setLog) => {
         contraseña: password,
       })
       .then((res) => {
-        // console.log(res.data.accessToken);
         const token = res.data.accessToken;
         sessionStorage.setItem("jwtToken", token);
         Cookies.get("jwtToken");
