@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import User from "../context/userContext";
 import { Auth, AuthAdmin } from "../utils/auth";
 
 const Login = ({ admin }) => {
-  console.log(admin);
   const { setLog } = useContext(User);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [active, setActive] = useState("");
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -21,10 +21,23 @@ const Login = ({ admin }) => {
       Auth(email, password, setLog);
     }
   };
-
+  const history = useHistory();
   const client = "/auth/login";
   const admins = "/auth/admin";
 
+  useEffect(() => {
+    if (history.location.pathname === admins) {
+      setActive(true);
+      console.log("asa");
+    } else {
+      setActive(false);
+      console.log("first");
+    }
+
+    return () => {};
+  }, [history]);
+
+  console.log(active);
   return (
     <>
       <style
@@ -51,7 +64,11 @@ const Login = ({ admin }) => {
                 <div className="mt-3 md:flex md:items-center md:-mx-2">
                   <Link
                     to={client}
-                    className="flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-md md:w-auto md:mx-2 focus:outline-none">
+                    className={`flex justify-center w-full px-6 py-3 rounded-md md:w-auto md:mx-2  focus:outline-none ${
+                      !active
+                        ? `text-white bg-blue-500`
+                        : `text-blue-500 border border-blue-500`
+                    }`}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
@@ -67,7 +84,12 @@ const Login = ({ admin }) => {
 
                   <Link
                     to={admins}
-                    className="flex justify-center w-full px-6 py-3 mt-4 text-blue-500 border border-blue-500 rounded-md md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none">
+                    className={`flex justify-center w-full px-6 py-3 rounded-md md:w-auto md:mx-2 focus:outline-none ${
+                      active
+                        ? `text-white bg-blue-500`
+                        : `text-blue-500 border border-blue-500`
+                    }`}>
+                    {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
@@ -77,7 +99,6 @@ const Login = ({ admin }) => {
                       stroke-width="2">
                       <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-
                     <span className="mx-2">Admin</span>
                   </Link>
                 </div>

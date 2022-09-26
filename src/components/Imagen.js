@@ -2,7 +2,7 @@ import React from "react";
 
 const Imagen = () => {
   return (
-    <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
+    <div className="hidden md:block w-1/2 bg-blue-500 py-10 px-10">
       <svg
         id="a87032b8-5b37-4b7e-a4d9-4dbfbe394641"
         data-name="Layer 1"
