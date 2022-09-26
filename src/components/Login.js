@@ -28,10 +28,8 @@ const Login = ({ admin }) => {
   useEffect(() => {
     if (history.location.pathname === admins) {
       setActive(true);
-      console.log("asa");
     } else {
       setActive(false);
-      console.log("first");
     }
 
     return () => {};
