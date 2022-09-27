@@ -1,40 +1,28 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, NavLink } from "react-router-dom";
 import User from "../context/userContext";
 import { logout } from "../utils/auth";
-import useWindowSize from "../hooks/WindowSize";
+import useWindowSize from "../hooks/useWindowSize";
+import useNavigation from "../hooks/useNavigation";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function NavBar() {
-  const widthState = useWindowSize();
+  // get user information
+  // User => for basic information
+  // setLog => to log out
+  // setLog => to clear session information
   const { user, setLog, setUser } = useContext(User);
-  const [navigation, setNavigation] = useState([]);
-  const rol = user?.rol;
 
-  useEffect(() => {
-    if (navigation.length !== 0) {
-      return;
-    }
-    if (rol === undefined) {
-      return setNavigation([
-        { name: "Inicio", href: "/", current: true },
-        { name: "Seguimiento", href: "/tracking", current: false },
-        { name: "Mis paquetes", href: "/myPackages", current: false },
-        { name: "Agregar", href: "/package", current: false },
-      ]);
-    } else if (rol[0].id_roles === 1) {
-      return setNavigation([
-        { name: "Inicio", href: "/", current: true },
-        { name: "Admin", href: "/admin", current: false },
-      ]);
-    }
-    return () => {};
-  }, [setNavigation, rol, navigation]);
+  // Custom hook to appear or not welcome
+  const widthState = useWindowSize();
+
+  // Custom hook to know the role or if it is a client
+  const navigation = useNavigation(user);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
