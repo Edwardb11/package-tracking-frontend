@@ -15,7 +15,7 @@ export default function NavBar() {
   // get user information
   // User => for basic information
   // setLog => to log out
-  // setLog => to clear session information
+  // setUser => to clear session information
   const { user, setLog, setUser } = useContext(User);
 
   // Custom hook to appear or not welcome
