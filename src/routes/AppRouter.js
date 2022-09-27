@@ -17,6 +17,7 @@ import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
 import PackageInvoice from "../pages/PackageInvoice";
 import AdminView from "../admin/AdminView";
+import RegisterStaff from "../admin/RegisterStaff";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -59,6 +60,12 @@ const AppRouter = () => {
           path="/admin"
           log={log}
           component={AdminView}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/registerStaff"
+          log={log}
+          component={RegisterStaff}
         />{" "}
         {/* 404 */}
         <PrivateRouter path="*" log={log} component={NoFound} />
