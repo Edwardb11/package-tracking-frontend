@@ -19,7 +19,9 @@ const useNavigation = (user) => {
     } else if (rol[0].id_roles === 1) {
       return setNavigation([
         { name: "Inicio", href: "/", current: true },
-        { name: "Admin", href: "/admin", current: false },
+        { name: "Resumen", href: "/admin", current: false },
+        { name: "Paquetes", href: "/", current: false },
+        { name: "Registrar personal", href: "/", current: false },
       ]);
     }
     return () => {};
