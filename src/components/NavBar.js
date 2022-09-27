@@ -11,26 +11,28 @@ function classNames(...classes) {
 }
 export default function NavBar() {
   const { user, setLog, setUser } = useContext(User);
+  const [navigation, setNavigation] = useState([]);
   const rol = user?.rol;
-  let navigation = [];
+
   useEffect(() => {
+    if (navigation.length !== 0) {
+      return;
+    }
     if (rol === undefined) {
-      navigation.push(
+      return setNavigation([
         { name: "Inicio", href: "/", current: true },
         { name: "Seguimiento", href: "/tracking", current: false },
         { name: "Mis paquetes", href: "/myPackages", current: false },
-        { name: "Agregar", href: "/package", current: false }
-      );
-      console.log("hp;la");
+        { name: "Agregar", href: "/package", current: false },
+      ]);
     } else if (rol[0].id_roles === 1) {
-      navigation.push(
+      return setNavigation([
         { name: "Inicio", href: "/", current: true },
-        { name: "Admin", href: "/admin", current: false }
-      );
-      console.log("hp;laa a a a a");
+        { name: "Admin", href: "/admin", current: false },
+      ]);
     }
-    return navigation
-  });
+    return () => {};
+  }, [setNavigation, rol, navigation]);
   const [width, setWidth] = useState(window.innerWidth);
   const [widthState, setWidthState] = useState(false);
 
