@@ -1,21 +1,40 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import User from "../context/userContext";
-import { Auth } from "../utils/auth";
+import { Auth, AuthAdmin } from "../utils/auth";
 
-const Login = () => {
+const Login = ({ admin }) => {
   const { setLog } = useContext(User);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [active, setActive] = useState("");
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   const Validate = async (e) => {
     e.preventDefault();
-    Auth(email, password, setLog);
+    if (admin) {
+      AuthAdmin(email, password, setLog);
+    } else {
+      Auth(email, password, setLog);
+    }
   };
+  const history = useHistory();
+  const client = "/auth/login";
+  const admins = "/auth/admin";
+
+  useEffect(() => {
+    if (history.location.pathname === admins) {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+
+    return () => {};
+  }, [history]);
+
   return (
     <>
       <style
@@ -27,8 +46,7 @@ const Login = () => {
       <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
-          style={{ maxWidth: 1000 }}
-        >
+          style={{ maxWidth: 1000 }}>
           <div className="md:flex w-full">
             <Imagen />
             <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
@@ -38,6 +56,49 @@ const Login = () => {
                   Iniciar sesión
                 </h1>
                 <p>Ingrese su información para iniciar sesión</p>
+              </div>
+              <div className="mt-6 mb-4">
+                <div className="mt-3 md:flex md:items-center md:-mx-2">
+                  <Link
+                    to={client}
+                    className={`flex justify-center w-full px-6 py-3 rounded-md md:w-auto md:mx-2  focus:outline-none ${
+                      !active
+                        ? `text-white bg-blue-500`
+                        : `text-blue-500 border border-blue-500`
+                    }`}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+
+                    <span className="mx-2">Usuarios</span>
+                  </Link>
+
+                  <Link
+                    to={admins}
+                    className={`flex justify-center w-full px-6 py-3 rounded-md md:w-auto md:mx-2 focus:outline-none ${
+                      active
+                        ? `text-white bg-blue-500`
+                        : `text-blue-500 border border-blue-500`
+                    }`}>
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span className="mx-2">Admin</span>
+                  </Link>
+                </div>
               </div>
               <form onSubmit={Validate} className="text-gray-700">
                 <div className="flex -mx-3">
@@ -87,13 +148,15 @@ const Login = () => {
                     </button>
                   </div>
                 </div>
-                <div className="w-full px-3 mb-5 text-center text-sm">
-                  ¿No tienes cuenta?
-                  <Link to="/auth/register" className="text-indigo-600">
-                    {" "}
-                    Registrate
-                  </Link>
-                </div>
+                {!admin && (
+                  <div className="w-full px-3 mb-5 text-center text-sm">
+                    ¿No tienes cuenta?
+                    <Link to="/auth/register" className="text-indigo-600">
+                      {" "}
+                      Registrate
+                    </Link>
+                  </div>
+                )}
               </form>
             </div>
           </div>

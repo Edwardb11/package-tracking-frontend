@@ -1,37 +1,28 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, NavLink } from "react-router-dom";
 import User from "../context/userContext";
 import { logout } from "../utils/auth";
-
-const navigation = [
-  { name: "Inicio", href: "/", current: true },
-  { name: "Seguimiento", href: "/tracking", current: false },
-  { name: "Mis paquetes", href: "/myPackages", current: false },
-  { name: "Agregar", href: "/package", current: false },
-];
+import useWindowSize from "../hooks/useWindowSize";
+import useNavigation from "../hooks/useNavigation";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function NavBar() {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [widthState, setWidthState] = useState(false);
-
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    if (width < 700) {
-      return setWidthState(true);
-    } else {
-      return setWidthState(false);
-    }
-  }, [setWidthState, width]);
+  // get user information
+  // User => for basic information
+  // setLog => to log out
+  // setUser => to clear session information
   const { user, setLog, setUser } = useContext(User);
+
+  // Custom hook to appear or not welcome
+  const widthState = useWindowSize();
+
+  // Custom hook to know the role or if it is a client
+  const navigation = useNavigation(user);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -61,8 +52,7 @@ export default function NavBar() {
                         // activeClassName="bg-gray-900 text-white"
                         className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                         aria-current="page"
-                        to={item.href}
-                      >
+                        to={item.href}>
                         {item.name}
                       </NavLink>
                     ))}
@@ -75,8 +65,7 @@ export default function NavBar() {
                     !widthState
                       ? "capitalize font-bold  p-1 text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                       : "invisible"
-                  }
-                >
+                  }>
                   {" "}
                   {user.sexo === "m" ? "Bienvenido " : "Bienvenida "}
                   {user.name}
@@ -91,8 +80,7 @@ export default function NavBar() {
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-10 w-10"
                         viewBox="0 0 20 20"
-                        fill="white"
-                      >
+                        fill="white">
                         <path
                           fillRule="evenodd"
                           d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
@@ -108,8 +96,7 @@ export default function NavBar() {
                     enterTo="transform opacity-100 scale-100"
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
+                    leaveTo="transform opacity-0 scale-95">
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
@@ -118,8 +105,7 @@ export default function NavBar() {
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
+                            )}>
                             Perfil
                           </Link>
                         )}
@@ -131,8 +117,7 @@ export default function NavBar() {
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700 cursor-pointer	 "
-                            )}
-                          >
+                            )}>
                             Cerrar Sesión
                           </div>
                         )}
@@ -151,8 +136,7 @@ export default function NavBar() {
                   // activeClassName="bg-gray-900 text-white"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   aria-current="page"
-                  to={item.href}
-                >
+                  to={item.href}>
                   {item.name}
                 </NavLink>
               ))}

@@ -14,6 +14,7 @@ const DecodeToken = (token) => {
         email: decoded.email,
         userId: decoded.clienteId || decoded.StaffId,
         sexo: decoded.sexo,
+        rol: decoded?.rol
       });
     } else {
       return () => {};
