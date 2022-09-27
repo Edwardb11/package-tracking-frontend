@@ -5,11 +5,13 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, NavLink } from "react-router-dom";
 import User from "../context/userContext";
 import { logout } from "../utils/auth";
+import useWindowSize from "../hooks/WindowSize";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function NavBar() {
+  const widthState = useWindowSize();
   const { user, setLog, setUser } = useContext(User);
   const [navigation, setNavigation] = useState([]);
   const rol = user?.rol;
@@ -33,20 +35,7 @@ export default function NavBar() {
     }
     return () => {};
   }, [setNavigation, rol, navigation]);
-  const [width, setWidth] = useState(window.innerWidth);
-  const [widthState, setWidthState] = useState(false);
 
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    if (width < 700) {
-      return setWidthState(true);
-    } else {
-      return setWidthState(false);
-    }
-  }, [setWidthState, width]);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
