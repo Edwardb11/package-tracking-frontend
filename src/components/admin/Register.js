@@ -9,13 +9,18 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [studyLevels, setStudyLevels] = useState("Primario");
-  
+  const [getRol, setGetRol] = useState("Primario");
+
+  const Validate = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
       <div className="mt-10 sm:mt-0">
         <div className="md:grid md:grid-cols-1 md:gap-6">
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form onSubmit={Validate}>
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
@@ -159,6 +164,8 @@ const Register = () => {
                       </label>
                       <select
                         name="rol"
+                        value={getRol}
+                        onChange={(e) => setGetRol(e.target.value)}
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                         required>
                         <option value="3">Trabajador</option>

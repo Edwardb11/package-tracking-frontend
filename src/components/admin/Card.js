@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ img, link, description, shortName, name }) => {
+const Card = ({ img, link, description, name }) => {
   return (
     <>
       <div className="w-full md:w-1/2 xl:w-1/4 px-4">
