@@ -7,7 +7,7 @@ const Card = ({ img, link, description, name }) => {
       <div className="w-full md:w-1/2 xl:w-1/4 px-4">
         <div className="bg-white rounded-lg overflow-hidden mb-10">
           <Link to={link}>
-            <img src={img} alt="images" className="w-full" />
+            <img src={img} alt={name} className="w-full " />
           </Link>
           <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
             <h3>

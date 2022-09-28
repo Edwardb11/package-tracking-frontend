@@ -23,7 +23,7 @@ export const cardData = [
     img: Rol,
     link: "/admin/registerStaff",
     name: "Editar roles",
-    description: "Editar roles de los empleados",
+    description: "Agregar o Editar roles de los empleados",
   },
   {
     id: 4,
