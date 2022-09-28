@@ -17,6 +17,8 @@ import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
 import PackageInvoice from "../pages/PackageInvoice";
 import AdminView from "../admin/AdminView";
+
+import Staff from "../admin/Staff";
 import RegisterStaff from "../admin/RegisterStaff";
 
 const AppRouter = () => {
@@ -66,6 +68,12 @@ const AppRouter = () => {
           path="/admin/registerStaff"
           log={log}
           component={RegisterStaff}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/staff"
+          log={log}
+          component={Staff}
         />{" "}
         {/* 404 */}
         <PrivateRouter path="*" log={log} component={NoFound} />

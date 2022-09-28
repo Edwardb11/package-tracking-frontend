@@ -21,7 +21,8 @@ const useNavigation = (user) => {
         { name: "Inicio", href: "/", current: true },
         { name: "Resumen", href: "/admin", current: false },
         { name: "Paquetes", href: "/", current: false },
-        { name: "Registrar personal", href: "/admin/registerStaff", current: false },
+        // { name: "Registrar personal", href: "/admin/registerStaff", current: false },
+        { name: " personal", href: "/admin/staff", current: false },
       ]);
     }
     return () => {};

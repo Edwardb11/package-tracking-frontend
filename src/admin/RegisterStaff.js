@@ -12,11 +12,12 @@ const RegisterStaff = () => {
           <div className="relative">
             <h2 className="w-full text-3xl font-bold text-center sm:text-4xl md:text-5xl">
               {" "}
-              Registrar nuevos usuarios
+              Registrar nuevos personal
             </h2>
             <p className="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">
               En esta sección podrás agregar un nuevo usuario, solo necesitas
-              completar la el siguiente formulario para luego facilitarle la informacion a tu nuevo empleado.
+              completar la el siguiente formulario para luego facilitarle la
+              informacion a tu nuevo empleado.
             </p>
           </div>
         </div>
