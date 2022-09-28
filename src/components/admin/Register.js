@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [sex, setSex] = useState("m");
+  const [phone, setPhone] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [studyLevels, setStudyLevels] = useState("Primario");
+  
   return (
     <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
       <div className="mt-10 sm:mt-0">
@@ -20,6 +29,8 @@ const Register = () => {
                         id="name"
                         type="text"
                         name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         required
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
@@ -34,6 +45,8 @@ const Register = () => {
                         id="lastName"
                         type="text"
                         name="lastName"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                         required
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
@@ -48,6 +61,8 @@ const Register = () => {
                         id="phone"
                         type="text"
                         name="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         required
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
@@ -60,6 +75,8 @@ const Register = () => {
                       </label>
                       <select
                         name="sex"
+                        value={sex}
+                        onChange={(e) => setSex(e.target.value)}
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                         required>
                         <option value="m">Masculino</option>
@@ -75,6 +92,8 @@ const Register = () => {
                       <select
                         name="studyLevels"
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        value={studyLevels}
+                        onChange={(e) => setStudyLevels(e.target.value)}
                         required>
                         <option value="m">Primario</option>
                         <option value="f">Secundarios</option>
@@ -92,6 +111,8 @@ const Register = () => {
                         id="birthDate"
                         type="date"
                         name="birthDate"
+                        value={birthDate}
+                        onChange={(e) => setBirthDate(e.target.value)}
                         required
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
@@ -108,6 +129,8 @@ const Register = () => {
                         type="email"
                         name="email"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
@@ -121,6 +144,8 @@ const Register = () => {
                         id="password"
                         type="password"
                         name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                         className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
