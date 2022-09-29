@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import addStaff from "../../utils/addStaff";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -13,6 +14,17 @@ const Register = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
+    addStaff(
+      name,
+      lastName,
+      sex,
+      phone,
+      birthDate,
+      email,
+      password,
+      studyLevels,
+      getRol
+    );
   };
 
   return (
