@@ -46,18 +46,31 @@ const addStaff = async (
     return;
   }
 
+  //   constants for ref staff
+  let idStaff = "";
   //   POST staff
   try {
-    await axios.post(`${url}/registerStaff`, {
-      correo_electronico: email,
-      contraseña: password,
-      nombres: name,
-      apellidos: lastName,
-      sexo: sex,
-      niveles_estudios: studyLevels,
-      fecha_nacimiento: birthDate,
-      celular: phone,
-    });
+    await axios
+      .post(`${url}/registerStaff`, {
+        correo_electronico: email,
+        contraseña: password,
+        nombres: name,
+        apellidos: lastName,
+        sexo: sex,
+        niveles_estudios: studyLevels,
+        fecha_nacimiento: birthDate,
+        celular: phone,
+      })
+      .then((res) => {
+        idStaff = res.data.id;
+        return idStaff;
+      });
+    if (idStaff !== "") {
+      await axios.post(`${url}/addStaffRol`, {
+        id_personal: idStaff,
+        id_roles: getRol,
+      });
+    }
     Swal.fire({
       icon: "success",
       title: "Empleado agregado!",
