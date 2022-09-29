@@ -88,7 +88,7 @@ const Register = () => {
                       <label
                         htmlFor="sex"
                         className="block text-sm font-medium text-gray-700">
-                        Sexo
+                        Sexo*
                       </label>
                       <select
                         name="sex"
@@ -104,7 +104,7 @@ const Register = () => {
                       <label
                         htmlFor="studyLevels"
                         className="block text-sm font-medium text-gray-700">
-                        Niveles de estudio
+                        Niveles de estudio*
                       </label>
                       <select
                         name="studyLevels"
@@ -122,7 +122,7 @@ const Register = () => {
                       <label
                         htmlFor="birthDate"
                         className="block text-sm font-medium text-gray-700">
-                        Fecha de nacimiento
+                        Fecha de nacimiento*
                       </label>
                       <input
                         id="birthDate"
@@ -139,7 +139,7 @@ const Register = () => {
                       <label
                         htmlFor="email"
                         className="block text-sm font-medium text-gray-700">
-                        Correo Electrónico
+                        Correo Electrónico*
                       </label>
                       <input
                         id="email"
@@ -155,7 +155,7 @@ const Register = () => {
                       <label
                         htmlFor="password"
                         className="block text-sm font-medium text-gray-700">
-                        Contraseña
+                        Contraseña*
                       </label>
                       <input
                         id="password"

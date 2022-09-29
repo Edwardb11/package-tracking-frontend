@@ -1,6 +1,8 @@
+import axios from "axios";
 import Swal from "sweetalert2";
+import { url } from "../api/api";
 
-const addStaff = (
+const addStaff = async (
   name,
   lastName,
   sex,
@@ -42,6 +44,35 @@ const addStaff = (
       showConfirmButton: true,
     });
     return;
+  }
+
+  //   POST staff
+  try {
+    await axios.post(`${url}/registerStaff`, {
+      correo_electronico: email,
+      contraseña: password,
+      nombres: name,
+      apellidos: lastName,
+      sexo: sex,
+      niveles_estudios: studyLevels,
+      fecha_nacimiento: birthDate,
+      celular: phone,
+    });
+    Swal.fire({
+      icon: "success",
+      title: "Empleado agregado!",
+      text: "Empleado agregado con éxito!",
+      showConfirmButton: true,
+    });
+  } catch (error) {
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups! Ha ocurrido un error",
+        text: "Ha ocurrido un error al agregar el personal",
+        showConfirmButton: true,
+      });
+    }
   }
 };
 
