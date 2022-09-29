@@ -34,8 +34,7 @@ const TableStaff = () => {
               <>
                 <tr className="bg-gray-100 text-center border-b text-sm text-gray-600">
                   <td className="p-2 border-r">
-                    {items.personal.nombres}
-                    {items.personal.apellidos}
+                    {items.personal.nombres} {items.personal.apellidos}
                   </td>
                   <td className="p-2 border-r">
                     {items.personal.correo_electronico}
@@ -44,7 +43,9 @@ const TableStaff = () => {
                     {items.personal.celular || "No definido"}
                   </td>
                   <td className="p-2 border-r">
-                    {items.personal.roles[0].nombre || "hola"}
+                    -- {items.personal.roles[0].nombre} -{" "}
+                    {items.personal?.roles[1]?.nombre} -{" "}
+                    {items.personal?.roles[2]?.nombre}
                   </td>
                   <td>
                     <button
