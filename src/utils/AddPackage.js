@@ -167,7 +167,7 @@ const AddPackage = async (
       Swal.fire({
         icon: "error",
         title: "¡Ups! Ha ocurrido un error",
-        text: "Ha ocurrido un error al realizar la transacción",
+        text: "Ha ocurrido un error al agregar un nuevo paquete",
         showConfirmButton: true,
       });
     }
