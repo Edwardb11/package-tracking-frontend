@@ -7,7 +7,7 @@ export const cardData = [
   {
     id: 1,
     img: viewStaff,
-    link: "/admin/registerStaff",
+    link: "/admin/listStaff",
     name: "Ver personal",
     description: "Listar todos los empleados en la empresa",
   },

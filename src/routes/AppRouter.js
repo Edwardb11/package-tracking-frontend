@@ -20,6 +20,7 @@ import AdminView from "../admin/AdminView";
 
 import Staff from "../admin/Staff";
 import RegisterStaff from "../admin/RegisterStaff";
+import ListStaff from "../admin/ListStaff";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -68,6 +69,12 @@ const AppRouter = () => {
           path="/admin/registerStaff"
           log={log}
           component={RegisterStaff}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/listStaff"
+          log={log}
+          component={ListStaff}
         />{" "}
         <PrivateRouter
           exact
