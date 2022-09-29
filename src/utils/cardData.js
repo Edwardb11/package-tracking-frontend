@@ -1,6 +1,5 @@
 import addStaff from "../img/addStaff.png";
 import viewStaff from "../img/viewStaff.png";
-import deleteStaff from "../img/deleteStaff.png";
 import Rol from "../img/rol.png";
 
 export const cardData = [
@@ -24,12 +23,5 @@ export const cardData = [
     link: "/admin/registerStaff",
     name: "Editar roles",
     description: "Agregar o Editar roles de los empleados",
-  },
-  {
-    id: 4,
-    img: deleteStaff,
-    link: "/admin/registerStaff",
-    name: "Eliminar personal",
-    description: "Eliminar empleados que ya no esten en la empresa",
   },
 ];
