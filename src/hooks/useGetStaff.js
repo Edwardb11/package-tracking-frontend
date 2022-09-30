@@ -14,7 +14,7 @@ const useGetStaff = () => {
       return () => {};
     }
   }, [data, setData, isEmpty]);
-  return data;
+  return { data, setData };
 };
 
 export default useGetStaff;

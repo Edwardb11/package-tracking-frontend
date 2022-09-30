@@ -93,7 +93,7 @@ const PackagesTable = () => {
                       </button>
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      <button class="border-blue-500 bg-blue-500 text-white   font-bold py-2 px-4 rounded inline-flex items-center hover:border-blue-600 hover:bg-blue-600">
+                      <button className="border-blue-500 bg-blue-500 text-white   font-bold py-2 px-4 rounded inline-flex items-center hover:border-blue-600 hover:bg-blue-600">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"

@@ -4,10 +4,11 @@ import useGetStaff from "../../hooks/useGetStaff";
 import { removeStaff } from "../../utils/Staff";
 
 const TableStaff = () => {
-  const data = useGetStaff();
+  const { data, setData } = useGetStaff();
+
   const { user } = useContext(User);
   return (
-    <div class="overflow-x-auto relative lg:mx-20 xl:mx-10">
+    <div className="overflow-x-auto relative lg:mx-20 xl:mx-10">
       <table className="w-full border">
         <thead>
           <tr className="bg-gray-200 border-r">
@@ -34,7 +35,9 @@ const TableStaff = () => {
           {data.data.map((items) => {
             return (
               <>
-                <tr className=" text-center border-b text-sm text-gray-600">
+                <tr
+                  className=" text-center border-b text-sm text-gray-600"
+                  key={items.personal.id_personal}>
                   <td className="p-2 border-r">
                     {items.personal.nombres} {items.personal.apellidos}
                   </td>
@@ -52,7 +55,7 @@ const TableStaff = () => {
                   <td>
                     <button
                       disabled={items.personal?.id_personal === user.staffId}
-                      onClick={() => removeStaff(items.personal.id_personal)}
+                      onClick={() => removeStaff(items.personal.id_personal,setData)}
                       className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md 
                       ${
                         items.personal?.id_personal === user.staffId

@@ -1,6 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
+import useGetStaff from "../hooks/useGetStaff";
 
 export const addStaff = async (
   name,
@@ -89,7 +90,7 @@ export const addStaff = async (
   }
 };
 
-export const removeStaff = async (id) => {
+export const removeStaff = async (id, setData) => {
   Swal.fire({
     title: "¿Estás seguro de eliminar este personal ?",
     icon: "warning",
@@ -101,6 +102,9 @@ export const removeStaff = async (id) => {
   }).then((result) => {
     if (result.isConfirmed) {
       axios.delete(`${url}/removeStaff/${id}`);
+      fetch(`${url}/getStaff`)
+        .then((response) => response.json())
+        .then((data) => setData(data));
     }
   });
 };
