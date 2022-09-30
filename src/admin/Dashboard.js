@@ -2,14 +2,14 @@ import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
-const AdminView = () => {
+const Dashboard = () => {
   return (
-    <div >
+    <div>
       <NavBar />
-      <div className="mt-20">Admin</div>
+      <div lassName="mt-20">Dashboard</div>
       <Footer />
     </div>
   );
 };
 
-export default AdminView;
+export default Dashboard;

@@ -21,6 +21,7 @@ import AdminView from "../admin/AdminView";
 import Staff from "../admin/Staff";
 import RegisterStaff from "../admin/RegisterStaff";
 import ListStaff from "../admin/ListStaff";
+import Dashboard from "../admin/Dashboard";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -63,6 +64,12 @@ const AppRouter = () => {
           path="/admin"
           log={log}
           component={AdminView}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/dashboard"
+          log={log}
+          component={Dashboard}
         />{" "}
         <PrivateRouter
           exact
