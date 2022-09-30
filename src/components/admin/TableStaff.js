@@ -6,10 +6,10 @@ const TableStaff = () => {
   const data = useGetStaff();
   const { user } = useContext(User);
   return (
-    <div className="flex table w-full p-2">
+    <div class="overflow-x-auto relative lg:mx-20 xl:mx-10">
       <table className="w-full border">
         <thead>
-          <tr className="bg-gray-50 border-b">
+          <tr className="bg-gray-200 border-r">
             <th className="p-2 border-r cursor-pointer text-base  text-gray-500">
               <div className="flex items-center justify-center">
                 Nombre completo
@@ -33,7 +33,7 @@ const TableStaff = () => {
           {data.data.map((items) => {
             return (
               <>
-                <tr className="bg-gray-100 text-center border-b text-sm text-gray-600">
+                <tr className=" text-center border-b text-sm text-gray-600">
                   <td className="p-2 border-r">
                     {items.personal.nombres} {items.personal.apellidos}
                   </td>
