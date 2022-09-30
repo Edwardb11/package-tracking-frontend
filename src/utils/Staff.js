@@ -1,7 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
-import useGetStaff from "../hooks/useGetStaff";
 
 export const addStaff = async (
   name,
