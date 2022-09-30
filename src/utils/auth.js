@@ -216,3 +216,27 @@ export const AuthAdmin = async (email, password, setLog) => {
     }
   }
 };
+
+export const logoutStaff = async (user, setLog, setUser) => {
+  Swal.fire({
+    title: "¿Estás seguro de cerrar sesión?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios
+        .delete(`${url}/LogoutStaff/${user.staffId}`)
+        .then(
+          () => setAuthorizationToken(false),
+          sessionStorage.removeItem("jwtToken"),
+          Cookies.remove("jwtToken"),
+          setLog(false),
+          setUser({})
+        );
+    }
+  });
+};
