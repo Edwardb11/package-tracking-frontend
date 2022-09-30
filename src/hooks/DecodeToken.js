@@ -12,9 +12,10 @@ const DecodeToken = (token) => {
       return setUser({
         name: decoded.name,
         email: decoded.email,
-        userId: decoded.clienteId || decoded.StaffId,
+        userId: decoded?.clienteId,
+        staffId: decoded?.staffId,
         sexo: decoded.sexo,
-        rol: decoded?.rol
+        rol: decoded?.rol,
       });
     } else {
       return () => {};
