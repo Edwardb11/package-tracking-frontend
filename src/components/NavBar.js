@@ -4,7 +4,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, NavLink } from "react-router-dom";
 import User from "../context/userContext";
-import { logout } from "../utils/auth";
+import { logout, logoutStaff } from "../utils/auth";
 import useWindowSize from "../hooks/useWindowSize";
 import useNavigation from "../hooks/useNavigation";
 
@@ -23,6 +23,16 @@ export default function NavBar() {
 
   // Custom hook to know the role or if it is a client
   const navigation = useNavigation(user);
+
+  // Close session of normal user or of the employee according to the one that is connected
+  const logout = () => {
+    if (user.staffId !== undefined) {
+      logoutStaff(user, setLog, setUser);
+    }
+    if (user.userId !== undefined) {
+      logout(user, setLog, setUser);
+    }
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -113,7 +123,7 @@ export default function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            onClick={() => logout(user, setLog, setUser)}
+                            onClick={() => logout()}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700 cursor-pointer	 "

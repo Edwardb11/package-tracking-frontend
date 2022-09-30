@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import addStaff from "../../utils/addStaff";
+import { addStaff } from "../../utils/Staff";
 
 const Register = () => {
   const [name, setName] = useState("");
