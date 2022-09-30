@@ -5,7 +5,6 @@ import useGetStaff from "../../hooks/useGetStaff";
 const TableStaff = () => {
   const data = useGetStaff();
   const { user } = useContext(User);
-  console.log(user.staffId)
   return (
     <div className="flex table w-full p-2">
       <table className="w-full border">
@@ -52,11 +51,11 @@ const TableStaff = () => {
                   <td>
                     <button
                       href="a"
-                      className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500
+                      className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md 
                       ${
                         items.personal?.id_personal === user.staffId
-                          ? " bg-blue-300  hover:bg-blue-200 cursor-not-allowed "
-                          : " bg-blue-500  cursor-pointer  hover:bg-blue-600"
+                          ? " bg-gray-300  hover:bg-gra-100 cursor-not-allowed "
+                          : " text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                       }
                       `}>
                       Eliminar
