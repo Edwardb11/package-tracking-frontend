@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "../components/admin/Cards";
+import StaffCards from "../components/admin/StaffCards";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
@@ -16,7 +16,7 @@ const Staff = () => {
             </h2>
           </div>
         </div>
-        <Cards />
+        <StaffCards />
       </div>
       <Footer />
     </>
