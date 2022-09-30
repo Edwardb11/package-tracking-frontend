@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
 
-const addStaff = async (
+export const addStaff = async (
   name,
   lastName,
   sex,
@@ -89,4 +89,18 @@ const addStaff = async (
   }
 };
 
-export default addStaff;
+export const removeStaff = async (id) => {
+  Swal.fire({
+    title: "¿Estás seguro de eliminar este personal ?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(`${url}/removeStaff/${id}`);
+    }
+  });
+};

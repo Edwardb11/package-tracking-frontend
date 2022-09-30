@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import User from "../../context/userContext";
 import useGetStaff from "../../hooks/useGetStaff";
+import { removeStaff } from "../../utils/Staff";
 
 const TableStaff = () => {
   const data = useGetStaff();
@@ -50,7 +51,8 @@ const TableStaff = () => {
                   </td>
                   <td>
                     <button
-                      href="a"
+                      disabled={items.personal?.id_personal === user.staffId}
+                      onClick={() => removeStaff(items.personal.id_personal)}
                       className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md 
                       ${
                         items.personal?.id_personal === user.staffId
