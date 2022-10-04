@@ -23,6 +23,7 @@ import ListStaff from "../admin/ListStaff";
 import Dashboard from "../admin/Dashboard";
 import AdminPackage from "../admin/AdminPackage";
 import AdminStaff from "../admin/AdminStaff";
+import ManagePackage from "../admin/ManagePackage";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -95,6 +96,12 @@ const AppRouter = () => {
           path="/admin/Package"
           log={log}
           component={AdminPackage}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/managePackage"
+          log={log}
+          component={ManagePackage}
         />{" "}
         {/* 404 */}
         <PrivateRouter path="*" log={log} component={NoFound} />

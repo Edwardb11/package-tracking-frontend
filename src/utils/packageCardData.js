@@ -6,7 +6,7 @@ export const packageCardData = [
   {
     id: 1,
     img: manage,
-    link: "",
+    link: "/admin/managePackage",
     name: "Gestionar paquetes",
     description: "Listar todos los empleados en la empresa",
   },
