@@ -15,9 +15,7 @@ const ListStaff = () => {
              Lista de empleados
             </h2>
             <p className="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">
-              En esta sección podrás agregar un nuevo usuario, solo necesitas
-              completar la el siguiente formulario para luego facilitarle la
-              informacion a tu nuevo empleado.
+              En esta sección observar todos los empleados que trabajan en la empresa.
             </p>
           </div>
         </div>
