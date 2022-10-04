@@ -68,7 +68,7 @@ const AppRouter = () => {
         />{" "}
         <PrivateRouter
           exact
-          path="/dashboard"
+          path="/admin/dashboard"
           log={log}
           component={Dashboard}
         />{" "}
