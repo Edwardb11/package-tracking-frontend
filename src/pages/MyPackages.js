@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import PackagesTable from "../components/PackagesTable";
+import PackagesTable from "../components/client/PackagesTable";
 
 const MyPackages = () => {
   return (

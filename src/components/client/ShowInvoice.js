@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { url } from "../api/api";
-import convertDate from "../utils/convertDate";
+import { url } from "../../api/api";
+import convertDate from "../../utils/convertDate";
 
 const ShowInvoice = () => {
   const { id } = useParams();

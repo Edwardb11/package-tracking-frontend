@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import User from "../context/userContext";
-import { url } from "../api/api";
+import User from "../../context/userContext";
+import { url } from "../../api/api";
 import { Link } from "react-router-dom";
 
 const PackagesTable = () => {

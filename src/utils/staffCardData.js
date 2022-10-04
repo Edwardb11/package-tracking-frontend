@@ -2,7 +2,7 @@ import addStaff from "../img/addStaff.png";
 import viewStaff from "../img/viewStaff.png";
 import Rol from "../img/rol.png";
 
-export const cardData = [
+export const staffCardData = [
   {
     id: 1,
     img: viewStaff,

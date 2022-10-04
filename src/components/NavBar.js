@@ -25,7 +25,7 @@ export default function NavBar() {
   const navigation = useNavigation(user);
 
   // Close session of normal user or of the employee according to the one that is connected
-  const logout = () => {
+  const Logout = () => {
     if (user.staffId !== undefined) {
       logoutStaff(user, setLog, setUser);
     }
@@ -123,7 +123,7 @@ export default function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            onClick={() => logout()}
+                            onClick={() => Logout()}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700 cursor-pointer	 "

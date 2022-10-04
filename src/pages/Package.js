@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import PackageForms from "../components/PackageForms";
+import PackageForms from "../components/client/PackageForms";
 
 function Package() {
   return (

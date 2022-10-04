@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import PackagePayment from "../components/PackagePayment";
+import PackagePayment from "../components/client/PackagePayment";
 
 function PackagePay() {
   return (
