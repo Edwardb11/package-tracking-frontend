@@ -3,7 +3,7 @@ import StaffCards from "../components/admin/StaffCards";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
-const Staff = () => {
+const AdminStaff = () => {
   return (
     <>
       <NavBar />
@@ -23,4 +23,4 @@ const Staff = () => {
   );
 };
 
-export default Staff;
+export default AdminStaff;

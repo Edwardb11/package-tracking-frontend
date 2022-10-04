@@ -20,7 +20,7 @@ const useNavigation = (user) => {
       return setNavigation([
         { name: "Inicio", href: "/admin", current: true },
         { name: "Dashboard", href: "/dashboard", current: false },
-        { name: "Paquetes", href: "/admin", current: false },
+        { name: "Paquetes", href: "/admin/package", current: false },
         { name: "Personal", href: "/admin/staff", current: false },
       ]);
     }
