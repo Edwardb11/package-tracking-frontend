@@ -1,27 +1,29 @@
-import addStaff from "../img/addStaff.png";
-import viewStaff from "../img/viewStaff.png";
-import Rol from "../img/rol.png";
+import manage from "../img/manage.png";
+import Suport from "../img/suport.png";
+import packagReady from "../img/packagReady.png";
+import Undelivered from "../img/Undelivered.png";
 
 export const packageCardData = [
   {
     id: 1,
-    img: viewStaff,
-    link: "/admin/listStaff",
-    name: "Paquetes",
+    img: manage,
+    link: "",
+    name: "Gestionar paquetes",
     description: "Listar todos los empleados en la empresa",
   },
   {
     id: 2,
-    img: addStaff,
-    link: "/admin/registerStaff",
-    name: "Seguimiento UPS",
+    img: Suport,
+    link: "/tracking",
+    name: "Soporte",
     description: "Formulario para agregar un nuevo empleado    ",
   },
   {
     id: 3,
-    img: Rol,
-    link: "/admin/registerStaff",
-    name: "Agregar personal",
+    img: packagReady,
+    link: "",
+    name: "Paquetes listos",
     description: "Agregar o Editar roles de los empleados",
   },
+
 ];
