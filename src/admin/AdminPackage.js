@@ -1,4 +1,5 @@
 import React from 'react'
+import PackageCards from '../components/admin/PackageCards'
 import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
 
@@ -15,6 +16,7 @@ const AdminPackage = () => {
             </h2>
           </div>
         </div>
+        <PackageCards/>
       </div>
       <Footer />
     </>
