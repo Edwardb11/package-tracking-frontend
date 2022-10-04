@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import AddPackage from "../utils/AddPackage";
-import User from "../context/userContext";
+import AddPackage from "../../utils/AddPackage";
+import User from "../../context/userContext";
 
 const PackageForms = () => {
   const Quantitys = [];

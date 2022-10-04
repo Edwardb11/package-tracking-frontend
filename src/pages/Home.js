@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import LandingPage from "../components/LandingPage";
+import LandingPage from "../components/client/LandingPage";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import User from "../context/userContext";

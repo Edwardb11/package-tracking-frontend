@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import ShowInvoice from "../components/ShowInvoice";
+import ShowInvoice from "../components/client/ShowInvoice";
 
 const PackageInvoice = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import TrackingCard from "../components/TrackingCard";
+import TrackingCard from "../components/client/TrackingCard";
 
 const Tracking = () => {
   const [viewForm, setViewForm] = useState(false);
