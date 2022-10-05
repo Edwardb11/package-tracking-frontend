@@ -1,6 +1,7 @@
 import manage from "../img/manage.png";
 import Suport from "../img/suport.png";
 import packagReady from "../img/packagReady.png";
+import invoice from "../img/invoice.png";
 
 export const packageCardData = [
   {
@@ -8,20 +9,27 @@ export const packageCardData = [
     img: manage,
     link: "/admin/managePackage",
     name: "Gestionar paquetes",
-    description: "Listar todos los empleados en la empresa",
+    description: "Administrar los estados de los paquetes.",
   },
   {
     id: 2,
-    img: Suport,
-    link: "/tracking",
-    name: "Soporte",
-    description: "Formulario para agregar un nuevo empleado    ",
+    img: invoice,
+    link: "",
+    name: "Facturar paquetes",
+    description: "Calcular envio de cada paquete.",
   },
   {
     id: 3,
+    img: Suport,
+    link: "/tracking",
+    name: "Soporte",
+    description: "Soporte a los clientes, mediante seguimiento UPS.  ",
+  },
+  {
+    id: 4,
     img: packagReady,
     link: "",
     name: "Paquetes listos",
-    description: "Agregar o Editar roles de los empleados",
+    description: "Lista de paquetes entregados.",
   },
 ];
