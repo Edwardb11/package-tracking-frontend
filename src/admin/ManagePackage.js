@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../components/admin/Table";
+import TablePackage from "../components/admin/TablePackage";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
@@ -20,7 +20,7 @@ const ManagePackage = () => {
             </p>
           </div>
         </div>
-        <Table />
+        <TablePackage />
       </div>
       <Footer />
     </>
