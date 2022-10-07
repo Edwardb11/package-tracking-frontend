@@ -2,48 +2,41 @@ import React, { useEffect, useState } from "react";
 import useGetPackage from "../../hooks/useGetPackage";
 
 const TablePackage = () => {
-  const { data, setData } = useGetPackage();
+  const { data } = useGetPackage();
+  const state = data.package;
   const [filters, setFilter] = useState([]);
-  console.log(data.package);
-  console.log(data);
 
-  //  get order array id and decomposition of these id
+  // JavaScript DOM to access the selected value of the select field
+
+  const $select = document.getElementById("select");
   const [Index, setIndex] = useState(0);
 
-  const States = (value) => {
-    value = 1;
-    let list = [];
-    for (const x in data.package) {
-      if (value === data.package[x].id_estado) {
-        list.push(x);
+  //  // Object list with the basic information of the order, going through all this information through an index
+  const changeData = (Index) => {
+    const Lorem = [];
+
+    // console.log("aa");
+    for (const x in state) {
+      if (Index === state[x].id_estado) {
+        for (const key in state[x]) {
+          if (Object.hasOwnProperty.call(state[x], key)) {
+            const element = state[x];
+            Lorem.push(element);
+          }
+        }
       }
     }
-    return list;
+    setFilter(Lorem);
   };
-
-  console.log(States());
   // useEffect to detect when order index changes
-  //  useEffect(() => {
-  //     changeData(Index);
-  //  }, [Index]);
+  useEffect(() => {
+    changeData(Index);
+    return () => {};
+  }, [Index]);
 
-  //  // Object list with the basic information of the order, going through all this information through an index
-  //  function changeData(Index) {
-  //     const Lorem = [];
-  //     for (const filters in data.package[Index].id_estado) {
-  //        if (Object.hasOwnProperty.call(data.package[Index].orders, pedido)) {
-  //           const persona = {};
-  //           persona.place = data.package[Index].orders[pedido].place;
-  //           persona.username = data.package[Index].orders[pedido].username;
-  //           persona.extraPlate = data.package[Index].orders[pedido].extraPlate;
-  //           persona.secondPlate = data.package[Index].orders[pedido].secondPlate;
-  //           persona.principalPlate = data.package[Index].orders[pedido].principalPlate;
-  //           Lorem.push(persona);
-  //        }
-  //     }
-
-  //     setPedidos(Lorem);
-  //  }
+  let result = filters.filter((item, index) => {
+    return filters.indexOf(item) === index;
+  });
   return (
     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -57,19 +50,18 @@ const TablePackage = () => {
             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
               <select
                 id="select"
-                //   onChange={() => {
-                //     setIndex(
-                //       dateID(
-                //         parseInt($select.options[$select.selectedIndex].value)
-                //       )
-                //     );
-                //   }}
-              >
+                onChange={() => {
+                  setIndex(
+                    changeData(
+                      parseInt($select.options[$select.selectedIndex].value)
+                    )
+                  );
+                }}>
                 <option value="none" className="selected disabled hidden">
                   DEFECTO
                 </option>
-                <option value="cambiar">OTRAS</option>
-                <option value="cambiar">OTRAS</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
               </select>
             </div>
           </div>
@@ -101,10 +93,12 @@ const TablePackage = () => {
             </thead>
 
             <tbody>
-              {data.package.map((item) => {
+              {result.map((item) => {
                 return (
                   <tr>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4"></td>
+                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {item?.id_estado}
+                    </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4"></td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       CAMBIAR{" "}
