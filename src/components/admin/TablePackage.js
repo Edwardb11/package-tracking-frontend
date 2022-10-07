@@ -15,7 +15,7 @@ const TablePackage = () => {
   // Get ID
   const [Index, setIndex] = useState(0);
 
-  // Object list with the basic information of the order, going through all this information through an index
+  // Function for when the state changes
   const changeData = (Index) => {
     // Temporary array to store the filtered
     const Lorem = [];
@@ -34,12 +34,12 @@ const TablePackage = () => {
     // Set the result
     setFilter(Lorem);
   };
-  // useEffect to detect when order index changes
+
+  // useEffect to detect when state index changes
   useEffect(() => {
-    if (Index !== 0) {
-      changeData(Index);
-    }
+    changeData(Index);
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Index]);
 
   // Doing another filter for duplicate entries
@@ -60,8 +60,8 @@ const TablePackage = () => {
               <select
                 id="select"
                 onChange={() => {
-                  setIndex(
-                    changeData(
+                  changeData(
+                    setIndex(
                       parseInt($select.options[$select.selectedIndex].value)
                     )
                   );
