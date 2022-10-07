@@ -3,21 +3,26 @@ import useGetPackage from "../../hooks/useGetPackage";
 
 const TablePackage = () => {
   const { data } = useGetPackage();
+  // Rename
   const state = data.package;
+
+  // filtered state
   const [filters, setFilter] = useState([]);
 
   // JavaScript DOM to access the selected value of the select field
-
   const $select = document.getElementById("select");
+
+  // Get ID
   const [Index, setIndex] = useState(0);
 
-  //  // Object list with the basic information of the order, going through all this information through an index
+  // Object list with the basic information of the order, going through all this information through an index
   const changeData = (Index) => {
+    // Temporary array to store the filtered
     const Lorem = [];
-
-    // console.log("aa");
+    // Get the array position matching that state ID
     for (const x in state) {
       if (Index === state[x].id_estado) {
+        // Clone the result of that filter
         for (const key in state[x]) {
           if (Object.hasOwnProperty.call(state[x], key)) {
             const element = state[x];
@@ -26,15 +31,19 @@ const TablePackage = () => {
         }
       }
     }
+    // Set the result
     setFilter(Lorem);
   };
   // useEffect to detect when order index changes
   useEffect(() => {
-    changeData(Index);
+    if (Index !== 0) {
+      changeData(Index);
+    }
     return () => {};
   }, [Index]);
 
-  let result = filters.filter((item, index) => {
+  // Doing another filter for duplicate entries
+  const result = filters.filter((item, index) => {
     return filters.indexOf(item) === index;
   });
   return (
@@ -62,6 +71,7 @@ const TablePackage = () => {
                 </option>
                 <option value="1">1</option>
                 <option value="2">2</option>
+                <option value="5">5</option>
               </select>
             </div>
           </div>
@@ -93,9 +103,9 @@ const TablePackage = () => {
             </thead>
 
             <tbody>
-              {result.map((item) => {
+              {result.map((item, key) => {
                 return (
-                  <tr>
+                  <tr key={key}>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item?.id_estado}
                     </td>
