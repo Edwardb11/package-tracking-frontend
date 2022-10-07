@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { url } from "../api/api";
 
-const useGetPackage = () => {
-  const [data, setData] = useState({ package: [] });
+const useGetStates = () => {
+  const [states, setStates] = useState({ data: [] });
   const [isEmpty, setIsEmpty] = useState(true);
   useEffect(() => {
     if (isEmpty) {
-      fetch(`${url}/getPackageAdmin`)
+      fetch(`${url}/getState`)
         .then((response) => response.json())
-        .then((data) => setData(data));
+        .then((data) => setStates(data));
       setIsEmpty(false);
     } else {
       return () => {};
     }
-  }, [data, setData, isEmpty]);
-  return data;
+  }, [states, setStates, isEmpty]);
+  return states;
 };
 
-export default useGetPackage;
+export default useGetStates;

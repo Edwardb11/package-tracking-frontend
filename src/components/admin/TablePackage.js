@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import useGetPackage from "../../hooks/useGetPackage";
+import useGetStates from "../../hooks/useGetStates";
 
 const TablePackage = () => {
-  const { data } = useGetPackage();
+  // Custom hook to get the packages
+  const data = useGetPackage();
+
+  // Custom hook to get the states
+  const states = useGetStates();
+
   // Rename
   const state = data.package;
 
@@ -68,11 +74,15 @@ const TablePackage = () => {
                   );
                 }}>
                 <option value="none" className="selected disabled hidden">
-                  DEFECTO
+                  Seleccione
                 </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="5">5</option>
+                {states.data.map((state) => {
+                  return (
+                    <>
+                      <option value={state.id_estado}>{state.nombre}</option>
+                    </>
+                  );
+                })}
               </select>
             </div>
           </div>
