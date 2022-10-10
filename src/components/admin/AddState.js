@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import User from "../../context/userContext";
 import useGetIdPackage from "../../hooks/useGetIdPackage";
@@ -17,6 +17,7 @@ const AddState = () => {
   //   Set Data input
   const [locationP, setLocationP] = useState("");
   const [stateP, setStateP] = useState("");
+  const [filters, setFilters] = useState([]);
 
   //   Get Staff ID
   const { user } = useContext(User);
@@ -29,6 +30,16 @@ const AddState = () => {
     e.preventDefault();
     AddStatePackage(locationP, stateP, idStaff, id);
   };
+  useEffect(() => {
+    const lorem = [];
+    state.map((data) => {
+    
+         lorem.push(data.estado.id_estado);
+      
+    });
+    setFilters(lorem);
+  }, [state]);
+  console.log(filters);
 
   return (
     <div className=" mx-auto max-w-7xl bg-white py-20 px-12 lg:px-24 shadow-2xl mb-24">
@@ -108,7 +119,7 @@ const AddState = () => {
                       value={stateP}
                       onChange={(e) => setStateP(e.target.value)}
                       required
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      className="flex mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                       <option value="none" className="selected disabled hidden">
                         Seleccione
                       </option>
