@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetPackage from "../../hooks/useGetPackage";
 import useGetStates from "../../hooks/useGetStates";
+import convertDate from "../../utils/convertDate";
 
 const TablePackage = () => {
   // Custom hook to get the packages
@@ -55,7 +56,7 @@ const TablePackage = () => {
   });
 
   return (
-    <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+    <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
@@ -106,11 +107,15 @@ const TablePackage = () => {
                   Estado
                 </th>
                 <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Actualizado
+                </th>
+                <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Buscar
                 </th>
                 <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Destino
                 </th>
+
                 <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Actualizar
                 </th>
@@ -132,6 +137,9 @@ const TablePackage = () => {
                     </td>
                     <td className="border-t-0 px-6 font-semibold bg-gray-100  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item?.estado?.nombre || "PENDIENTE"}
+                    </td>
+                    <td className="border-t-0 px-6   border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {convertDate(item?.creado)}
                     </td>
                     <td className="border-t-0  px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item?.paquete?.ubicacion}
