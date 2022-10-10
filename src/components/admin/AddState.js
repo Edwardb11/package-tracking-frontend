@@ -44,6 +44,14 @@ const AddState = () => {
               );
             })}
           </div>
+          <div className="px-4 sm:px-0 mt-6">
+            <h3 className="text-lg font-medium leading-6 text-gray-900">
+              Última ubicación
+            </h3>
+            <p className="mt-1 text-base text-gray-600">
+              {state[state.length - 1].ubicacion}
+            </p>
+          </div>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form>
