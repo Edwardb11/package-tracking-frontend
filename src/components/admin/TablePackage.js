@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useGetPackage from "../../hooks/useGetPackage";
 import useGetStates from "../../hooks/useGetStates";
 
@@ -139,9 +140,11 @@ const TablePackage = () => {
                       {item?.paquete?.usuario_finale?.ubicacion}
                     </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Actualizar {item?.paquete.id_paquete}
-                      </button>
+                      <Link
+                        to={`/admin/statePackage/${item?.paquete.id_paquete}`}
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Actualizar
+                      </Link>
                     </td>
                   </tr>
                 );
