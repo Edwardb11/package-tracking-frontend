@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import User from "../../context/userContext";
 import useGetIdPackage from "../../hooks/useGetIdPackage";
+import { AddStatePackage } from "../../utils/AddStatePackage";
 import convertDate from "../../utils/convertDate";
 
 const AddState = () => {
+  // ID params
   const { id } = useParams();
-  console.log(id);
-  const data = useGetIdPackage(id);
 
+  //   Custom hook for get info of new state for package
+  const data = useGetIdPackage(id);
   const state = data.state;
-  console.log(state);
+
+  //   Set Data input
+  const [locationP, setLocationP] = useState("");
+  const [stateP, setStateP] = useState("");
+
+  //   Get Staff ID
+  const { user } = useContext(User);
+  const idStaff = user.staffId;
+
+  const Validate = async (e) => {
+    e.preventDefault();
+    AddStatePackage(locationP, stateP, idStaff, id);
+  };
+
   return (
     <div className=" mx-auto max-w-7xl bg-white py-20 px-12 lg:px-24 shadow-2xl mb-24">
       <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -49,24 +65,27 @@ const AddState = () => {
               Última ubicación
             </h3>
             <p className="mt-1 text-base text-gray-600">
-              {state[state.length - 1].ubicacion}
+              {state[state.length - 1]?.ubicacion || "Desconocida"}
             </p>
           </div>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
-          <form>
+          <form onSubmit={Validate}>
             <div className="shadow overflow-hidden sm:rounded-md">
               <div className="px-4 py-5 bg-white sm:p-6">
                 <div className="grid grid-cols-6 gap-6">
                   <div className="col-span-6 sm:col-span-3">
                     <label
-                      htmlFor="amount"
+                      htmlFor="locationP"
                       className="block text-sm font-medium text-gray-700">
                       Ubicación del paquete*
                     </label>
                     <input
+                      id="locationP"
+                      value={locationP}
+                      onChange={(e) => setLocationP(e.target.value)}
                       type="text"
-                      name="amount"
+                      name="locationP"
                       required
                       className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                     />
@@ -74,11 +93,15 @@ const AddState = () => {
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
-                      htmlFor="paymentMethod"
+                      htmlFor="stateP"
                       className="block text-sm font-medium text-gray-700">
                       Estado del paquete*
                     </label>
                     <select
+                      id="stateP"
+                      name="stateP"
+                      value={stateP}
+                      onChange={(e) => setStateP(e.target.value)}
                       required
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                       <option value="none" className="selected disabled hidden">
