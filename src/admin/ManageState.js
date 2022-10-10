@@ -12,10 +12,10 @@ const ManageState = () => {
           <div className="relative">
             <h2 className="w-full text-3xl font-bold text-center sm:text-4xl md:text-5xl">
               {" "}
-              Actualizar paquetes
+              Gestionar los estados del paquete
             </h2>
             <p className="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">
-              En esta sección podras actualizar los estados de los paquetes.
+              En esta sección podras gestionar las distintas actualizaciones de estados de los paquetes.
             </p>
           </div>
         </div>

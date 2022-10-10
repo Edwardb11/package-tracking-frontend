@@ -1,6 +1,15 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import useGetIdPackage from "../../hooks/useGetIdPackage";
+import convertDate from "../../utils/convertDate";
 
 const AddState = () => {
+  const { id } = useParams();
+  console.log(id);
+  const data = useGetIdPackage(id);
+
+  const state = data.state;
+  console.log(state);
   return (
     <div className=" mx-auto max-w-7xl bg-white py-20 px-12 lg:px-24 shadow-2xl mb-24">
       <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -12,7 +21,28 @@ const AddState = () => {
             <h3 className="text-lg font-medium leading-6 text-gray-900">
               Tracking
             </h3>
-            <p className="mt-1 text-base text-gray-600">aa</p>
+            <p className="mt-1 text-base text-gray-600">{id}</p>
+          </div>
+          <div className="px-4 sm:px-0 mt-6">
+            <h3 className="text-lg font-medium leading-6 text-gray-900">
+              Estados anteriores
+            </h3>
+            {state.map((data) => {
+              return (
+                <div className="flex  flex-wrap  justify-between">
+                  <div className="">
+                    <p className=" justify-start mt-1 mx-1 text-base text-gray-600">
+                      {data.estado.nombre}
+                    </p>
+                  </div>
+                  <div className="flex-wrap ">
+                    <p className=" justify-start mt-1 mx-1 text-base text-gray-600">
+                      {convertDate(data.creado)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">

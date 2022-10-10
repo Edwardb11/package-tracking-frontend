@@ -133,7 +133,7 @@ const TablePackage = () => {
                       {item?.paquete.nombre}
                     </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {item?.paquete.peso}
+                      {item?.paquete.peso } LB
                     </td>
                     <td className="border-t-0 px-6 font-semibold bg-gray-100  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item?.estado?.nombre || "PENDIENTE"}
