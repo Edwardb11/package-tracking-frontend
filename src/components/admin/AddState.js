@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import User from "../../context/userContext";
 import useGetIdPackage from "../../hooks/useGetIdPackage";
+import useGetStates from "../../hooks/useGetStates";
 import { AddStatePackage } from "../../utils/AddStatePackage";
 import convertDate from "../../utils/convertDate";
 
@@ -20,6 +21,9 @@ const AddState = () => {
   //   Get Staff ID
   const { user } = useContext(User);
   const idStaff = user.staffId;
+
+  // Get states
+  const states = useGetStates();
 
   const Validate = async (e) => {
     e.preventDefault();
@@ -97,6 +101,7 @@ const AddState = () => {
                       className="block text-sm font-medium text-gray-700">
                       Estado del paquete*
                     </label>
+
                     <select
                       id="stateP"
                       name="stateP"
@@ -107,7 +112,15 @@ const AddState = () => {
                       <option value="none" className="selected disabled hidden">
                         Seleccione
                       </option>
-                      <option value="2">Envalijado</option>
+                      {states.data.map((state) => {
+                        return (
+                          <>
+                            <option value={state.id_estado}>
+                              {state.nombre}
+                            </option>
+                          </>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
