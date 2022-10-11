@@ -17,7 +17,6 @@ import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
 import PackageInvoice from "../pages/PackageInvoice";
 
-import AdminView from "../admin/AdminView";
 import RegisterStaff from "../admin/RegisterStaff";
 import ListStaff from "../admin/ListStaff";
 import Dashboard from "../admin/Dashboard";
@@ -25,6 +24,7 @@ import AdminPackage from "../admin/AdminPackage";
 import AdminStaff from "../admin/AdminStaff";
 import ManagePackage from "../admin/ManagePackage";
 import ManageState from "../admin/ManageState";
+import ListPackage from "../admin/ListPackage";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -64,12 +64,6 @@ const AppRouter = () => {
         {/* ADMIN */}
         <PrivateRouter
           exact
-          path="/admin"
-          log={log}
-          component={AdminView}
-        />{" "}
-        <PrivateRouter
-          exact
           path="/admin/dashboard"
           log={log}
           component={Dashboard}
@@ -97,6 +91,12 @@ const AppRouter = () => {
           path="/admin/Package"
           log={log}
           component={AdminPackage}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/PackageReady"
+          log={log}
+          component={ListPackage}
         />{" "}
         <PrivateRouter
           exact

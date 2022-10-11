@@ -28,7 +28,7 @@ export const packageCardData = [
   {
     id: 4,
     img: packagReady,
-    link: "",
+    link: "/admin/PackageReady",
     name: "Paquetes listos",
     description: "Lista de paquetes entregados.",
   },
