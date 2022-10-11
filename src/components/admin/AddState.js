@@ -17,7 +17,6 @@ const AddState = () => {
   //   Set Data input
   const [locationP, setLocationP] = useState("");
   const [stateP, setStateP] = useState("");
-  const [filters, setFilters] = useState([]);
 
   //   Get Staff ID
   const { user } = useContext(User);
@@ -30,17 +29,22 @@ const AddState = () => {
     e.preventDefault();
     AddStatePackage(locationP, stateP, idStaff, id);
   };
+
+  const [lastState, setLastState] = useState(0);
+  const [filters, setFilters] = useState([]);
   useEffect(() => {
-    const lorem = [];
-    state.map((data) => {
-    
-         lorem.push(data.estado.id_estado);
-      
+    let lorem = [];
+    setLastState(state[state.length - 1]?.estado.id_estado);
+    states.data.filter((state, i) => {
+      if (lastState < i) {
+        lorem.push(state);
+      }
     });
     setFilters(lorem);
-  }, [state]);
-  console.log(filters);
+    return () => {};
+  }, [state, lastState, states]);
 
+  console.log(filters);
   return (
     <div className=" mx-auto max-w-7xl bg-white py-20 px-12 lg:px-24 shadow-2xl mb-24">
       <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -101,6 +105,7 @@ const AddState = () => {
                       onChange={(e) => setLocationP(e.target.value)}
                       type="text"
                       name="locationP"
+                      min={2}
                       required
                       className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                     />
@@ -123,7 +128,7 @@ const AddState = () => {
                       <option value="none" className="selected disabled hidden">
                         Seleccione
                       </option>
-                      {states.data.map((state) => {
+                      {filters.map((state, i) => {
                         return (
                           <>
                             <option value={state.id_estado}>
