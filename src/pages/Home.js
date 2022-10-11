@@ -3,7 +3,7 @@ import LandingPage from "../components/client/LandingPage";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import User from "../context/userContext";
-import AdminView from "../admin/AdminView";
+import Dashboard from "../admin/Dashboard";
 
 const Home = () => {
   const { user } = useContext(User);
@@ -20,7 +20,7 @@ const Home = () => {
   if (rol[0]?.id_roles === 1 || rol[1]?.id_roles) {
     return (
       <div>
-        <AdminView />
+        <Dashboard />
       </div>
     );
   }

@@ -17,7 +17,6 @@ import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
 import PackageInvoice from "../pages/PackageInvoice";
 
-import AdminView from "../admin/AdminView";
 import RegisterStaff from "../admin/RegisterStaff";
 import ListStaff from "../admin/ListStaff";
 import Dashboard from "../admin/Dashboard";
@@ -62,12 +61,6 @@ const AppRouter = () => {
           component={MyPackages}
         />{" "}
         {/* ADMIN */}
-        <PrivateRouter
-          exact
-          path="/admin"
-          log={log}
-          component={AdminView}
-        />{" "}
         <PrivateRouter
           exact
           path="/admin/dashboard"
