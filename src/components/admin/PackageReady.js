@@ -38,7 +38,6 @@ const PackageReady = () => {
 
             <tbody>
               {state.map((item, key) => {
-                console.log(item);
                 return (
                   <tr key={key}>
                     <td className="border-t-0 px-10  text-md text-blue-800 font-semibold  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
