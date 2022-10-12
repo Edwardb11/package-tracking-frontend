@@ -25,6 +25,7 @@ import AdminStaff from "../admin/AdminStaff";
 import ManagePackage from "../admin/ManagePackage";
 import ManageState from "../admin/ManageState";
 import ListPackage from "../admin/ListPackage";
+import InvoicePackage from "../admin/InvoicePackage";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -103,6 +104,12 @@ const AppRouter = () => {
           path="/admin/managePackage"
           log={log}
           component={ManagePackage}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/invoicePackage"
+          log={log}
+          component={InvoicePackage}
         />{" "}
         <PrivateRouter
           exact

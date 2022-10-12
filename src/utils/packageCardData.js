@@ -14,7 +14,7 @@ export const packageCardData = [
   {
     id: 2,
     img: invoice,
-    link: "",
+    link: "/admin/invoicePackage",
     name: "Facturar paquetes",
     description: "Calcular envio de cada paquete.",
   },
