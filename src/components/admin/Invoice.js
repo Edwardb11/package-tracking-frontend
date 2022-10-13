@@ -1,14 +1,13 @@
 import React from "react";
-import usePackageReady from "../../hooks/usePackageReady";
-import convertDate from "../../utils/convertDate";
+import usePendingInvoice from "../../hooks/usePendingInvoice";
 import ProceedInvoice from "./ProceedInvoice";
 
 const Invoice = () => {
-  const data = usePackageReady();
+  const data = usePendingInvoice();
   const state = data.data;
   return (
-    <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+    <div className=" w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+      <div className="relative  flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
         <div className="block w-full overflow-x-auto">
           <table className="items-center bg-transparent w-full border-collapse ">
             <thead>
@@ -22,9 +21,7 @@ const Invoice = () => {
                 <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Peso
                 </th>
-                <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Estado
-                </th>
+
                 <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Buscar
                 </th>
@@ -49,9 +46,6 @@ const Invoice = () => {
                     </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item?.paquete.peso} LB
-                    </td>
-                    <td className="border-t-0 px-6 font-semibold bg-gray-100  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {convertDate(item?.creado)}
                     </td>
 
                     <td className="border-t-0  px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
