@@ -1,7 +1,8 @@
 import React from "react";
 
-const ProceedInvoice = ({tracking}) => {
-  return <div>ProceedInvoice</div>;
+const ProceedInvoice = ({ tracking }) => {
+  console.log(tracking);
+  return <div>{tracking}</div>;
 };
 
 export default ProceedInvoice;

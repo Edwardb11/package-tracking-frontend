@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import usePendingInvoice from "../../hooks/usePendingInvoice";
 import ProceedInvoice from "./ProceedInvoice";
 
 const Invoice = () => {
-  const data = usePendingInvoice();
+  const { data, setData } = usePendingInvoice();
   const state = data.data;
+  const [getTracking, setGetTracking] = useState({
+    view: false,
+    tracking: "",
+  });
   return (
     <div className=" w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
       <div className="relative  flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -56,7 +60,12 @@ const Invoice = () => {
                     </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <button
-                        to={`/admin/statePackage/${item?.paquete.id_paquete}`}
+                        onClick={() =>
+                          setGetTracking({
+                            view: !getTracking.view,
+                            tracking: item?.paquete.id_paquete,
+                          })
+                        }
                         className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Facturar
                       </button>
@@ -68,7 +77,7 @@ const Invoice = () => {
           </table>
         </div>
       </div>
-      <ProceedInvoice />
+      {getTracking.view && <ProceedInvoice tracking={getTracking.tracking} />}
     </div>
   );
 };
