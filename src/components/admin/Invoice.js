@@ -10,8 +10,8 @@ const Invoice = () => {
     tracking: "",
   });
   return (
-    <div className=" w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-      <div className="relative  flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+    <div className=" flex  flex-wrap  xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24    ">
+      <div className="w-1/2 flex-auto sm:w-full  break-words bg-white  mb-6 shadow-lg rounded ">
         <div className="block w-full overflow-x-auto">
           <table className="items-center bg-transparent w-full border-collapse ">
             <thead>
@@ -77,7 +77,11 @@ const Invoice = () => {
           </table>
         </div>
       </div>
-      {getTracking.view && <ProceedInvoice tracking={getTracking.tracking} />}
+      <div className="flex-auto w-1/2">
+        {getTracking.view && (
+          <ProceedInvoice tracking={getTracking.tracking} setData={setData} />
+        )}
+      </div>
     </div>
   );
 };
