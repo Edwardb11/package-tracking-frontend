@@ -4,7 +4,7 @@ import ProceedInvoice from "./ProceedInvoice";
 
 const Invoice = () => {
   const { data, setData } = usePendingInvoice();
-  const state = data.data;
+  const state = data?.data;
   const [getTracking, setGetTracking] = useState({
     view: false,
     tracking: "",
@@ -39,14 +39,14 @@ const Invoice = () => {
             </thead>
 
             <tbody>
-              {state.map((item, key) => {
+              {state?.map((item, key) => {
                 return (
                   <tr key={key}>
                     <td className="border-t-0 px-10  text-md text-blue-800 font-semibold  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {item?.paquete.id_paquete}
+                      {item?.paquete?.id_paquete}
                     </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {item?.paquete.nombre}
+                      {item?.paquete?.nombre}
                     </td>
                     <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item?.paquete.peso} LB

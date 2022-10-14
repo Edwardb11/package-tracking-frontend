@@ -23,7 +23,32 @@ const AddInvoice = async (Tracking, setData, amount) => {
       title: "Factura agregada!",
       text: "La factura fue realizada con éxito!",
     });
-    setData()
+
+    let timerInterval;
+    Swal.fire({
+      icon: "success",
+      title: "¡Estamos actualizando todo para usted!!",
+      text: "Espere un momento, Por favor.",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const b = Swal.getHtmlContainer().querySelector("b");
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft();
+        }, 2000);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then(
+      fetch(`${url}/getInvoicePending`)
+        .then((response) => response.json())
+        .then((data) => setData(data))
+    );
+
+    setData();
   } catch (error) {
     if (error.response) {
       Swal.fire({
