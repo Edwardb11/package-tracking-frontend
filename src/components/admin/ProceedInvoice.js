@@ -14,16 +14,24 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
                   <h3 className="text-3xl font-semibold">
                     Facturar: {tracking}
                   </h3>
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModals(false)}>
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                  </button>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
+                  <div>
+                    <h3 className="text-xl font-base italic">
+                      Consideraciones:
+                    </h3>
+                    <div className="px-6 ">
+                      <ol className="list-[upper-roman] ">
+                        <li>Seguro: 50$</li>
+                        <li>Recorrido: 1km = 10$</li>
+                        <li>Peso: 1 LB = 250$ </li>
+                      </ol>
+                    </div>
+                  </div>
+                  <span className="font-bold pb-5">
+                    NOTA: Se cobrara 1 LB aunque pese menos!
+                  </span>
                   <form className="shadow-lg ">
                     <div className="shadow overflow-hidden sm:rounded-md ">
                       <div className="px-4 py-5 bg-white sm:p-6 ">
@@ -39,7 +47,7 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
                               type="number"
                               name="amount"
                               required
-                              className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                              className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                             />
                           </div>
                         </div>
