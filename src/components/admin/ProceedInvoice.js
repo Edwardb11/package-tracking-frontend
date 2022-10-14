@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import AddInvoice from "../../utils/AddInvoice";
 
 const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
+  const [amount, setAmount] = useState(0);
+  const Validate = async (e) => {
+    e.preventDefault();
+    AddInvoice(tracking, setData, amount);
+  };
   return (
     <>
       {showModal ? (
@@ -32,7 +38,7 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
                   <span className="font-bold pb-5">
                     NOTA: Se cobrara 1 LB aunque pese menos!
                   </span>
-                  <form className="shadow-lg ">
+                  <form className="shadow-lg " onSubmit={Validate}>
                     <div className="shadow overflow-hidden sm:rounded-md ">
                       <div className="px-4 py-5 bg-white sm:p-6 ">
                         <div className="grid grid-cols-6 gap-6">
@@ -43,6 +49,8 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
                               Monto*
                             </label>
                             <input
+                              value={amount}
+                              onChange={(e) => setAmount(e.target.value)}
                               id="amount"
                               type="number"
                               name="amount"
