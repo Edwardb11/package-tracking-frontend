@@ -5,7 +5,8 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
   const [amount, setAmount] = useState(0);
   const Validate = async (e) => {
     e.preventDefault();
-    AddInvoice(tracking, setData, amount);
+    AddInvoice(tracking, setData, amount, setShowModals);
+    setShowModals(false)
   };
   return (
     <>

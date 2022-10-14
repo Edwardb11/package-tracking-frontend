@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
 
-const AddInvoice = async (Tracking, setData, amount) => {
+const AddInvoice = async (tracking, setData, amount) => {
   if (amount < 300) {
     Swal.fire({
       title: "¡Error!",
@@ -15,40 +15,18 @@ const AddInvoice = async (Tracking, setData, amount) => {
 
   try {
     await axios.post(`${url}/addInvoice`, {
-      id_paquete: Tracking,
+      id_paquete: tracking,
       cantidad_a_pagar: amount,
     });
     Swal.fire({
       icon: "success",
       title: "Factura agregada!",
       text: "La factura fue realizada con éxito!",
-    });
-
-    let timerInterval;
-    Swal.fire({
-      icon: "success",
-      title: "¡Estamos actualizando todo para usted!!",
-      text: "Espere un momento, Por favor.",
-      showConfirmButton: false,
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading();
-        const b = Swal.getHtmlContainer().querySelector("b");
-        timerInterval = setInterval(() => {
-          b.textContent = Swal.getTimerLeft();
-        }, 2000);
-      },
-      willClose: () => {
-        clearInterval(timerInterval);
-      },
     }).then(
       fetch(`${url}/getInvoicePending`)
         .then((response) => response.json())
         .then((data) => setData(data))
     );
-
-    setData();
   } catch (error) {
     if (error.response) {
       Swal.fire({
