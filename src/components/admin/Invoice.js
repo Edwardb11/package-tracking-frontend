@@ -80,7 +80,8 @@ const Invoice = () => {
       {getTracking.view && (
         <ProceedInvoice
           tracking={getTracking.tracking}
-          modal={getTracking.view}
+          setShowModals={setGetTracking}
+          showModal={getTracking.view}
           setData={setData}
         />
         
