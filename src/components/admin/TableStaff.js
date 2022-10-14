@@ -39,7 +39,7 @@ const TableStaff = () => {
                     <tr
                       className=" border-b text-sm text-gray-600"
                       key={items.personal.id_personal}>
-                      <td className=" px-6 text-md  p-2 border-r whitespace-nowrap p-4">
+                      <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
                         {items.personal.nombres} {items.personal.apellidos}
                       </td>
                       <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
@@ -53,7 +53,13 @@ const TableStaff = () => {
                         {items.personal?.roles[1]?.nombre} -{" "}
                         {items.personal?.roles[2]?.nombre}
                       </td>
-                      <td>
+                      <td className=" text-center justify-center ">
+                        <button
+                          className="
+                          bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                          type="submit">
+                          Editar
+                        </button>
                         <button
                           disabled={
                             items.personal?.id_personal === user.staffId
@@ -61,12 +67,11 @@ const TableStaff = () => {
                           onClick={() =>
                             removeStaff(items.personal.id_personal, setData)
                           }
-                          className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md 
-                      ${
-                        items.personal?.id_personal === user.staffId
-                          ? " bg-gray-300  hover:bg-gra-100 cursor-not-allowed "
-                          : " text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                      }
+                          className={`font-bold uppercase  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+                      ${items.personal?.id_personal === user.staffId
+                              ? " bg-gray-300  hover:bg-gra-100 cursor-not-allowed "
+                              : "bg-red-500 text-white active:bg-red-900 text-sm "
+                            }
                       `}>
                           Eliminar
                         </button>
