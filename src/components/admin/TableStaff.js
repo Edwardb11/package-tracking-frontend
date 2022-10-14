@@ -13,7 +13,7 @@ const TableStaff = () => {
         <div className="block w-full overflow-x-auto">
           <table className="items-center bg-transparent w-full border-collapse ">
             <thead>
-              <tr className="bg-gray-200">
+              <tr className="bg-gray-700 text-white">
                 <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Nombre completo
                 </th>
