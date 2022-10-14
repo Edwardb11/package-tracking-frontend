@@ -38,8 +38,8 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
                   <span className="font-bold pb-5">
                     NOTA: Se cobrara 1 LB aunque pese menos!
                   </span>
-                  <form className="shadow-lg " onSubmit={Validate}>
-                    <div className="shadow overflow-hidden sm:rounded-md ">
+                  <form className="" onSubmit={Validate}>
+                    <div className="shadow overflow-hidden sm:rounded-md  shadow-lg ">
                       <div className="px-4 py-5 bg-white sm:p-6 ">
                         <div className="grid grid-cols-6 gap-6">
                           <div className="col-span-6 sm:col-span-3">
@@ -61,22 +61,21 @@ const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
                         </div>
                       </div>
                     </div>
+                    {/*footer*/}
+                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                      <button
+                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModals(false)}>
+                        Cerrar
+                      </button>
+                      <button
+                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="submit">
+                        Guardar
+                      </button>
+                    </div>
                   </form>
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModals(false)}>
-                    Cerrar
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModals(false)}>
-                    Guardar
-                  </button>
                 </div>
               </div>
             </div>
