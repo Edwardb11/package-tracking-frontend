@@ -100,7 +100,7 @@ export const removeStaff = async (id, setData) => {
     confirmButtonText: "Si",
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(`${url}/removeStaff/${id}`);
+      axios.put(`${url}/changeStateStaff/${id}`, { activo: 0 });
       fetch(`${url}/getStaff`)
         .then((response) => response.json())
         .then((data) => setData(data));
