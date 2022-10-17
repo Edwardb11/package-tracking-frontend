@@ -22,17 +22,19 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                     </h3>
                     <div className="px-6 ">
                       <ol className="list-[number] ">
-                        <li>No puedes editar información basica.</li>
                         <li>
-                          Esta vista es especializada para ver y editar roles.
+                          Esta vista es especializada eliminar y agregar roles.
+                        </li>
+                        <li>
+                          Eliminar rol funciona inmediatamente.
                         </li>
                       </ol>
                     </div>
                   </div>
                   <span className="font-bold pb-10">
-                    NOTA: Debes darle a guardar para registrar los cambios!
+                    NOTA: Debes darle a guardar para agregar un nuevo rol!
                   </span>
-                  <div className="pt-5 flex flex-wrap  ">
+                  <div className="pt-5 flex flex-wrap justify-around	 ">
                     <table className="items-center bg-transparent w-1/2 border-collapse ">
                       <thead>
                         <tr>
@@ -61,6 +63,23 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                         </tr>
                       </tbody>
                     </table>
+                    <div className=" flex-end">
+                      <h1>Agregar rol</h1>
+                      <label
+                        for="country"
+                        class="block text-sm font-medium text-gray-700">
+                        Roles disponibles
+                      </label>
+                      <select
+                        id="country"
+                        name="country"
+                        autocomplete="country"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option>Trabajador</option>
+                        <option>...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
                   </div>
                   <ButtonsModal setShowModals={setShowModals} />
                 </div>
