@@ -29,10 +29,39 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                       </ol>
                     </div>
                   </div>
-                  <span className="font-bold pb-5">
+                  <span className="font-bold pb-10">
                     NOTA: Debes darle a guardar para registrar los cambios!
                   </span>
-
+                  <div className="pt-5 flex flex-wrap  ">
+                    <table className="items-center bg-transparent w-1/2 border-collapse ">
+                      <thead>
+                        <tr>
+                          <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Roles
+                          </th>
+                          <th className="px-6 align-middle border border-solid border-blueGray-100 py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Accion
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className=" border-b text-sm text-gray-600">
+                          <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                            Trabajador
+                          </td>
+                          <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                            <button
+                              className={`font-bold uppercase  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+                           bg-red-500 text-white active:bg-red-900 text-sm 
+                      }
+                      `}>
+                              Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   <ButtonsModal setShowModals={setShowModals} />
                 </div>
               </div>
