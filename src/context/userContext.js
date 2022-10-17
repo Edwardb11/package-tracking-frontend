@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const User = createContext({
   log: false,
-  setAdmin: () => {},
+  setLog: () => {},
   user: { name: "", userId: "", email: "", rol: "", staffId: "" },
   setUser: () => {},
 });
