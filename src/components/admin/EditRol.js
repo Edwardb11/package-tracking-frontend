@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { url } from "../../api/api";
 import useGetRoles from "../../hooks/useGetRoles";
 import { AddRol } from "../../utils/AddRol";
+import { removeRol } from "../../utils/deleteRol";
 import ButtonsModal from "./ButtonsModal";
 
 const EditRol = ({ id, setData, showModal, setShowModals }) => {
@@ -73,16 +74,19 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                           return (
                             <>
                               <tr className=" border-b text-sm text-gray-600">
-                                <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                                <td className=" px-6 text-md   p-2 border-r whitespace-nowrap ">
                                   {items?.role?.nombre}
                                 </td>
-                                <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                                <td className=" px-6 text-md   p-2 border-r whitespace-nowrap ">
                                   <button
                                     className={`font-bold uppercase  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
                            bg-red-500 text-white active:bg-red-900 text-sm 
                       }
-                      `}>
-                                    Eliminar {items?.role?.id_roles}
+                      `}
+                                    onClick={() =>
+                                      removeRol(id, items?.role?.id_roles)
+                                    }>
+                                    Eliminar
                                   </button>
                                 </td>
                               </tr>
