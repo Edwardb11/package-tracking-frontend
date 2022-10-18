@@ -2,9 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
 
-export const AddRol = async (idStaff, idRol) => {
-  console.log(idStaff);
-  console.log(idRol);
+export const AddRol = async (idStaff, idRol, setData) => {
   if (idStaff === "") {
     Swal.fire({
       title: "¡Error!",
@@ -32,12 +30,15 @@ export const AddRol = async (idStaff, idRol) => {
       title: "¡Paquete pagado!",
       text: "Rol agregado con éxito!",
     });
+    fetch(`${url}/getStaff`)
+      .then((response) => response.json())
+      .then((data) => setData(data));
   } catch (error) {
     if (error.response) {
       Swal.fire({
         icon: "error",
         title: "¡Ups! Ha ocurrido un error",
-        text: "Este rol ya lo tiene el usuario",
+        text: "Este rol ya le pertenece al usuario!",
         showConfirmButton: true,
       });
     }

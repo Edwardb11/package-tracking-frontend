@@ -24,7 +24,7 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
   const rol = useGetRoles();
   const Validate = (e) => {
     e.preventDefault();
-    AddRol(id, idRol);
+    AddRol(id, idRol, setData);
   };
 
   return (
