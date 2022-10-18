@@ -108,7 +108,7 @@ export const removeStaff = async (id, setData) => {
   });
 };
 
-export const AddRolStaff = async (idStaff, idRol, setData) => {
+export const AddRolStaff = async (idStaff, idRol, setData, setRol) => {
   if (idStaff === "") {
     Swal.fire({
       title: "¡Error!",
@@ -133,12 +133,17 @@ export const AddRolStaff = async (idStaff, idRol, setData) => {
     });
     Swal.fire({
       icon: "success",
-      title: "¡Paquete pagado!",
+      title: "¡Rol agregado!",
       text: "Rol agregado con éxito!",
     });
+    // Update table
     fetch(`${url}/getStaff`)
       .then((response) => response.json())
       .then((data) => setData(data));
+    // Update modal
+    fetch(`${url}/getStaffID/${idStaff}`)
+      .then((response) => response.json())
+      .then((data) => setRol(data));
   } catch (error) {
     if (error.response) {
       Swal.fire({

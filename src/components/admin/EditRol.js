@@ -24,7 +24,7 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
   const rol = useGetRoles();
   const Validate = (e) => {
     e.preventDefault();
-    AddRolStaff(id, idRol, setData);
+    AddRolStaff(id, idRol, setData, setRol);
   };
 
   return (
@@ -84,7 +84,12 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                       }
                       `}
                                     onClick={() =>
-                                      removeRol(id, items?.role?.id_roles,setData,setRol)
+                                      removeRol(
+                                        id,
+                                        items?.role?.id_roles,
+                                        setData,
+                                        setRol
+                                      )
                                     }>
                                     Eliminar
                                   </button>
