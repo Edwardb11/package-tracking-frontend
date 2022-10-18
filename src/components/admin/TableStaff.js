@@ -67,7 +67,7 @@ const TableStaff = () => {
                          
                           ${
                             items.personal?.id_personal === user.staffId
-                              ? " bg-gray-300  hover:bg-gra-100 cursor-not-allowed "
+                              ? " bg-gray-300  hover:bg-gray-100 cursor-not-allowed "
                               : "bg-emerald-500 text-white active:bg-emerald-600"
                           }
                           `}
@@ -86,10 +86,11 @@ const TableStaff = () => {
                           onClick={() =>
                             removeStaff(items.personal.id_personal, setData)
                           }
-                          className={`font-bold uppercase  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
-                      ${
+                          className={`
+                          font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+                          ${
                         items.personal?.id_personal === user.staffId
-                          ? " bg-gray-300  hover:bg-gra-100 cursor-not-allowed "
+                          ? " bg-gray-300  hover:bg-gray-100 cursor-not-allowed "
                           : "bg-red-500 text-white active:bg-red-900 text-sm "
                       }
                       `}>

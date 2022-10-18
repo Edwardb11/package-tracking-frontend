@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { url } from "../../api/api";
 import useGetRoles from "../../hooks/useGetRoles";
+import { AddRol } from "../../utils/AddRol";
 import ButtonsModal from "./ButtonsModal";
 
 const EditRol = ({ id, setData, showModal, setShowModals }) => {
   const [rolStaff, setRol] = useState({ data: [] });
   const [isEmpty, setIsEmpty] = useState(true);
+  const [idRol, setIdRol] = useState("");
   useEffect(() => {
     if (isEmpty) {
       fetch(`${url}/getStaffID/${id}`)
@@ -19,6 +21,11 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
 
   const state = rolStaff?.data;
   const rol = useGetRoles();
+  const Validate = (e) => {
+    e.preventDefault();
+    AddRol(id, idRol);
+  };
+
   return (
     <>
       {showModal ? (
@@ -47,7 +54,7 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                     </div>
                   </div>
                   <span className="font-bold pb-10">
-                    NOTA: Debes darle a guardar para agregar un nuevo rol!
+                    NOTA: Debes darle a agregar para guardar un nuevo rol!
                   </span>
                   <div className="pt-5 flex flex-wrap justify-around	 ">
                     <table className="items-center bg-transparent w-1/2 border-collapse ">
@@ -84,18 +91,23 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                         })}
                       </tbody>
                     </table>
-                    <div className=" flex-end">
-                      <h1>Agregar rol</h1>
+                    <form className="flex-end pt-10" onSubmit={Validate}>
+                      <h1 className="font-bold"> Agregar rol</h1>
                       <label
-                        for="country"
-                        class="block text-sm font-medium text-gray-700">
+                        for="rol"
+                        className="block text-sm font-medium text-gray-700">
                         Roles disponibles
                       </label>
                       <select
-                        id="country"
-                        name="country"
-                        autocomplete="country"
+                        id="rol"
+                        name="rol"
+                        value={idRol}
+                        onChange={(e) => setIdRol(e.target.value)}
+                        autocomplete="rol"
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="" className="selected disabled hidden">
+                          Seleccione
+                        </option>
                         {rol?.data.map((state, i) => {
                           return (
                             <>
@@ -106,9 +118,17 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                           );
                         })}
                       </select>
-                    </div>
+                      <button
+                        className="my-6 justify-end bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="submit">
+                        Agregar
+                      </button>
+                    </form>
                   </div>
-                  <ButtonsModal setShowModals={setShowModals} />
+                  <ButtonsModal
+                    setShowModals={setShowModals}
+                    onlyClose={true}
+                  />
                 </div>
               </div>
             </div>
