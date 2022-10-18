@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { url } from "../../api/api";
+import useGetRoles from "../../hooks/useGetRoles";
 import ButtonsModal from "./ButtonsModal";
 
 const EditRol = ({ id, setData, showModal, setShowModals }) => {
+  const [rolStaff, setRol] = useState({ data: [] });
+  const [isEmpty, setIsEmpty] = useState(true);
+  useEffect(() => {
+    if (isEmpty) {
+      fetch(`${url}/getStaffID/${id}`)
+        .then((response) => response.json())
+        .then((data) => setRol(data));
+      setIsEmpty(false);
+    } else {
+      return () => {};
+    }
+  }, [id, isEmpty]);
+
+  const state = rolStaff?.data;
+  const rol = useGetRoles();
   return (
     <>
       {showModal ? (
@@ -25,9 +42,7 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                         <li>
                           Esta vista es especializada eliminar y agregar roles.
                         </li>
-                        <li>
-                          Eliminar rol funciona inmediatamente.
-                        </li>
+                        <li>Eliminar rol funciona inmediatamente.</li>
                       </ol>
                     </div>
                   </div>
@@ -47,20 +62,26 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className=" border-b text-sm text-gray-600">
-                          <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
-                            Trabajador
-                          </td>
-                          <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
-                            <button
-                              className={`font-bold uppercase  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+                        {state.map((items) => {
+                          return (
+                            <>
+                              <tr className=" border-b text-sm text-gray-600">
+                                <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                                  {items?.role?.nombre}
+                                </td>
+                                <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                                  <button
+                                    className={`font-bold uppercase  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
                            bg-red-500 text-white active:bg-red-900 text-sm 
                       }
                       `}>
-                              Eliminar
-                            </button>
-                          </td>
-                        </tr>
+                                    Eliminar {items?.role?.id_roles}
+                                  </button>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        })}
                       </tbody>
                     </table>
                     <div className=" flex-end">
@@ -75,9 +96,15 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                         name="country"
                         autocomplete="country"
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option>Trabajador</option>
-                        <option>...</option>
-                        <option>...</option>
+                        {rol?.data.map((state, i) => {
+                          return (
+                            <>
+                              <option value={state.id_roles}>
+                                {state.nombre}
+                              </option>
+                            </>
+                          );
+                        })}
                       </select>
                     </div>
                   </div>
