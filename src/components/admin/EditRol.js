@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { url } from "../../api/api";
 import useGetRoles from "../../hooks/useGetRoles";
-import { AddRol } from "../../utils/AddRol";
-import { removeRol } from "../../utils/deleteRol";
+import { AddRolStaff, removeRol } from "../../utils/Staff";
+
 import ButtonsModal from "./ButtonsModal";
 
 const EditRol = ({ id, setData, showModal, setShowModals }) => {
@@ -24,7 +24,7 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
   const rol = useGetRoles();
   const Validate = (e) => {
     e.preventDefault();
-    AddRol(id, idRol, setData);
+    AddRolStaff(id, idRol, setData);
   };
 
   return (
@@ -84,7 +84,7 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                       }
                       `}
                                     onClick={() =>
-                                      removeRol(id, items?.role?.id_roles)
+                                      removeRol(id, items?.role?.id_roles,setData,setRol)
                                     }>
                                     Eliminar
                                   </button>

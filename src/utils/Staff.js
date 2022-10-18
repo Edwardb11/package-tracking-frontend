@@ -107,3 +107,75 @@ export const removeStaff = async (id, setData) => {
     }
   });
 };
+
+export const AddRolStaff = async (idStaff, idRol, setData) => {
+  if (idStaff === "") {
+    Swal.fire({
+      title: "¡Error!",
+      text: "Ups! Ha ocurrido un error al agregar un nuevo rol a este usuario.",
+      icon: "warning",
+      confirmButtonText: "OK",
+    });
+    return;
+  } else if (idRol === "" || idRol === undefined) {
+    Swal.fire({
+      title: "¡Error!",
+      text: "Ups! No has selecionado ningun rol.",
+      icon: "warning",
+      confirmButtonText: "OK",
+    });
+    return;
+  }
+  try {
+    await axios.post(`${url}/addStaffRol`, {
+      id_personal: idStaff,
+      id_roles: idRol,
+    });
+    Swal.fire({
+      icon: "success",
+      title: "¡Paquete pagado!",
+      text: "Rol agregado con éxito!",
+    });
+    fetch(`${url}/getStaff`)
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  } catch (error) {
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups! Ha ocurrido un error",
+        text: "Este rol ya le pertenece al usuario!",
+        showConfirmButton: true,
+      });
+    }
+  }
+};
+export const removeRol = async (idStaff, idRol, setData, setRol) => {
+  console.log(idStaff, idRol);
+  Swal.fire({
+    title: "¿Estás seguro de eliminar este rol a este personal ?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(`${url}/removeRol`, {
+        data: {
+          id_personal: idStaff,
+          id_roles: idRol,
+        },
+      });
+      // Update table
+      fetch(`${url}/getStaff`)
+        .then((response) => response.json())
+        .then((data) => setData(data));
+      // Update modal
+      fetch(`${url}/getStaffID/${idStaff}`)
+        .then((response) => response.json())
+        .then((data) => setRol(data));
+    }
+  });
+};
