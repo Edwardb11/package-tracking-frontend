@@ -1,25 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import User from "../../context/userContext";
-import { url } from "../../api/api";
 import { Link } from "react-router-dom";
+import useGetPackagebyUser from "../../hooks/useGetPackagebyUser";
 
 const PackagesTable = () => {
   const { user } = useContext(User);
   const userId = user.userId;
-  const [data, setData] = useState({ data: [] });
-  const [isEmpty, setIsEmpty] = useState(true);
-  useEffect(() => {
-    if (isEmpty) {
-      fetch(`${url}/getPackage/${userId}`)
-        .then((response) => response.json())
-        .then((data) => setData(data));
-      setIsEmpty(false);
-    } else {
-      return () => {};
-    }
-  }, [data, setData, isEmpty, userId]);
-
-  // console.log(data );\
+  const data = useGetPackagebyUser(userId);
   return (
     <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto ">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -56,17 +43,18 @@ const PackagesTable = () => {
                     </td>
                     <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
                       {items.facturas[0]?.cantidad_a_pagar || "No definido"}
-                      {console.log(items.facturas[0]?.id_factura === undefined)}
                     </td>
-                    <td className="py-4 px-6 border-b border-grey-light">
+                    <td className="py-1 px-2 border-b border-grey-light">
                       <button
-                        className={`text-white  font-bold py-2 px-4 rounded inline-flex items-center 
-                        ${
-                          items.facturas[0]?.id_factura === undefined
-                            ? " bg-blue-300  hover:bg-blue-200 cursor-not-allowed "
-                            : " bg-blue-500  cursor-pointer  hover:bg-blue-600"
-                        }
-                        `}>
+                        className={`
+                        font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150
+                      
+                       ${
+                         items.facturas[0]?.id_factura === undefined
+                           ? " bg-gray-300  hover:bg-gray-100 cursor-not-allowed "
+                           : "bg-emerald-500 text-white active:bg-emerald-600"
+                       }
+                       `}>
                         {items.facturas[0]?.id_factura !== undefined && (
                           <Link
                             to={`/packagePayment/${items.facturas[0]?.id_factura}`}>
