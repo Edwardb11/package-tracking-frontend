@@ -10,9 +10,8 @@ const PackagesTable = () => {
   const data = useGetPackagebyUser(userId);
   const transation = useGetTranssation();
 
-  // console.log(filters);
   return (
-    <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto ">
+    <div className="w-full xl:w-9/12 mb-12 xl:mb-0 px-4 mx-auto ">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
         <div className="block w-full overflow-x-auto">
           <table className="items-center bg-transparent w-full border-collapse ">
@@ -39,14 +38,15 @@ const PackagesTable = () => {
               {data.data.map((items) => {
                 return (
                   <tr className=" border-b text-sm text-gray-600">
-                    <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
+                    <td className=" px-6 text-md text-blue-900 font-bold   p-2 border-r whitespace-nowrap p-4">
                       {items.id_paquete}
                     </td>
                     <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
                       {items.nombre}
                     </td>
                     <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
-                      {items.facturas[0]?.cantidad_a_pagar || "No definido"}
+                      {`${items.facturas[0]?.cantidad_a_pagar}` ||
+                        "No definido"}
                     </td>
                     <td className="py-1 px-2 border-b border-grey-light">
                       <button
@@ -95,8 +95,6 @@ const PackagesTable = () => {
                             d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-
-                        {/* <span> Mostrar</span> */}
                       </button>{" "}
                     </td>
                   </tr>
