@@ -2,11 +2,15 @@ import React, { useContext } from "react";
 import User from "../../context/userContext";
 import { Link } from "react-router-dom";
 import useGetPackagebyUser from "../../hooks/useGetPackagebyUser";
+import useGetTranssation from "../../hooks/useGetTranssation";
 
 const PackagesTable = () => {
   const { user } = useContext(User);
   const userId = user.userId;
   const data = useGetPackagebyUser(userId);
+  const transation = useGetTranssation();
+
+  // console.log(filters);
   return (
     <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto ">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -24,7 +28,7 @@ const PackagesTable = () => {
                   Costo de envio
                 </th>
                 <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Factura
+                  Realizar pago
                 </th>
                 <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Mas informacion
@@ -58,7 +62,17 @@ const PackagesTable = () => {
                         {items.facturas[0]?.id_factura !== undefined && (
                           <Link
                             to={`/packagePayment/${items.facturas[0]?.id_factura}`}>
-                            <span>Pagar</span>
+                            {/* <span>Pagar</span> */}
+                            {transation.transation.map((i) => {
+                              return (
+                                <span>
+                                  {items.facturas[0]?.id_factura ===
+                                  i.id_factura
+                                    ? "Ver pago"
+                                    : "Pagar"}
+                                </span>
+                              );
+                            })}
                           </Link>
                         )}
                         {items.facturas[0]?.id_factura === undefined && (
