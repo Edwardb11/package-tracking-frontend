@@ -25,28 +25,51 @@ const ShowMore = ({ items, showModal, setShowModals }) => {
                       Información general
                     </h3>
                     <div className="px-6 ">
-                      <ul className="list-disc ">
-                        <li>Nombre: {items.nombre}</li>
-                        <li>Cantidad:{items.cantidad}</li>
-                        <li>Peso: {items.peso} LB </li>
-                        <li>Recoger: {items.ubicacion} </li>
-                        <li>Destino: {items.usuario_finale.ubicacion} </li>
-                      </ul>
+                      <div className="flex justify-between  ">
+                        <span className="font-bold ">Nombre</span>
+                        <span>{items.nombre}</span>
+                      </div>
+                      <div className="flex justify-between  ">
+                        <span className="font-bold ">Cantidad</span>
+                        <span>{items.cantidad}</span>
+                      </div>
+                      <div className="flex justify-between  ">
+                        <span className="font-bold ">Peso</span>
+                        <span>{items.peso} LB</span>
+                      </div>
+                      <div className="flex justify-between  ">
+                        <span className="font-bold ">Recoger</span>
+                        <span>{items.ubicacion}</span>
+                      </div>
+                      <div className="flex justify-between  ">
+                        <span className="font-bold ">Entregar a</span>
+                        <span>
+                          {items.usuario_finale.nombres}{" "}
+                          {items.usuario_finale.apellidos}{" "}
+                        </span>
+                      </div>
+                      <div className="flex justify-between  ">
+                        <span className="font-bold ">Destino</span>
+                        <span>{items.usuario_finale.ubicacion}</span>
+                      </div>
                     </div>
                     <div className="mt-10 ">
                       <h3 className="text-xl font-semibold italic ">
                         Ultimo estado
                       </h3>
-                      <div className="flex justify-between text-blue-900 ">
-                        <span className="font-bold ">
-                          {items?.estados[lastState - 1]?.nombre || "Pendiente"}
-                        </span>
-                        <span className=" 	">
-                          {convertDate(
-                            items?.estados[lastState - 1]?.paquetes_estados
-                              ?.creado
-                          ) || "Pendiente"}
-                        </span>
+                      <div className="px-6 ">
+                        <div className="flex justify-between  ">
+                          <span className="font-bold ">
+                            {items?.estados[lastState - 1]?.nombre ||
+                              "Pendiente"}
+                          </span>
+                          <span>
+                            {convertDate(
+                              items?.estados[lastState - 1]?.paquetes_estados
+                                ?.creado
+                            ) || "Pendiente"}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
