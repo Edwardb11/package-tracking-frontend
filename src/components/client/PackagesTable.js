@@ -21,31 +21,25 @@ const PackagesTable = () => {
 
   // console.log(data );\
   return (
-    <>
-      <div className="w-2/3 mx-auto">
-        <div className="bg-white shadow-md rounded my-6">
-          <table className="text-left w-full border-collapse">
+    <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto ">
+      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div className="block w-full overflow-x-auto">
+          <table className="items-center bg-transparent w-full border-collapse ">
             <thead>
-              <tr>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
+              <tr className="bg-gray-700 text-white">
+                <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Tracking
                 </th>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
+                <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Paquete
                 </th>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
-                  Cantidad
-                </th>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
-                  Peso
-                </th>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
+                <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Costo de envio
                 </th>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
+                <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Factura
                 </th>
-                <th className="py-4 px-6 bg-grey-lightest font-bold  text-sm text-grey-dark border-b border-grey-light">
+                <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Mas informacion
                 </th>
               </tr>
@@ -53,20 +47,14 @@ const PackagesTable = () => {
             <tbody>
               {data.data.map((items) => {
                 return (
-                  <tr className="hover:bg-grey-lighter">
-                    <td className="py-4 px-6 border-b border-grey-light">
+                  <tr className=" border-b text-sm text-gray-600">
+                    <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
                       {items.id_paquete}
                     </td>
-                    <td className="py-4 px-6 border-b border-grey-light">
+                    <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
                       {items.nombre}
                     </td>
-                    <td className="py-4 px-6 border-b border-grey-light">
-                      # {items.cantidad}
-                    </td>
-                    <td className="py-4 px-6 border-b border-grey-light">
-                      {items.peso} LB
-                    </td>
-                    <td className="py-4 px-6 border-b border-grey-light">
+                    <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
                       {items.facturas[0]?.cantidad_a_pagar || "No definido"}
                       {console.log(items.facturas[0]?.id_factura === undefined)}
                     </td>
@@ -78,12 +66,10 @@ const PackagesTable = () => {
                             ? " bg-blue-300  hover:bg-blue-200 cursor-not-allowed "
                             : " bg-blue-500  cursor-pointer  hover:bg-blue-600"
                         }
-                        `}
-                      >
+                        `}>
                         {items.facturas[0]?.id_factura !== undefined && (
                           <Link
-                            to={`/packagePayment/${items.facturas[0]?.id_factura}`}
-                          >
+                            to={`/packagePayment/${items.facturas[0]?.id_factura}`}>
                             <span>Pagar</span>
                           </Link>
                         )}
@@ -100,8 +86,7 @@ const PackagesTable = () => {
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
-                          className="w-6 h-6"
-                        >
+                          className="w-6 h-6">
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -119,7 +104,7 @@ const PackagesTable = () => {
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
