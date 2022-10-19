@@ -7,8 +7,8 @@ export const staffCardData = [
     id: 1,
     img: viewStaff,
     link: "/admin/listStaff",
-    name: "Ver personal",
-    description: "Listar todos los empleados en la empresa",
+    name: "Personal",
+    description: "Todos los empleados de la empresa",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const staffCardData = [
     id: 3,
     img: Rol,
     link: "/admin/registerStaff",
-    name: "Editar roles",
-    description: "Agregar o Editar roles de los empleados",
+    name: "Personal inactivo",
+    description: "Personales inactivos ",
   },
 ];
