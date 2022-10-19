@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import User from "../../context/userContext";
 import { Link } from "react-router-dom";
 import useGetPackagebyUser from "../../hooks/useGetPackagebyUser";
 import useGetTranssation from "../../hooks/useGetTranssation";
+import ShowMore from "./ShowMore";
 
 const PackagesTable = () => {
   const { user } = useContext(User);
   const userId = user.userId;
   const data = useGetPackagebyUser(userId);
   const transation = useGetTranssation();
-
+  const [getTracking, setGetTracking] = useState({
+    view: false,
+    items: {},
+  });
   return (
     <div className="w-full xl:w-9/12 mb-12 xl:mb-0 px-4 mx-auto ">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -81,7 +85,14 @@ const PackagesTable = () => {
                       </button>
                     </td>
                     <td className="py-4 px-6 border-b border-grey-light">
-                      <button className="border-blue-500 bg-blue-500 text-white   font-bold py-2 px-4 rounded inline-flex items-center hover:border-blue-600 hover:bg-blue-600">
+                      <button
+                        onClick={() =>
+                          setGetTracking({
+                            view: !getTracking.view,
+                            items: items,
+                          })
+                        }
+                        className="border-blue-500 bg-blue-500 text-white   font-bold py-2 px-4 rounded inline-flex items-center hover:border-blue-600 hover:bg-blue-600">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -104,6 +115,13 @@ const PackagesTable = () => {
           </table>
         </div>
       </div>
+      {getTracking.view && (
+        <ShowMore
+          items={getTracking.items}
+          setShowModals={setGetTracking}
+          showModal={getTracking.view}
+        />
+      )}
     </div>
   );
 };
