@@ -3,9 +3,7 @@ import ButtonsModal from "../admin/ButtonsModal";
 import convertDate from "../../utils/convertDate";
 
 const ShowMore = ({ items, showModal, setShowModals }) => {
-  console.log(items);
-
-  const lastState = items.estados.length;
+  const lastState = items?.estados?.length;
   return (
     <>
       {showModal ? (
@@ -41,12 +39,13 @@ const ShowMore = ({ items, showModal, setShowModals }) => {
                       </h3>
                       <div className="flex justify-between text-blue-900 ">
                         <span className="font-bold ">
-                          {items.estados[lastState - 1].nombre}
+                          {items?.estados[lastState - 1]?.nombre || "Pendiente"}
                         </span>
                         <span className=" 	">
                           {convertDate(
-                            items.estados[lastState - 1].paquetes_estados.creado
-                          )}
+                            items?.estados[lastState - 1]?.paquetes_estados
+                              ?.creado
+                          ) || "Pendiente"}
                         </span>
                       </div>
                     </div>
