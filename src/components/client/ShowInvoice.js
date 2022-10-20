@@ -65,36 +65,42 @@ const ShowInvoice = () => {
           <div className="p-9">
             <div className="flex w-full">
               <div className="grid grid-cols-4 gap-12">
-                <div className="text-sm font-light text-slate-500">
-                  <p className="text-sm font-normal text-slate-700">
+                <div className="font-light text-slate-500">
+                  <p className="text-md font-normal text-slate-700">
                     Transsación
                   </p>
-                  <p># {Transaction}</p>
-                  <p>{PaymentMethod}</p>
-                  <p>{convertDate(TransactionDate)}</p>
+                  <p className="text-sm"># {Transaction}</p>
+                  <p className="text-sm">{PaymentMethod}</p>
+                  <p className="text-sm">{convertDate(TransactionDate)}</p>
                 </div>
-                <div className="text-sm font-light text-slate-500">
-                  <p className="text-sm font-normal text-slate-700">
+                <div className=" font-light text-slate-500">
+                  <p className="text-md font-normal text-slate-700">
                     Facturado a
                   </p>
-                  <p> {`${clientName}  ${clientLastName} `}</p>
-                  <p> {`${clientPhone}`}</p>
+                  <p className="text-sm">
+                    {" "}
+                    {`${clientName}  ${clientLastName} `}
+                  </p>
+                  <p className="text-sm"> {`${clientPhone}`}</p>
                 </div>
-                <div className="text-sm font-light text-slate-500">
-                  <p className="text-sm font-normal text-slate-700">
+                <div className="font-light text-slate-500">
+                  <p className="text-md font-normal text-slate-700">
                     Enviado a{" "}
                   </p>
-                  <p> {`${endUserName}  ${endUserLastName} `}</p>
-                  <p> {`${endUserPhone} `}</p>
-                  <p> {`${endUserLocation}`}</p>
+                  <p className="text-sm">
+                    {" "}
+                    {`${endUserName}  ${endUserLastName} `}
+                  </p>
+                  <p className="text-sm"> {`${endUserPhone} `}</p>
+                  <p className="text-sm"> {`${endUserLocation}`}</p>
                 </div>
-                <div className="text-sm font-light text-slate-500">
-                  <p className="text-sm font-normal text-slate-700">Factura</p>
-                  <p># {Invoice}</p>
-                  <p className="mt-2 text-sm font-normal text-slate-700">
+                <div className="font-light text-slate-500">
+                  <p className="text-md font-normal text-slate-700">Factura</p>
+                  <p className="text-sm"> # {Invoice}</p>
+                  <p className="mt-2 text-md font-normal text-slate-700">
                     Fecha
                   </p>
-                  <p> {convertDate(InvoiceDate)}</p>
+                  <p className="text-sm"> {convertDate(InvoiceDate)}</p>
                 </div>
               </div>
             </div>
@@ -106,27 +112,27 @@ const ShowInvoice = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-normal text-slate-700 sm:pl-6 md:pl-0">
+                      className="py-3.5 pl-4 pr-3 text-left text-md font-normal text-slate-700 sm:pl-6 md:pl-0">
                       ID
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-normal text-slate-700 sm:pl-6 md:pl-0">
+                      className="py-3.5 pl-4 pr-3 text-left text-md font-normal text-slate-700 sm:pl-6 md:pl-0">
                       Descripcion
                     </th>
                     <th
                       scope="col"
-                      className="hidden py-3.5 px-3 text-right text-sm font-normal text-slate-700 sm:table-cell">
+                      className="hidden py-3.5 px-3 text-right text-md font-normal text-slate-700 sm:table-cell">
                       Cantidad
                     </th>
                     <th
                       scope="col"
-                      className="hidden py-3.5 px-3 text-right text-sm font-normal text-slate-700 sm:table-cell">
+                      className="hidden py-3.5 px-3 text-right text-md font-normal text-slate-700 sm:table-cell">
                       Libras
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-3 pr-4 text-right text-sm font-normal text-slate-700 sm:pr-6 md:pr-0">
+                      className="py-3.5 pl-3 pr-4 text-right text-md font-normal text-slate-700 sm:pr-6 md:pr-0">
                       Costo de envio
                     </th>
                   </tr>
