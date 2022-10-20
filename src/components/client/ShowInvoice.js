@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { url } from "../../api/api";
 import showInvoice from "../../img/showInvoice.png";
 import convertDate from "../../utils/convertDate";
@@ -60,6 +60,7 @@ const ShowInvoice = () => {
               <p className="text-xl font-extrabold tracking-tight uppercase font-body">
                 Sistema de paqueteria
               </p>
+              <div className="border-t border-solid border-slate-200 rounded-b"></div>{" "}
             </div>
           </div>
           <div className="p-9">
@@ -226,6 +227,18 @@ const ShowInvoice = () => {
                 </p>
               </div>
             </div>
+            <div className="text-end flex items-center justify-end p-6 mt-8 border-t border-solid border-slate-200 rounded-b">
+              <Link
+                className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                to={"/myPackages"}>
+                Atrás
+              </Link>
+              <button
+                className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button">
+                Imprimir
+              </button>
+            </div>{" "}
           </div>
         </div>
       </article>
