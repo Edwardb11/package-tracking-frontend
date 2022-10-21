@@ -28,12 +28,12 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
+    <div className=" mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
       <div className="mt-10 sm:mt-0">
         <div className="md:grid md:grid-cols-1 md:gap-6">
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form onSubmit={Validate}>
-              <div className="shadow overflow-hidden sm:rounded-md">
+              <div className=" overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -49,7 +49,7 @@ const Register = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -65,7 +65,7 @@ const Register = () => {
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         required
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -81,7 +81,7 @@ const Register = () => {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         required
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -94,7 +94,7 @@ const Register = () => {
                         name="sex"
                         value={sex}
                         onChange={(e) => setSex(e.target.value)}
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                         required>
                         <option value="m">Masculino</option>
                         <option value="f">Femenino</option>
@@ -108,7 +108,7 @@ const Register = () => {
                       </label>
                       <select
                         name="studyLevels"
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                         value={studyLevels}
                         onChange={(e) => setStudyLevels(e.target.value)}
                         required>
@@ -131,7 +131,7 @@ const Register = () => {
                         value={birthDate}
                         onChange={(e) => setBirthDate(e.target.value)}
                         required
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
 
@@ -148,7 +148,7 @@ const Register = () => {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
@@ -164,7 +164,7 @@ const Register = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                       />
                     </div>
 
@@ -178,7 +178,7 @@ const Register = () => {
                         name="rol"
                         value={getRol}
                         onChange={(e) => setGetRol(e.target.value)}
-                        className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                        className="w-full bg-gray-50 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                         required>
                         <option value="3">Trabajador</option>
                         <option value="2">Repartidor</option>
@@ -190,7 +190,7 @@ const Register = () => {
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                     Guardar
                   </button>
                 </div>
