@@ -19,6 +19,10 @@ const ShowInvoice = () => {
     return () => {};
   }, [data, id]);
 
+  const print = () => {
+    window.print();
+  };
+
   const Package = data?.data?.transaction[0]?.factura.paquete?.nombre;
   const Transaction = data?.data?.transaction[0]?.id_transaccion;
   const TransactionDate = data?.data?.transaction[0]?.creado;
@@ -47,7 +51,20 @@ const ShowInvoice = () => {
 
   const subTotal = PackageAmount - 50;
   return (
-    <div className="max-w-5xl mx-auto mb-10 bg-white shadow-2xl shadow-gray-900/50">
+    <div className="max-w-4xl mx-auto mb-10 mt-10 bg-white shadow-2xl shadow-gray-900/50">
+      <div className="text-end flex items-center justify-end p-6 -mb-32 border-slate-200 rounded-b">
+        <Link
+          className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          to={"/myPackages"}>
+          Atrás
+        </Link>
+        <button
+          className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          onClick={print}>
+          Imprimir
+        </button>
+      </div>{" "}
       <article className="overflow-hidden">
         <div className="bg-[white] rounded-b-md">
           <div className="p-9">
@@ -227,18 +244,6 @@ const ShowInvoice = () => {
                 </p>
               </div>
             </div>
-            <div className="text-end flex items-center justify-end p-6 mt-8 border-t border-solid border-slate-200 rounded-b">
-              <Link
-                className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                to={"/myPackages"}>
-                Atrás
-              </Link>
-              <button
-                className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button">
-                Imprimir
-              </button>
-            </div>{" "}
           </div>
         </div>
       </article>

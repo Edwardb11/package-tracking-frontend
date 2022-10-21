@@ -15,7 +15,6 @@ import Tracking from "../pages/TrackingUPS";
 import MyPackages from "../pages/MyPackages";
 import DecodeToken from "../hooks/DecodeToken";
 import PackagePay from "../pages/PackagePay";
-import PackageInvoice from "../pages/PackageInvoice";
 
 import RegisterStaff from "../admin/RegisterStaff";
 import ListStaff from "../admin/ListStaff";
@@ -26,6 +25,7 @@ import ManagePackage from "../admin/ManagePackage";
 import ManageState from "../admin/ManageState";
 import ListPackage from "../admin/ListPackage";
 import InvoicePackage from "../admin/InvoicePackage";
+import ShowInvoice from "../components/client/ShowInvoice";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -52,9 +52,9 @@ const AppRouter = () => {
         />{" "}
         <PrivateRouter
           exact
-          path="/packageInvoice/:id"
+          path="/showInvoice/:id"
           log={log}
-          component={PackageInvoice}
+          component={ShowInvoice}
         />{" "}
         <PrivateRouter
           exact

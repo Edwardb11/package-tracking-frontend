@@ -49,8 +49,7 @@ const PackagesTable = () => {
                       {items.nombre}
                     </td>
                     <td className=" px-6 text-md   p-2 border-r whitespace-nowrap p-4">
-                      {`${items.facturas[0]?.cantidad_a_pagar}` ||
-                        "No definido"}
+                      {items?.facturas[0]?.cantidad_a_pagar || "No definido"}
                     </td>
                     <td className="py-1 px-2 border-b border-grey-light">
                       <button
