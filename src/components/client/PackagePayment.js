@@ -17,7 +17,7 @@ const PackagePayment = () => {
       let isEmpty = JSON.stringify(data) === "{}";
       if (isEmpty) {
         if (paid) {
-          history.push(`/packageInvoice/${id}`);
+          history.push(`/showInvoice/${id}`);
           return;
         } else {
           axios.get(`${url}/getInvoice/${id}`).then((res) => setData(res));
