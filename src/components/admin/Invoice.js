@@ -15,8 +15,8 @@ const Invoice = () => {
         <div className="block w-full overflow-x-auto">
           <table className="items-center bg-transparent w-full border-collapse ">
             <thead>
-              <tr>
-                <th className="px-6 align-middle border border-solid border-blueGray-100 py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+            <tr className="bg-gray-700 text-white">
+            <th className="px-6 align-middle border border-solid border-blueGray-100 py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Tracking
                 </th>
                 <th className="px-6  align-middle border border-solid border-blueGray-100 py-3 text-md   border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -41,24 +41,24 @@ const Invoice = () => {
             <tbody>
               {state?.map((item, key) => {
                 return (
-                  <tr key={key}>
-                    <td className="border-t-0 px-10  text-md text-blue-800 font-semibold  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  <tr key={key}  className=" border-b text-sm text-gray-600">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.id_paquete}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.nombre}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete.peso} LB
                     </td>
 
-                    <td className="border-t-0  px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.ubicacion}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.usuario_finale?.ubicacion}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       <button
                         onClick={() =>
                           setGetTracking({
@@ -66,7 +66,7 @@ const Invoice = () => {
                             tracking: item?.paquete.id_paquete,
                           })
                         }
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                         Facturar
                       </button>
                     </td>
