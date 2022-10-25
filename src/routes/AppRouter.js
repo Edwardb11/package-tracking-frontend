@@ -26,6 +26,7 @@ import ManageState from "../admin/ManageState";
 import ListPackage from "../admin/ListPackage";
 import InvoicePackage from "../admin/InvoicePackage";
 import ShowInvoice from "../components/client/ShowInvoice";
+import ListHistoryStaff from "../admin/ListHistoryStaff";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -116,6 +117,12 @@ const AppRouter = () => {
           path="/admin/statePackage/:id"
           log={log}
           component={ManageState}
+        />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/listStaffOld"
+          log={log}
+          component={ListHistoryStaff}
         />{" "}
         {/* 404 */}
         <PrivateRouter path="*" log={log} component={NoFound} />

@@ -20,7 +20,7 @@ export const staffCardData = [
   {
     id: 3,
     img: Rol,
-    link: "/admin/registerStaff",
+    link: "/admin/listStaffOld",
     name: "Personal inactivo",
     description: "Personales inactivos ",
   },
