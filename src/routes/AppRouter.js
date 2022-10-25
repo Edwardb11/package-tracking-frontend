@@ -27,6 +27,7 @@ import ListPackage from "../admin/ListPackage";
 import InvoicePackage from "../admin/InvoicePackage";
 import ShowInvoice from "../components/client/ShowInvoice";
 import ListHistoryStaff from "../admin/ListHistoryStaff";
+import Delivery from "../admin/Delivery";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -124,6 +125,13 @@ const AppRouter = () => {
           log={log}
           component={ListHistoryStaff}
         />{" "}
+        <PrivateRouter
+          exact
+          path="/admin/delivery"
+          log={log}
+          component={Delivery}
+        />{" "}
+
         {/* 404 */}
         <PrivateRouter path="*" log={log} component={NoFound} />
       </Switch>{" "}
