@@ -11,7 +11,7 @@ const PackageReady = () => {
         <div className="block w-full overflow-x-auto">
           <table className="items-center bg-transparent w-full border-collapse ">
             <thead>
-              <tr>
+              <tr className="bg-gray-700 text-white">
                 <th className="px-6 align-middle border border-solid border-blueGray-100 py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Tracking
                 </th>
@@ -39,27 +39,27 @@ const PackageReady = () => {
             <tbody>
               {state.map((item, key) => {
                 return (
-                  <tr key={key}>
-                    <td className="border-t-0 px-10  text-md text-blue-800 font-semibold  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  <tr key={key} className=" border-b text-sm text-gray-600">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete.id_paquete}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete.nombre}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete.peso} LB
                     </td>
-                    <td className="border-t-0 px-6 font-semibold bg-gray-100  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {convertDate(item?.creado)}
                     </td>
 
-                    <td className="border-t-0  px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.ubicacion}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.usuario_finale?.ubicacion}
                     </td>
-                    <td className="border-t-0 px-6  border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
                       {item?.paquete?.facturas[0]?.cantidad_a_pagar} RD$
                     </td>
                   </tr>
