@@ -89,23 +89,42 @@ export const addStaff = async (
   }
 };
 
-export const removeStaff = async (id, setData) => {
-  Swal.fire({
-    title: "¿Estás seguro de eliminar este personal ?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    cancelButtonText: "Cancelar",
-    confirmButtonText: "Si",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      axios.put(`${url}/changeStateStaff/${id}`, { activo: 0 });
-      fetch(`${url}/getStaff`)
-        .then((response) => response.json())
-        .then((data) => setData(data));
-    }
-  });
+export const removeStaff = async (id, setData, isOld) => {
+  if (isOld) {
+    Swal.fire({
+      title: "¿Estás contratar nuevamente este personal ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Si",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.put(`${url}/changeStateStaff/${id}`, { activo: 1 });
+        fetch(`${url}/getStaff`)
+          .then((response) => response.json())
+          .then((data) => setData(data));
+      }
+    });
+  } else {
+    Swal.fire({
+      title: "¿Estás seguro de eliminar este personal ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Si",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.put(`${url}/changeStateStaff/${id}`, { activo: 0 });
+        fetch(`${url}/getStaff`)
+          .then((response) => response.json())
+          .then((data) => setData(data));
+      }
+    });
+  }
 };
 
 export const AddRolStaff = async (idStaff, idRol, setData, setRol) => {

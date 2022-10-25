@@ -1,9 +1,9 @@
 import React from "react";
-import TableStaffActive from "../components/admin/TableStaffActive";
+import TableStaffNoActive from "../components/admin/TableStaffNoActive";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
-const ListStaff = () => {
+const ListHistoryStaff = () => {
   return (
     <>
       <NavBar />
@@ -12,19 +12,19 @@ const ListStaff = () => {
           <div className="relative">
             <h2 className="w-full text-3xl font-bold text-center sm:text-4xl md:text-5xl">
               {" "}
-              Empleados activos
+              Historial de empleados
             </h2>
             <p className="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">
-              En esta sección observar todos los empleados que trabajan
-              actualmente en la empresa.
+              En esta sección observar todos los empleados que han trabajado en
+              la empresa con sus distintos roles.
             </p>
           </div>
         </div>
-        <TableStaffActive />
+        <TableStaffNoActive />
       </div>
       <Footer />
     </>
   );
 };
 
-export default ListStaff;
+export default ListHistoryStaff;
