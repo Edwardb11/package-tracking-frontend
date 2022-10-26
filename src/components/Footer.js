@@ -109,20 +109,6 @@ const Footer = () => {
                         Administrar Paquetes
                       </Link>
                     </span>
-                    <span className="my-2">
-                      <Link
-                        to="/admin/delivery"
-                        className="text-blue-700  text-md hover:text-blue-500">
-                        Pendientes de envio
-                      </Link>
-                    </span>
-                    <span className="my-2">
-                      <Link
-                        to="/admin/packageShipped"
-                        className="text-blue-700  text-md hover:text-blue-500">
-                        Paquetes enviados
-                      </Link>
-                    </span>
                   </>
                 ) : null}
                 {rol[0]?.id_roles === 2 ||
