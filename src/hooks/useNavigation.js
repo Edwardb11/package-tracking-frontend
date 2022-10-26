@@ -46,7 +46,7 @@ const useNavigation = (user) => {
           current: false,
         },
         {
-          name: "Envio en curso",
+          name: "Paquetes enviados",
           href: "/admin/packageShipped",
           current: false,
         },
