@@ -45,6 +45,11 @@ const useNavigation = (user) => {
           href: "/admin/delivery",
           current: false,
         },
+        {
+          name: "Envio en curso",
+          href: "/admin/packageShipped",
+          current: false,
+        },
       ]);
     }
     return () => {};
