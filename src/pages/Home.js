@@ -4,6 +4,8 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import User from "../context/userContext";
 import Dashboard from "../admin/Dashboard";
+import Delivery from "../admin/Delivery";
+import AdminPackage from "../admin/AdminPackage";
 
 const Home = () => {
   const { user } = useContext(User);
@@ -17,10 +19,36 @@ const Home = () => {
       </div>
     );
   }
-  if (rol[0]?.id_roles === 1 || rol[1]?.id_roles) {
+  if (
+    rol[0]?.id_roles === 1 ||
+    rol[1]?.id_roles === 1 ||
+    rol[2]?.id_roles === 1
+  ) {
     return (
       <div>
         <Dashboard />
+      </div>
+    );
+  }
+  if (
+    rol[0]?.id_roles === 2 ||
+    rol[1]?.id_roles === 2 ||
+    rol[2]?.id_roles === 2
+  ) {
+    return (
+      <div>
+        <AdminPackage />
+      </div>
+    );
+  }
+  if (
+    rol[0]?.id_roles === 3 ||
+    rol[1]?.id_roles === 3 ||
+    rol[2]?.id_roles === 3
+  ) {
+    return (
+      <div>
+        <Delivery />
       </div>
     );
   }

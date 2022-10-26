@@ -98,13 +98,50 @@ const Footer = () => {
                     Seguimiento UPS
                   </Link>
                 </span>
-                <span className="my-2">
-                  <Link
-                    to="/admin/package"
-                    className="text-blue-700  text-md hover:text-blue-500">
-                    Administrar Paquetes
-                  </Link>
-                </span>
+                {rol[0]?.id_roles === 1 ||
+                rol[1]?.id_roles === 1 ||
+                rol[2]?.id_roles === 1 ? (
+                  <>
+                    <span className="my-2">
+                      <Link
+                        to="/admin/package"
+                        className="text-blue-700  text-md hover:text-blue-500">
+                        Administrar Paquetes
+                      </Link>
+                    </span>
+                  </>
+                ) : null}
+                {rol[0]?.id_roles === 2 ||
+                rol[1]?.id_roles === 2 ||
+                rol[2]?.id_roles === 2 ? (
+                  <span className="my-2">
+                    <Link
+                      to="/admin/package"
+                      className="text-blue-700  text-md hover:text-blue-500">
+                      Administrar Paquetes
+                    </Link>
+                  </span>
+                ) : null}
+                {rol[0]?.id_roles === 3 ||
+                rol[1]?.id_roles === 3 ||
+                rol[2]?.id_roles === 3 ? (
+                  <>
+                    <span className="my-2">
+                      <Link
+                        to="/admin/delivery"
+                        className="text-blue-700  text-md hover:text-blue-500">
+                        Pendientes de envio
+                      </Link>
+                    </span>
+                    <span className="my-2">
+                      <Link
+                        to="/admin/packageShipped"
+                        className="text-blue-700  text-md hover:text-blue-500">
+                        Paquetes enviados
+                      </Link>
+                    </span>
+                  </>
+                ) : null}
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-gray-700 uppercase mt-4 md:mt-0 mb-2">
@@ -135,6 +172,26 @@ const Footer = () => {
                     ¿Quiénes somos?
                   </Link>
                 </span>
+                {rol[0]?.id_roles === 1 ||
+                rol[1]?.id_roles === 1 ||
+                rol[2]?.id_roles === 1 ? (
+                  <>
+                    <span className="my-2">
+                      <Link
+                        to="/admin/dashboard"
+                        className="text-blue-700  text-md hover:text-blue-500">
+                        Dashboard
+                      </Link>
+                    </span>
+                    <span className="my-2">
+                      <Link
+                        to="/admin/staff"
+                        className="text-blue-700  text-md hover:text-blue-500">
+                        Gestionar personal
+                      </Link>
+                    </span>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>

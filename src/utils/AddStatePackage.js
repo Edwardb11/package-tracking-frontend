@@ -45,3 +45,98 @@ export const AddStatePackage = async (locationP, stateP, idStaff, tracking) => {
     }
   }
 };
+
+export const packagesShipped = async (
+  idStaff,
+  tracking,
+  locationP,
+  setData,
+  setShowModals
+) => {
+  Swal.fire({
+    title: "¿Este paquete fue entregado?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      try {
+        axios.post(`${url}/addPackageStates`, {
+          id_paquetes: tracking,
+          id_estado: 7,
+          id_personal: idStaff,
+          ubicacion: locationP,
+        });
+        fetch(`${url}/getPendingShipping`)
+          .then((response) => response.json())
+          .then((data) => setData(data));
+        setShowModals(false);
+
+        Swal.fire({
+          icon: "success",
+          title: "Paquete entregado!",
+        });
+      } catch (error) {
+        console.log(error);
+        if (error.response) {
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups! Ha ocurrido un error",
+            text: "Ha ocurrido un error al entregar  este paquete",
+            showConfirmButton: true,
+          });
+        }
+      }
+    }
+  });
+};
+export const sendPackage = async (
+  idStaff,
+  tracking,
+  locationP,
+  setData,
+  setShowModals
+) => {
+  Swal.fire({
+    title: "¿Estás seguro de enviar este paquete ?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      try {
+        axios.post(`${url}/addPackageStates`, {
+          id_paquetes: tracking,
+          id_estado: 6,
+          id_personal: idStaff,
+          ubicacion: locationP,
+        });
+        fetch(`${url}/getPendingShipping`)
+          .then((response) => response.json())
+          .then((data) => setData(data));
+        setShowModals(false);
+
+        Swal.fire({
+          icon: "success",
+          title: "Enviar paquete!",
+        });
+      } catch (error) {
+        console.log(error);
+        if (error.response) {
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups! Ha ocurrido un error",
+            text: "Ha ocurrido un error al actualizar enviar este paquete",
+            showConfirmButton: true,
+          });
+        }
+      }
+    }
+  });
+};
