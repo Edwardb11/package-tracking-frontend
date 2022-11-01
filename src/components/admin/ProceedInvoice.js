@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import User from "../../context/userContext";
 import AddInvoice from "../../utils/AddInvoice";
 import ButtonsModal from "./ButtonsModal";
 
-const ProceedInvoice = ({ tracking, setData, showModal, setShowModals }) => {
+const ProceedInvoice = ({
+  tracking,
+  setData,
+  showModal,
+  setShowModals,
+  lastState,
+}) => {
   const [amount, setAmount] = useState(0);
+  //   Get Staff ID
+  const { user } = useContext(User);
+  const idStaff = user.staffId;
   const Validate = async (e) => {
     e.preventDefault();
-    AddInvoice(tracking, setData, amount);
+    AddInvoice(tracking, setData, amount, lastState, idStaff);
     setShowModals(false);
   };
   return (

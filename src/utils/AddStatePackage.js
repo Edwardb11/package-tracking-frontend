@@ -1,6 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
+import { ChangeLastState } from "./ChangeLastState";
 
 export const AddStatePackage = async (
   locationP,
@@ -33,12 +34,9 @@ export const AddStatePackage = async (
       id_estado: stateP,
       id_personal: idStaff,
       ubicacion: locationP,
-      activo: true,
+      activo: 1,
     });
-    await axios.put(`${url}/changeLastState`, {
-      id_estado: lastState,
-      id_paquetes: tracking,
-    });
+    ChangeLastState(lastState,tracking)
     Swal.fire({
       icon: "success",
       title: "Estado agregado!",
