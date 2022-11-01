@@ -34,7 +34,7 @@ const PackagePayment = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    PayBill(paymentMethod, id, amount, AmountPay);
+    PayBill(paymentMethod, id, amount, AmountPay,PackageTracking);
   };
 
   return (
