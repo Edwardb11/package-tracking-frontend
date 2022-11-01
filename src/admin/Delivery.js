@@ -3,6 +3,7 @@ import ProceedSend from "../components/admin/ProceedSend";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import usePendingShopping from "../hooks/usePendingShopping";
+import Alerts from "../utils/Alerts";
 
 const Delivery = () => {
   const { data, setData } = usePendingShopping();
@@ -103,6 +104,7 @@ const Delivery = () => {
               </tbody>
             </table>
           </div>
+          <Alerts state={state} alert={"No hay paquetes pendiente de envio."} />
         </div>
         {getTracking.view && (
           <ProceedSend

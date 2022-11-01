@@ -3,6 +3,7 @@ import ProceedSend from "../components/admin/ProceedSend";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import useSent from "../hooks/useSent";
+import Alerts from "../utils/Alerts";
 
 const Delivered = () => {
   const { data, setData } = useSent();
@@ -102,6 +103,7 @@ const Delivered = () => {
               </tbody>
             </table>
           </div>
+          <Alerts state={state} alert={"No hay paquetes con envio en curso."} />
         </div>
         {getTracking.view && (
           <ProceedSend

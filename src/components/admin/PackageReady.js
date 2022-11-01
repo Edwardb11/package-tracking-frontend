@@ -1,5 +1,6 @@
 import React from "react";
 import usePackageReady from "../../hooks/usePackageReady";
+import Alerts from "../../utils/Alerts";
 import convertDate from "../../utils/convertDate";
 
 const PackageReady = () => {
@@ -68,6 +69,7 @@ const PackageReady = () => {
             </tbody>
           </table>
         </div>
+        <Alerts state={state} alert="No hay paquetes listos" />
       </div>
     </div>
   );

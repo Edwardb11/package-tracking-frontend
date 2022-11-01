@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetPackage from "../../hooks/useGetPackage";
 import useGetStates from "../../hooks/useGetStates";
+import Alerts from "../../utils/Alerts";
 import convertDate from "../../utils/convertDate";
 
 const TablePackage = () => {
@@ -24,7 +25,7 @@ const TablePackage = () => {
   const [Index, setIndex] = useState(0);
 
   // Function for when the state changes
-  const changeData = (Index=0) => {
+  const changeData = (Index = 0) => {
     // Temporary array to store the filtered
     const Lorem = [];
     // Get the array position matching that state ID
@@ -169,6 +170,10 @@ const TablePackage = () => {
             </tbody>
           </table>
         </div>
+        <Alerts
+          state={result}
+          alert="Seleccione un estado para desplegar información"
+        />
       </div>
     </div>
   );

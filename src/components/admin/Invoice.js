@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import usePendingInvoice from "../../hooks/usePendingInvoice";
+import Alerts from "../../utils/Alerts";
 import ProceedInvoice from "./ProceedInvoice";
 
 const Invoice = () => {
@@ -78,13 +79,10 @@ const Invoice = () => {
             </tbody>
           </table>
         </div>
-        {state.length === 0 && (
-          <div className="flex justify-center text-red-900 font-bold">
-            <h2 className=" px-6 p-2  text-md whitespace-nowrap p-4">
-              No hay paquetes pendiente de facturas.
-            </h2>
-          </div>
-        )}
+        <Alerts
+          state={state}
+          alert={"No hay paquetes pendiente de facturas."}
+        />
       </div>
 
       {getTracking.view && (
