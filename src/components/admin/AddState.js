@@ -27,7 +27,7 @@ const AddState = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    AddStatePackage(locationP, stateP, idStaff, id);
+    AddStatePackage(locationP, stateP, idStaff, id, lastState);
   };
 
   const [lastState, setLastState] = useState(0);
@@ -35,8 +35,11 @@ const AddState = () => {
   useEffect(() => {
     let lorem = [];
     setLastState(state[state.length - 1]?.estado.id_estado);
+    console.log(lastState);
     states.data.filter((state, i) => {
-      if (lastState < i) {
+      if (lastState === undefined && state.id_estado <= 3) {
+        lorem.push(state);
+      } else if (lastState < i && state.id_estado <= 3) {
         lorem.push(state);
       }
     });
@@ -44,7 +47,7 @@ const AddState = () => {
     return () => {};
   }, [state, lastState, states]);
 
-  console.log(filters);
+  console.log(lastState);
   return (
     <div className=" mx-auto max-w-7xl bg-white py-20 px-12 lg:px-24 shadow-2xl mb-24">
       <div className="md:grid md:grid-cols-3 md:gap-6">

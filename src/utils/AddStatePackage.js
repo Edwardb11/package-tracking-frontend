@@ -2,7 +2,13 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
 
-export const AddStatePackage = async (locationP, stateP, idStaff, tracking) => {
+export const AddStatePackage = async (
+  locationP,
+  stateP,
+  idStaff,
+  tracking,
+  lastState
+) => {
   if (locationP === "") {
     Swal.fire({
       icon: "error",
@@ -27,6 +33,11 @@ export const AddStatePackage = async (locationP, stateP, idStaff, tracking) => {
       id_estado: stateP,
       id_personal: idStaff,
       ubicacion: locationP,
+      activo: true,
+    });
+    await axios.put(`${url}/changeLastState`, {
+      id_estado: lastState,
+      id_paquetes: tracking,
     });
     Swal.fire({
       icon: "success",
@@ -113,7 +124,7 @@ export const sendPackage = async (
       try {
         axios.post(`${url}/addPackageStates`, {
           id_paquetes: tracking,
-          id_estado: 6,
+          id_estado: 7,
           id_personal: idStaff,
           ubicacion: locationP,
         });
