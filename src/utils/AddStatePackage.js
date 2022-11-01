@@ -36,7 +36,7 @@ export const AddStatePackage = async (
       ubicacion: locationP,
       activo: 1,
     });
-    ChangeLastState(lastState,tracking)
+    ChangeLastState(lastState, tracking);
     Swal.fire({
       icon: "success",
       title: "Estado agregado!",
@@ -78,7 +78,9 @@ export const packagesShipped = async (
           id_estado: 7,
           id_personal: idStaff,
           ubicacion: locationP,
+          activo: 1,
         });
+        ChangeLastState(6, tracking);
         fetch(`${url}/getPendingShipping`)
           .then((response) => response.json())
           .then((data) => setData(data));
@@ -122,18 +124,20 @@ export const sendPackage = async (
       try {
         axios.post(`${url}/addPackageStates`, {
           id_paquetes: tracking,
-          id_estado: 7,
+          id_estado: 6,
           id_personal: idStaff,
           ubicacion: locationP,
+          activo: 1,
         });
         fetch(`${url}/getPendingShipping`)
           .then((response) => response.json())
           .then((data) => setData(data));
         setShowModals(false);
+        ChangeLastState(5, tracking);
 
         Swal.fire({
           icon: "success",
-          title: "Enviar paquete!",
+          title: "Paquete enviado!",
         });
       } catch (error) {
         console.log(error);
