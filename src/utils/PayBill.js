@@ -27,12 +27,15 @@ const PayBill = async (paymentMethod, id, amount, AmountPay, tracking) => {
       id_factura: id,
       monto: amount,
     });
-    AddStatePackage("BILL: Pago de usuario", 5, 0, tracking, 4);
-    Swal.fire({
-      icon: "success",
-      title: "¡Paquete pagado!",
-      text: "¡Transacción realizada con éxito!",
-    });
+    AddStatePackage(
+      "BILL: Pago de usuario",
+      5,
+      0,
+      tracking,
+      4,
+      "¡Paquete pagado!",
+      "¡Transacción realizada con éxito!"
+    );
   } catch (error) {
     if (error.response) {
       Swal.fire({

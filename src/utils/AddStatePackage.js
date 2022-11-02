@@ -8,7 +8,9 @@ export const AddStatePackage = async (
   stateP,
   idStaff,
   tracking,
-  lastState
+  lastState,
+  msg,
+  msgLarge
 ) => {
   if (locationP === "") {
     Swal.fire({
@@ -39,8 +41,8 @@ export const AddStatePackage = async (
     ChangeLastState(lastState, tracking);
     Swal.fire({
       icon: "success",
-      title: "Acción realizada con exito!",
-      text: "El estado fue actualizado con éxito!",
+      title: `${msg}`,
+      text: `${msgLarge}`,
     });
   } catch (error) {
     console.log(error);

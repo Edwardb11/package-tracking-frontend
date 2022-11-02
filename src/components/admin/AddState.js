@@ -27,7 +27,15 @@ const AddState = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    AddStatePackage(locationP, stateP, idStaff, id, lastState);
+    AddStatePackage(
+      locationP,
+      stateP,
+      idStaff,
+      id,
+      lastState,
+      "Estado agregado!",
+      "El estado fue actualizado con éxito!"
+    );
   };
 
   const [lastState, setLastState] = useState(0);
