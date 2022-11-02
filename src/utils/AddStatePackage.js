@@ -45,7 +45,6 @@ export const AddStatePackage = async (
       text: `${msgLarge}`,
     });
   } catch (error) {
-    console.log(error);
     if (error.response) {
       Swal.fire({
         icon: "error",
@@ -93,7 +92,6 @@ export const packagesShipped = async (
           title: "Paquete entregado!",
         });
       } catch (error) {
-        console.log(error);
         if (error.response) {
           Swal.fire({
             icon: "error",
@@ -142,7 +140,6 @@ export const sendPackage = async (
           title: "Paquete enviado!",
         });
       } catch (error) {
-        console.log(error);
         if (error.response) {
           Swal.fire({
             icon: "error",

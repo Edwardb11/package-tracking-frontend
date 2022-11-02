@@ -14,7 +14,6 @@ const PackagesTable = () => {
     view: false,
     items: {},
   });
-  // console.log(transation);
 
   return (
     <div className="w-full xl:w-9/12 mb-12 xl:mb-0 px-4 mx-auto ">

@@ -1,14 +1,6 @@
 import React from "react";
 
 const TrackingCard = () => {
-  const data ={
-    package:[
-      {
-        id_paquete:1
-      }
-    ]
-  }
-  console.log(data.package[0].id_paquete)
   return (
     <>
       <div className="container mx-auto my-40">
@@ -35,8 +27,7 @@ const TrackingCard = () => {
                 </p>
                 <p
                   href=""
-                  className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                >
+                  className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
                   Peso:
                 </p>
                 <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">

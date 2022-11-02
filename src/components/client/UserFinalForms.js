@@ -9,7 +9,6 @@ const UserFinalForms = () => {
   const [sex, setSex] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  console.log(sex);
 
   const RegisterUserFinal = (e) => {
     e.preventDefault();
@@ -58,11 +57,8 @@ const UserFinalForms = () => {
       });
       return;
     }
-
-    console.log("entro");
-    AddUserFinal()
+    AddUserFinal();
   };
-
 
   const AddUserFinal = async () => {
     try {
@@ -71,13 +67,12 @@ const UserFinalForms = () => {
         apellidos: lastName,
         sexo: sex,
         celular: phone,
-        ubicación:location
+        ubicación: location,
       });
       Swal.fire({
         icon: "success",
         title: "¡Usuario agregado!",
         text: "Por favor selecione el usuario agregado.",
-
       });
     } catch (error) {
       if (error.response) {
@@ -87,20 +82,17 @@ const UserFinalForms = () => {
           text: "Ha ocurrido un error al agregar a un nuevo usuario, intente más tarde.",
           showConfirmButton: true,
         });
-        console.log(error);
       }
     }
   };
   return (
     <form
       onSubmit={RegisterUserFinal}
-      className="grid gap-6 mb-6 lg:grid-cols-2"
-    >
+      className="grid gap-6 mb-6 lg:grid-cols-2">
       <div>
         <label
           htmlFor="nombre_u"
-          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
-        >
+          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900">
           Nombre
         </label>
         <input
@@ -116,8 +108,7 @@ const UserFinalForms = () => {
       <div>
         <label
           htmlFor="apellido"
-          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
-        >
+          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900">
           Apellido
         </label>
         <input
@@ -133,16 +124,14 @@ const UserFinalForms = () => {
       <div>
         <label
           htmlFor="sexo"
-          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
-        >
+          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900">
           Sexo
         </label>
         <select
           id="sexo"
           onChange={(e) => setSex(e.target.value)}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          required
-        >
+          required>
           <option disabled>Selecione</option>
           <option value="m" selected>
             Masculino
@@ -153,8 +142,7 @@ const UserFinalForms = () => {
       <div>
         <label
           htmlFor="celular"
-          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
-        >
+          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900">
           Celular
         </label>
         <input
@@ -170,8 +158,7 @@ const UserFinalForms = () => {
       <div>
         <label
           htmlFor="ubicacion"
-          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900"
-        >
+          className="block mb-2 text-sm font-semibold px-1 text-gray-900 dark:text-gray-900">
           Ubicación
         </label>
         <input
@@ -187,8 +174,7 @@ const UserFinalForms = () => {
       <div>
         <button
           type="submit"
-          className="text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          className="text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Agregar persona
         </button>
       </div>

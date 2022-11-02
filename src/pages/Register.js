@@ -15,7 +15,6 @@ const Register = () => {
   const [date, setDate] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(sex);
   const Register = (e) => {
     e.preventDefault();
     if (email.trim() === "") {
@@ -37,7 +36,6 @@ const Register = () => {
       });
       return;
     }
-    console.log("entro");
     Auth({ name, email, password });
   };
 
@@ -80,7 +78,6 @@ const Register = () => {
           text: "Ha ocurrido un error al registrar a un nuevo usuario, intente más tarde.",
           showConfirmButton: true,
         });
-        console.log(error);
       }
     }
   };
@@ -96,8 +93,7 @@ const Register = () => {
       <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
-          style={{ maxWidth: 1000 }}
-        >
+          style={{ maxWidth: 1000 }}>
           <div className="md:flex w-full">
             <Imagen />
             <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
@@ -159,8 +155,7 @@ const Register = () => {
                         value={sex}
                         onChange={(e) => setSex(e.target.value)}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                        required
-                      >
+                        required>
                         <option value="m">Masculino</option>
                         <option value="f">Femenino</option>
                       </select>
