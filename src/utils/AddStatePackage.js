@@ -39,7 +39,7 @@ export const AddStatePackage = async (
     ChangeLastState(lastState, tracking);
     Swal.fire({
       icon: "success",
-      title: "Estado agregado!",
+      title: "Acción realizada con exito!",
       text: "El estado fue actualizado con éxito!",
     });
   } catch (error) {
@@ -48,7 +48,7 @@ export const AddStatePackage = async (
       Swal.fire({
         icon: "error",
         title: "¡Ups! Ha ocurrido un error",
-        text: "Ha ocurrido un error al actualizar el estadp la transacción",
+        text: "Ha ocurrido un error al ejecutar dicha accion",
         showConfirmButton: true,
       });
     }

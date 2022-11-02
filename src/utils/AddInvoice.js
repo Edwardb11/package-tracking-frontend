@@ -2,9 +2,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
 import { AddStatePackage } from "./AddStatePackage";
-import { ChangeLastState } from "./ChangeLastState";
 
-const AddInvoice = async (tracking, setData, amount, lastState,idStaff) => {
+const AddInvoice = async (tracking, setData, amount, lastState, idStaff) => {
   if (amount < 300) {
     Swal.fire({
       title: "¡Error!",
@@ -29,8 +28,7 @@ const AddInvoice = async (tracking, setData, amount, lastState,idStaff) => {
         .then((response) => response.json())
         .then((data) => setData(data))
     );
-    ChangeLastState(lastState, tracking);
-    AddStatePackage("SUCURSAL",4,idStaff,tracking)
+    AddStatePackage("SUCURSAL", 4, idStaff, tracking, lastState);
   } catch (error) {
     if (error.response) {
       Swal.fire({

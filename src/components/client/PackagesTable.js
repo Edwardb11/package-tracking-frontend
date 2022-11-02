@@ -14,6 +14,8 @@ const PackagesTable = () => {
     view: false,
     items: {},
   });
+  // console.log(transation);
+
   return (
     <div className="w-full xl:w-9/12 mb-12 xl:mb-0 px-4 mx-auto ">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -67,7 +69,9 @@ const PackagesTable = () => {
                             to={`/packagePayment/${items.facturas[0]?.id_factura}`}>
                             {/* {transation.transation.map((i) => {
                               if (
-                                i.id_factura === items.facturas[0]?.id_factura
+                                i.id_factura ===
+                                  items.facturas[0]?.id_factura &&
+                                i.id_factura !== items.facturas[0]?.id_factura
                               ) {
                                 return <h1>Ver pago</h1>;
                               } else {
