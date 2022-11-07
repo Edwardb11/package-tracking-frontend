@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import AreaCharts from "../dashboard/AreaCharts";
 import Cards from "../dashboard/Cards";
-import PieCharts from "../dashboard/PieChart";
+import RadialBarCharts from "../dashboard/RadialBarChart";
 
 import WelcomeBanner from "../dashboard/WelcomeBanner";
 
@@ -19,7 +19,8 @@ const Dashboard = () => {
           <Cards />
           <div className=" grid grid-cols-10 gap-1">
             <AreaCharts />
-            <PieCharts />
+            <RadialBarCharts />
+
           </div>
         </div>
       </main>
