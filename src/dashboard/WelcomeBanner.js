@@ -78,7 +78,7 @@ const WelcomeBanner = () => {
             : "Buenas noches"}
           , {user.name}. 👋
         </h1>
-        <p>Esto es lo que está sucediendo con sus paquetes hoy:</p>
+        <p>Esto es un resumen  de lo que  ha sucedido con los paquetes:</p>
       </div>
     </div>
   );

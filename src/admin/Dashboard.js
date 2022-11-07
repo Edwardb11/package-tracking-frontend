@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import BarChart from "../dashboard/BarCharts";
+import Cards from "../dashboard/Cards";
 import PieCharts from "../dashboard/PieChart";
 
 import WelcomeBanner from "../dashboard/WelcomeBanner";
@@ -15,7 +16,8 @@ const Dashboard = () => {
           {/* Welcome banner */}
           <WelcomeBanner />
           {/* Cards */}
-          <div className=" grid grid-cols-12 gap-6">
+          <Cards />
+          <div className=" grid grid-cols-12 gap-4">
             <BarChart />
             <PieCharts />
           </div>
