@@ -1,8 +1,17 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
+import { ChangeLastState } from "./ChangeLastState";
 
-export const AddStatePackage = async (locationP, stateP, idStaff, tracking) => {
+export const AddStatePackage = async (
+  locationP,
+  stateP,
+  idStaff,
+  tracking,
+  lastState,
+  msg,
+  msgLarge
+) => {
   if (locationP === "") {
     Swal.fire({
       icon: "error",
@@ -27,19 +36,20 @@ export const AddStatePackage = async (locationP, stateP, idStaff, tracking) => {
       id_estado: stateP,
       id_personal: idStaff,
       ubicacion: locationP,
+      activo: 1,
     });
+    ChangeLastState(lastState, tracking);
     Swal.fire({
       icon: "success",
-      title: "Estado agregado!",
-      text: "El estado fue actualizado con éxito!",
+      title: `${msg}`,
+      text: `${msgLarge}`,
     });
   } catch (error) {
-    console.log(error);
     if (error.response) {
       Swal.fire({
         icon: "error",
         title: "¡Ups! Ha ocurrido un error",
-        text: "Ha ocurrido un error al actualizar el estadp la transacción",
+        text: "Ha ocurrido un error al ejecutar dicha accion",
         showConfirmButton: true,
       });
     }
@@ -69,7 +79,9 @@ export const packagesShipped = async (
           id_estado: 7,
           id_personal: idStaff,
           ubicacion: locationP,
+          activo: 1,
         });
+        ChangeLastState(6, tracking);
         fetch(`${url}/getPendingShipping`)
           .then((response) => response.json())
           .then((data) => setData(data));
@@ -80,7 +92,6 @@ export const packagesShipped = async (
           title: "Paquete entregado!",
         });
       } catch (error) {
-        console.log(error);
         if (error.response) {
           Swal.fire({
             icon: "error",
@@ -116,18 +127,19 @@ export const sendPackage = async (
           id_estado: 6,
           id_personal: idStaff,
           ubicacion: locationP,
+          activo: 1,
         });
         fetch(`${url}/getPendingShipping`)
           .then((response) => response.json())
           .then((data) => setData(data));
         setShowModals(false);
+        ChangeLastState(5, tracking);
 
         Swal.fire({
           icon: "success",
-          title: "Enviar paquete!",
+          title: "Paquete enviado!",
         });
       } catch (error) {
-        console.log(error);
         if (error.response) {
           Swal.fire({
             icon: "error",

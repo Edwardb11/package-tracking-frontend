@@ -3,6 +3,7 @@ import ProceedSend from "../components/admin/ProceedSend";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import useSent from "../hooks/useSent";
+import Alerts from "../utils/Alerts";
 
 const Delivered = () => {
   const { data, setData } = useSent();
@@ -57,47 +58,52 @@ const Delivered = () => {
 
               <tbody>
                 {state?.map((item, key) => {
-                  return (
-                    <tr key={key} className=" border-b text-sm text-gray-600">
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        {item?.paquete?.id_paquete}
-                      </td>
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        {item?.paquete?.nombre}
-                      </td>
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        {item?.paquete.peso} LB
-                      </td>
+                  if (item.activo) {
+                    return (
+                      <tr key={key} className=" border-b text-sm text-gray-600">
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.paquete?.id_paquete}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.paquete?.nombre}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.paquete.peso} LB
+                        </td>
 
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        {item?.paquete?.usuario_finale?.ubicacion}
-                      </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.paquete?.usuario_finale?.ubicacion}
+                        </td>
 
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        {item?.paquete?.usuario_finale?.nombres}{" "}
-                        {item?.paquete?.usuario_finale?.apellidos}
-                      </td>
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        {item?.paquete?.usuario_finale?.celular}
-                      </td>
-                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                        <button
-                          onClick={() =>
-                            setGetTracking({
-                              view: !getTracking.view,
-                              data: item,
-                            })
-                          }
-                          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
-                          Entregar
-                        </button>
-                      </td>
-                    </tr>
-                  );
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.paquete?.usuario_finale?.nombres}{" "}
+                          {item?.paquete?.usuario_finale?.apellidos}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.paquete?.usuario_finale?.celular}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          <button
+                            onClick={() =>
+                              setGetTracking({
+                                view: !getTracking.view,
+                                data: item,
+                              })
+                            }
+                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                            Entregar
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  } else {
+                    return <></>;
+                  }
                 })}
               </tbody>
             </table>
           </div>
+          <Alerts state={state} alert={"No hay paquetes con envio en curso."} />
         </div>
         {getTracking.view && (
           <ProceedSend

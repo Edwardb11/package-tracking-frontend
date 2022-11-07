@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import User from "../../context/userContext";
 import useGetIdPackage from "../../hooks/useGetIdPackage";
 import useGetStates from "../../hooks/useGetStates";
@@ -25,9 +25,22 @@ const AddState = () => {
   // Get states
   const states = useGetStates();
 
+  const history = useHistory();
   const Validate = async (e) => {
     e.preventDefault();
-    AddStatePackage(locationP, stateP, idStaff, id);
+    AddStatePackage(
+      locationP,
+      stateP,
+      idStaff,
+      id,
+      lastState,
+      "Estado agregado!",
+      "El estado fue actualizado con éxito!"
+    );
+    const timer = setTimeout(() => {
+      history.push(`/admin/managePackage`);
+    }, 900);
+    return () => clearTimeout(timer);
   };
 
   const [lastState, setLastState] = useState(0);
@@ -36,7 +49,9 @@ const AddState = () => {
     let lorem = [];
     setLastState(state[state.length - 1]?.estado.id_estado);
     states.data.filter((state, i) => {
-      if (lastState < i) {
+      if (lastState === undefined && state.id_estado <= 3) {
+        lorem.push(state);
+      } else if (lastState < i && state.id_estado <= 3) {
         lorem.push(state);
       }
     });
@@ -44,7 +59,6 @@ const AddState = () => {
     return () => {};
   }, [state, lastState, states]);
 
-  console.log(filters);
   return (
     <div className=" mx-auto max-w-7xl bg-white py-20 px-12 lg:px-24 shadow-2xl mb-24">
       <div className="md:grid md:grid-cols-3 md:gap-6">

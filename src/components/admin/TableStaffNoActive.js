@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import User from "../../context/userContext";
 import useGetStaff from "../../hooks/useGetStaff";
+import Alerts from "../../utils/Alerts";
 import EditRol from "./EditRol";
 import TableStaffBody from "./TableStaffBody";
 import TableStaffHead from "./TableStaffHead";
@@ -47,6 +48,8 @@ const TableStaffNoActive = () => {
             </tbody>
           </table>
         </div>
+        <Alerts state={data?.data} alert={"No hay personal inactivo."} />
+
         {getStaff.view && (
           <EditRol
             id={getStaff.staffId}

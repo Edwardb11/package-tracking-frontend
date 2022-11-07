@@ -175,7 +175,6 @@ export const AddRolStaff = async (idStaff, idRol, setData, setRol) => {
   }
 };
 export const removeRol = async (idStaff, idRol, setData, setRol) => {
-  console.log(idStaff, idRol);
   Swal.fire({
     title: "¿Estás seguro de eliminar este rol a este personal ?",
     icon: "warning",

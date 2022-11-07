@@ -30,9 +30,7 @@ const ProceedSend = ({
                   {/*body*/}
                   <div className="relative p-6 flex-auto">
                     <div>
-                      <h3 className="text-xl font-base italic">
-                        Consideraciones:
-                      </h3>
+                      <h3 className="text-xl font-base italic">Notas:</h3>
                       <div className="px-6 ">
                         <ol className="list-[upper-roman] ">
                           <li>
@@ -64,7 +62,7 @@ const ProceedSend = ({
                           )
                         }
                         className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
-                        Enviar
+                        Entregado?
                       </button>
                     </div>
                   </div>

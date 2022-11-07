@@ -31,7 +31,6 @@ export const Auth = async (email, password, setLog) => {
         contraseña: password,
       })
       .then((res) => {
-        // console.log(res.data.accessToken);
         const token = res.data.accessToken;
         sessionStorage.setItem("jwtToken", token);
         Cookies.get("jwtToken");
@@ -66,7 +65,6 @@ export const Auth = async (email, password, setLog) => {
             text: error.response.data.msg,
             showConfirmButton: true,
           });
-          console.log(error);
           setLog(false);
         } else if (error.response.status === 404) {
           Swal.fire({
@@ -184,7 +182,6 @@ export const AuthAdmin = async (email, password, setLog) => {
             text: error.response.data.msg,
             showConfirmButton: true,
           });
-          console.log(error);
           setLog(false);
         } else if (error.response.status === 404) {
           Swal.fire({

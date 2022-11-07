@@ -1,8 +1,9 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { url } from "../api/api";
+import { AddStatePackage } from "./AddStatePackage";
 
-const PayBill = async (paymentMethod, id, amount, AmountPay) => {
+const PayBill = async (paymentMethod, id, amount, AmountPay, tracking) => {
   if (amount < AmountPay) {
     Swal.fire({
       title: "¡Error!",
@@ -26,11 +27,15 @@ const PayBill = async (paymentMethod, id, amount, AmountPay) => {
       id_factura: id,
       monto: amount,
     });
-    Swal.fire({
-      icon: "success",
-      title: "¡Paquete pagado!",
-      text: "¡Transacción realizada con éxito!",
-    });
+    AddStatePackage(
+      "BILL: Pago de usuario",
+      5,
+      0,
+      tracking,
+      4,
+      "¡Paquete pagado!",
+      "¡Transacción realizada con éxito!"
+    );
   } catch (error) {
     if (error.response) {
       Swal.fire({
@@ -41,7 +46,6 @@ const PayBill = async (paymentMethod, id, amount, AmountPay) => {
       });
     }
   }
-
 };
 
 export default PayBill;

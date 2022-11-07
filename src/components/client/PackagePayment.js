@@ -34,7 +34,11 @@ const PackagePayment = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    PayBill(paymentMethod, id, amount, AmountPay);
+    await PayBill(paymentMethod, id, amount, AmountPay, PackageTracking);
+    const timer = setTimeout(() => {
+      history.push(`/myPackages`);
+    }, 1000);
+    return () => clearTimeout(timer);
   };
 
   return (

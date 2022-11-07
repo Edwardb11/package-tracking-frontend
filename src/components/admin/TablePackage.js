@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetPackage from "../../hooks/useGetPackage";
 import useGetStates from "../../hooks/useGetStates";
+import Alerts from "../../utils/Alerts";
 import convertDate from "../../utils/convertDate";
 
 const TablePackage = () => {
@@ -24,7 +25,7 @@ const TablePackage = () => {
   const [Index, setIndex] = useState(0);
 
   // Function for when the state changes
-  const changeData = (Index) => {
+  const changeData = (Index = 0) => {
     // Temporary array to store the filtered
     const Lorem = [];
     // Get the array position matching that state ID
@@ -54,7 +55,6 @@ const TablePackage = () => {
   const result = filters.filter((item, index) => {
     return filters.indexOf(item) === index;
   });
-
   return (
     <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -79,11 +79,15 @@ const TablePackage = () => {
                   Seleccione
                 </option>
                 {states.data.map((state) => {
-                  return (
-                    <>
-                      <option value={state.id_estado}>{state.nombre}</option>
-                    </>
-                  );
+                  if (state.id_estado < 3) {
+                    return (
+                      <>
+                        <option value={state.id_estado}>{state.nombre}</option>
+                      </>
+                    );
+                  } else {
+                    return <></>;
+                  }
                 })}
               </select>
             </div>
@@ -124,43 +128,51 @@ const TablePackage = () => {
 
             <tbody>
               {result.map((item, key) => {
-                return (
-                  <tr key={key} className=" border-b text-sm text-gray-600">
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {item?.paquete.id_paquete}
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {item?.paquete.nombre}
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {item?.paquete.peso} LB
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {item?.estado?.nombre || "PENDIENTE"}
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {convertDate(item?.creado)}
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {item?.paquete?.ubicacion}
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      {item?.paquete?.usuario_finale?.ubicacion}
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      <Link
-                        to={`/admin/statePackage/${item?.paquete.id_paquete}`}
-                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+                if (item.activo) {
+                  return (
+                    <tr key={key} className=" border-b text-sm text-gray-600">
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {item?.paquete.id_paquete}
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {item?.paquete.nombre}
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {item?.paquete.peso} LB
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {item?.estado?.nombre || "PENDIENTE"}
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {convertDate(item?.creado)}
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {item?.paquete?.ubicacion}
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        {item?.paquete?.usuario_finale?.ubicacion}
+                      </td>
+                      <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                        <Link
+                          to={`/admin/statePackage/${item?.paquete.id_paquete}`}
+                          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
                         ">
-                        Actualizar
-                      </Link>
-                    </td>
-                  </tr>
-                );
+                          Actualizar
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                } else {
+                  return <></>;
+                }
               })}
             </tbody>
           </table>
         </div>
+        <Alerts
+          state={result}
+          alert="Seleccione un estado para desplegar información"
+        />
       </div>
     </div>
   );

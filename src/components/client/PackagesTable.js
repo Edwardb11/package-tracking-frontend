@@ -2,18 +2,19 @@ import React, { useContext, useState } from "react";
 import User from "../../context/userContext";
 import { Link } from "react-router-dom";
 import useGetPackagebyUser from "../../hooks/useGetPackagebyUser";
-import useGetTranssation from "../../hooks/useGetTranssation";
+// import useGetTranssation from "../../hooks/useGetTranssation";
 import ShowMore from "./ShowMore";
 
 const PackagesTable = () => {
   const { user } = useContext(User);
   const userId = user.userId;
   const data = useGetPackagebyUser(userId);
-  const transation = useGetTranssation();
+  // const transation = useGetTranssation();
   const [getTracking, setGetTracking] = useState({
     view: false,
     items: {},
   });
+
   return (
     <div className="w-full xl:w-9/12 mb-12 xl:mb-0 px-4 mx-auto ">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -65,17 +66,18 @@ const PackagesTable = () => {
                         {items.facturas[0]?.id_factura !== undefined && (
                           <Link
                             to={`/packagePayment/${items.facturas[0]?.id_factura}`}>
-                            {/* <span>Pagar</span> */}
-                            {transation.transation.map((i) => {
-                              return (
-                                <span>
-                                  {items.facturas[0]?.id_factura ===
-                                  i.id_factura
-                                    ? "Ver pago"
-                                    : "Pagar"}
-                                </span>
-                              );
-                            })}
+                            {/* {transation.transation.map((i) => {
+                              if (
+                                i.id_factura ===
+                                  items.facturas[0]?.id_factura &&
+                                i.id_factura !== items.facturas[0]?.id_factura
+                              ) {
+                                return <h1>Ver pago</h1>;
+                              } else {
+                                return <h1>PAGHAR</h1>;
+                              }
+                            })} */}
+                            <span>Accionar</span>
                           </Link>
                         )}
                         {items.facturas[0]?.id_factura === undefined && (

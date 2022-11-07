@@ -31,7 +31,6 @@ const PackageForms = () => {
 
   const Validate = async (e) => {
     e.preventDefault();
-    console.log("klk");
     const clientId = user.userId;
     AddPackage(
       clientId,
@@ -49,7 +48,6 @@ const PackageForms = () => {
       destinationMunicipality,
       destinationProvince
     );
-    console.log("aaaa");
   };
 
   return (
