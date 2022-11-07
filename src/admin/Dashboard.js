@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import BarChart from "../dashboard/BarCharts";
+import AreaCharts from "../dashboard/AreaCharts";
 import Cards from "../dashboard/Cards";
 import PieCharts from "../dashboard/PieChart";
 
@@ -17,8 +17,8 @@ const Dashboard = () => {
           <WelcomeBanner />
           {/* Cards */}
           <Cards />
-          <div className=" grid grid-cols-12 gap-4">
-            <BarChart />
+          <div className=" grid grid-cols-10 gap-1">
+            <AreaCharts />
             <PieCharts />
           </div>
         </div>
