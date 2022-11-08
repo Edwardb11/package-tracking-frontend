@@ -8,44 +8,10 @@ import {
   Tooltip,
 } from "recharts";
 
-const AreaCharts = () => {
-  const data = [
-    {
-      name: "Pendiente",
-      uv: 1,
-    },
-    {
-      name: "Recogido",
-      uv: 40,
-    },
-    {
-      name: "Envalijado",
-      uv: 5,
-    },
-    {
-      name: "Logistica",
-      uv: 88,
-    },
-    {
-      name: "Pend. pago",
-      uv: 10,
-    },
-    {
-      name: "Pend. envio",
-      uv: 200,
-    },
-    {
-      name: "Enviado",
-      uv: 100,
-    },
-    {
-      name: "Entregado",
-      uv: 300,
-    },
-  ];
-
+const AreaCharts = ({ data, title }) => {
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-slate-200">
+    <div className="sm:col-span-6 xl:col-span-4 shadow-lg rounded-sm border border-slate-200 block mx-5 overflow-x-auto">
+      <h1 className="text-center font-bold m-5 text-blue-900">{title}</h1>
       <AreaChart
         width={750}
         height={400}
@@ -53,14 +19,19 @@ const AreaCharts = () => {
         margin={{
           top: 10,
           right: 20,
-          left:   0,
+          left: 0,
           bottom: 0,
         }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+        <Area
+          type="monotone"
+          dataKey="cantidad"
+          stroke="#8884d8"
+          fill="#8884d8"
+        />
       </AreaChart>
     </div>
   );

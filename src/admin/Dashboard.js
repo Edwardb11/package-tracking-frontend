@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import AreaCharts from "../dashboard/AreaCharts";
 import Cards from "../dashboard/Cards";
-import RadialBarCharts from "../dashboard/RadialBarChart";
+import ChartHistory from "../dashboard/ChartsHistory";
+import ChartsState from "../dashboard/ChartsState";
 
 import WelcomeBanner from "../dashboard/WelcomeBanner";
 
@@ -17,10 +17,9 @@ const Dashboard = () => {
           <WelcomeBanner />
           {/* Cards */}
           <Cards />
-          <div className=" grid grid-cols-10 gap-1">
-            <AreaCharts />
-            <RadialBarCharts />
-
+          <div className="flex flex-wrap ">
+            <ChartsState/>
+            <ChartHistory />
           </div>
         </div>
       </main>
