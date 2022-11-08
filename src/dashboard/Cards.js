@@ -11,24 +11,25 @@ const Cards = () => {
     {
       id: 2,
       total: "0",
-      title: "Total pendientes ",
+      title: "Total de clientes ",
     },
     {
       id: 3,
       total: "0",
-      title: "Total enviados",
+      title: "Total de empleados",
+    },
+    {
+      id: 3,
+      total: "0",
+      title: "Total generado",
     },
   ];
   return (
-    <div className="container">
+    <div className="relative">
       <div className="flex flex-wrap justify-evenly">
         {data.map((items) => {
           return (
-            <Card
-              key={items.id}
-              title={items.title}
-              total={items.total}
-            />
+            <Card key={items.id} title={items.title} total={items.total} />
           );
         })}
       </div>

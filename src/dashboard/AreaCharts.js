@@ -10,7 +10,7 @@ import {
 
 const AreaCharts = ({ data, title }) => {
   return (
-    <div className="sm:col-span-6 xl:col-span-4 shadow-lg rounded-sm border border-slate-200 block mx-5 overflow-x-auto">
+    <div className="relative sm:col-span-6 xl:col-span-4 shadow-lg rounded-sm border border-slate-200 block mx-5 overflow-x-auto">
       <h1 className="text-center font-bold m-5 text-blue-900">{title}</h1>
       <AreaChart
         width={750}

@@ -9,7 +9,7 @@ import WelcomeBanner from "../dashboard/WelcomeBanner";
 
 const Dashboard = () => {
   return (
-    <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+    <div className=" flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
       <NavBar />
       <main>
         <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -17,7 +17,7 @@ const Dashboard = () => {
           <WelcomeBanner />
           {/* Cards */}
           <Cards />
-          <div className="flex flex-wrap ">
+          <div className="relative flex flex-wrap justify-center ">
             <ChartsState/>
             <ChartHistory />
           </div>
