@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import Cards from "../dashboard/Cards";
 import ChartHistory from "../dashboard/ChartsHistory";
 import ChartsState from "../dashboard/ChartsState";
+import RecentActivities from "../dashboard/RecentActivities";
 
 import WelcomeBanner from "../dashboard/WelcomeBanner";
 
@@ -21,6 +22,7 @@ const Dashboard = () => {
             <ChartsState/>
             <ChartHistory />
           </div>
+            <RecentActivities/>
         </div>
       </main>
 
