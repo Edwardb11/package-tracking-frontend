@@ -24,9 +24,8 @@ const RecentActivities = () => {
             <div className="block w-full overflow-x-auto">
               <table className="items-center bg-transparent w-full border-collapse ">
                 <thead>
-                       <tr className="bg-indigo-300 text-white">
-
-                       <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  <tr className="bg-indigo-300 text-white">
+                    <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                       ID
                     </th>
                     <th className="px-6 align-middle border border-solid py-3  text-md  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -74,10 +73,9 @@ const RecentActivities = () => {
               </table>
             </div>
           </div>
-
-          </div>
-          <div className="flex w-1/5  ">
-            <Card title={` Ultimo paquete `} total="11" key={"1"}/>
+        </div>
+        <div className="relative sm:w-full mx-auto md:w-1/5 xl:w-1/5 lg:w-1/5 2xl:w-1/5  ">
+          <Card title={` Ultimo paquete `} total="11" key={"1"} />
         </div>
       </section>
     </>
