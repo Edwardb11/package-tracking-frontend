@@ -1,33 +1,14 @@
 import React from "react";
+import useTotalDashboard from "../hooks/useTotalDashboard";
 import Card from "./Card";
 
 const Cards = () => {
-  const data = [
-    {
-      id: 1,
-      total: "0",
-      title: "Total de paquetes",
-    },
-    {
-      id: 2,
-      total: "0",
-      title: "Total de clientes ",
-    },
-    {
-      id: 3,
-      total: "0",
-      title: "Total de empleados",
-    },
-    {
-      id: 3,
-      total: "0",
-      title: "Total generado",
-    },
-  ];
+  /* Calling the useTotalDashboard hook and storing the data in a variable called data. */
+  const data = useTotalDashboard();
   return (
     <div className="relative">
       <div className="flex flex-wrap justify-evenly">
-        {data.map((items) => {
+        {data.data.map((items) => {
           return (
             <Card key={items.id} title={items.title} total={items.total} />
           );
