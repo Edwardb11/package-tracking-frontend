@@ -1,6 +1,5 @@
 import React from "react";
 import LastPackage from "./LastPackage";
-
 import Table from "./Table";
 
 const RecentActivities = () => {

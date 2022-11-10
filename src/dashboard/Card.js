@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ title, total }) => {
   return (
-    <div className="w-full mb-10 max-w-sm overflow-hidden rounded-lg  shadow-md duration-300 hover:shadow-xl bg-cyan-50">
+    <div className="w-full mb-10 max-w-sm overflow-hidden rounded-lg  shadow-md duration-300 hover:shadow-xl bg-zinc-50">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="mx-auto mt-8 h-16 w-16 text-green-400"

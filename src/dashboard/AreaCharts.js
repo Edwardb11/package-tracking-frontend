@@ -22,15 +22,15 @@ const AreaCharts = ({ data, title }) => {
           left: 0,
           bottom: 0,
         }}>
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="9 9" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Area
           type="monotone"
           dataKey="cantidad"
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke="#0f172a"
+          fill="#8b5cf6"
         />
       </AreaChart>
     </div>
