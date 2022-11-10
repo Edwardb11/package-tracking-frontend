@@ -1,7 +1,10 @@
 import React from "react";
-import Card from "./Card";
+import useGetLasState from "../hooks/useGetLastState";
+import convertDate from "../utils/convertDate";
 
 const RecentActivities = () => {
+  const data = useGetLasState();
+  const state = data.state;
   return (
     <>
       <section className="flex flex-wrap py-1  mt-24">
@@ -46,36 +49,40 @@ const RecentActivities = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      /argon/
-                    </th>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      4,569
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      340
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      <i className="fas fa-arrow-up text-emerald-500 mr-4" />
-                      46,53%
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      <i className="fas fa-arrow-up text-emerald-500 mr-4" />
-                      46,53%
-                    </td>
-                    <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
-                      <i className="fas fa-arrow-up text-emerald-500 mr-4" />
-                      46,53%
-                    </td>
-                  </tr>
+                  {state.map((item, key) => {
+                    return (
+                      <tr key={key} className=" border-b text-sm text-gray-600">
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.personal?.id_personal}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.personal?.id_personal !== 0
+                            ? `${item?.personal?.nombres}  ${item?.personal?.apellidos}`
+                            : "CLIENTE"}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.personal?.id_personal !== 0
+                            ? `${item?.personal?.roles[0]?.nombre}`
+                            : "CLIENTE"}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.estado?.nombre}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {item?.id_paquetes}
+                        </td>
+                        <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
+                          {convertDate(item?.creado)}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
         <div className="relative sm:w-full mx-auto md:w-1/5 xl:w-1/5 lg:w-1/5 2xl:w-1/5  ">
-          <Card title={` Ultimo paquete `} total="11" key={"1"} />
         </div>
       </section>
     </>
