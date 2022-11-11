@@ -8,7 +8,7 @@ const ResultsActivities = ({ states }) => {
         Actividad reciente
       </h3>
       <div className="mt-5 w-full text-left  overflow-hidden text-sm">
-        {states.map((item, key) => {
+        {states?.map((item, key) => {
           return (
             <span
               key={key}
