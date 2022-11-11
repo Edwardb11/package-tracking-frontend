@@ -1,16 +1,28 @@
 import React from "react";
+import ResultsActivities from "./ResultsActivities";
+import ResultsBody from "./ResultsBody";
+import ResultsTitles from "./ResultsTitles";
 
 const SearchResults = ({ data }) => {
+  /* Destructuring the data from the API. */
   const namePackagfe = data?.package[0]?.nombre;
   const tracking = data?.package[0]?.id_paquete;
   const amount = data?.package[0]?.cantidad;
   const name = data?.package[0]?.cliente?.nombres;
+  const nameEnd = data?.package[0]?.usuario_finale?.nombres;
   const lastName = data?.package[0]?.cliente?.apellidos;
-  console.log(data);
+  const lastNameEnd = data?.package[0]?.usuario_finale?.apellidos;
+  const fullName = `${name} ${lastName}`;
+  const fullNameEnd = `${nameEnd} ${lastNameEnd}`;
+
+  const weight = data?.package[0]?.peso;
+  const send = data?.package[0]?.ubicacion;
+  const destiny = data?.package[0]?.usuario_finale.ubicacion;
+
   return (
     <div className="container mx-auto  py-20">
       <div>
-        <div className="bg-white relative shadow rounded-lg w-5/6 md:w-4/6  lg:w-3/6 xl:w-2/6 mx-auto">
+        <div className="bg-white relative shadow-lg rounded-lg  md:w-1/7  lg:w-4/6 xl:w-4/6 mx-auto">
           <div className="flex justify-center">
             <img
               src="https://avatars0.githubusercontent.com/u/35900628?v=4"
@@ -26,91 +38,36 @@ const SearchResults = ({ data }) => {
               {tracking}
             </p>
 
-            <div className="flex justify-between items-center my-5 px-6">
-              <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Cantidad:
+            <ResultsTitles titles={["Cantidad", "Peso", "Envia", "Recibe"]} />
+
+            <ResultsBody
+              title1={amount}
+              title2={weight + " LB"}
+              title3={fullName}
+              title4={fullNameEnd}
+            />
+
+            <div className="flex  text-gray-700 font-bold items-center bg-gray-100 ">
+              <p className="  hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in text-sm text-center w-full py-3">
+                Enviado desde
               </p>
-              <p
-                href=""
-                className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Peso:
-              </p>
-              <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Destino:
-              </p>
-              <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Usuario Final:
-              </p>
-              <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Celular:
+
+              <p className="  hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in text-sm text-center w-full py-3">
+                Recibir en
               </p>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                {amount}
-              </p>
-              <p
-                href=""
-                className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Peso:
+                {send}
               </p>
               <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Destino:
-              </p>
-              <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Usuario Final:
-              </p>
-              <p className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                Celular:
+                {destiny}
               </p>
             </div>
-            <div className="w-full">
-              <h3 className="font-medium text-gray-900 text-left px-6">
-                Actividad reciente
-              </h3>
-              <div className="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
-                <span className="border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150">
-                  <img
-                    src="https://avatars0.githubusercontent.com/u/35900628?v=4"
-                    alt=""
-                    className="rounded-full h-6 shadow-md inline-block mr-2"
-                  />
-                  En reparto
-                  <span className="font-bold"> Pablo Nuñez</span>
-                  <span className="text-gray-500 text-xs"> 24 min ago</span>
-                </span>
-                <span className="border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150">
-                  <img
-                    src="https://avatars0.githubusercontent.com/u/35900628?v=4"
-                    alt=""
-                    className="rounded-full h-6 shadow-md inline-block mr-2"
-                  />
-                  Envio en curso
-                  <span className="font-bold"> Ramon Caceres</span>
-                  <span className="text-gray-500 text-xs"> 42 min ago</span>
-                </span>
-                <span className="border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150">
-                  <img
-                    src="https://avatars0.githubusercontent.com/u/35900628?v=4"
-                    alt=""
-                    className="rounded-full h-6 shadow-md inline-block mr-2"
-                  />
-                  Envalijado
-                  <span className="font-bold"> Ramon Caceres</span>
-                  <span className="text-gray-500 text-xs"> 49 min ago</span>
-                </span>
 
-                <span className=" border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden">
-                  <img
-                    src="https://avatars0.githubusercontent.com/u/35900628?v=4"
-                    alt=""
-                    className="rounded-full h-6 shadow-md inline-block mr-2"
-                  />
-                  Recogido
-                  <span className="font-bold"> Ramon Caceres</span>
-                  <span className="text-gray-500 text-xs"> 5 days ago</span>
-                </span>
-              </div>
+            <div className="w-full">
+              {/*  Passing the data from the API to the component ResultsActivities. */}
+              <ResultsActivities states={data?.state} />
             </div>
           </div>
         </div>
