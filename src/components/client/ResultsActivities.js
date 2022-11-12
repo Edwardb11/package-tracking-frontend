@@ -1,7 +1,10 @@
 import React from "react";
-import convertDate from "../../utils/convertDate";
 
 const ResultsActivities = ({ states }) => {
+  const converDateLocale = (date) => {
+    const date1 = new Date(date).toLocaleString();
+    return date1;
+  };
   return (
     <div>
       <h3 className="font-medium text-gray-900 text-left px-6 bg-gray-100 py-3">
@@ -28,7 +31,7 @@ const ResultsActivities = ({ states }) => {
               </span>
               <span className="flex text-gray-500 text-xs text-right justify-end">
                 {" "}
-                {convertDate(item.creado)}
+                {converDateLocale(item.creado)}
               </span>
               <hr />
             </span>
