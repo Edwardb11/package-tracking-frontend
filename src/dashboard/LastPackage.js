@@ -15,9 +15,9 @@ const LastPackage = () => {
   const search = state[0]?.paquete?.ubicacion;
   const cost = state[0]?.paquete.facturas[0]?.cantidad_a_pagar;
   const endUser =
-    state[0]?.usuario_finale?.nombres +
+    state[0]?.paquete.usuario_finale?.nombres +
     " " +
-    state[0]?.usuario_finale?.apellidos;
+    state[0]?.paquete.usuario_finale?.apellidos;
   return (
     <div className="mx-auto right-0 mt-2 w-60">
       <div className="bg-white rounded overflow-hidden shadow-lg">
