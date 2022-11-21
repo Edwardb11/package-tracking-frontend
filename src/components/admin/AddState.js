@@ -13,9 +13,7 @@ const AddState = () => {
   //   Custom hook for get info of new state for package
   const data = useGetIdPackage(id);
   const state = data.state;
-
   //   Set Data input
-  const [locationP, setLocationP] = useState("");
   const [stateP, setStateP] = useState("");
 
   //   Get Staff ID
@@ -27,6 +25,7 @@ const AddState = () => {
 
   const history = useHistory();
   const Validate = async (e) => {
+    let locationP = state[state.length - 1]?.ubicacion;
     e.preventDefault();
     AddStatePackage(
       locationP,
@@ -47,12 +46,13 @@ const AddState = () => {
   const [filters, setFilters] = useState([]);
   useEffect(() => {
     let lorem = [];
+
     setLastState(state[state.length - 1]?.estado.id_estado);
     states.data.filter((state, i) => {
-      if (lastState === undefined && state.id_estado <= 3) {
-        lorem.push(state);
-      } else if (lastState < i && state.id_estado <= 3) {
-        lorem.push(state);
+      if (lastState < i && state.id_estado <= 3) {
+        return lorem.push(state);
+      } else {
+        return null;
       }
     });
     setFilters(lorem);
@@ -98,7 +98,7 @@ const AddState = () => {
               Última ubicación
             </h3>
             <p className="mt-1 text-base text-gray-600">
-              {state[state.length - 1]?.ubicacion || "Desconocida"}
+              {state[state.length - 1]?.ubicacion}
             </p>
           </div>
         </div>
@@ -115,13 +115,12 @@ const AddState = () => {
                     </label>
                     <input
                       id="locationP"
-                      value={locationP}
-                      onChange={(e) => setLocationP(e.target.value)}
+                      value={state[state.length - 1]?.ubicacion}
                       type="text"
                       name="locationP"
                       min={2}
-                      required
-                      className="w-full bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                      disabled
+                      className="w-full disabled:cursor-not-allowed disabled:opacity-50     bg-gray-100 text-black border border-gray-200 rounded py-3 px-4 mb-3"
                     />
                   </div>
 
@@ -138,11 +137,11 @@ const AddState = () => {
                       value={stateP}
                       onChange={(e) => setStateP(e.target.value)}
                       required
-                      className="flex mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      className="flex  mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                       <option value="none" className="selected disabled hidden">
                         Seleccione
                       </option>
-                      {filters.map((state, i) => {
+                      {filters.map((state) => {
                         return (
                           <>
                             <option value={state.id_estado}>

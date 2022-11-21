@@ -1,5 +1,5 @@
 import React from "react";
-import { staffCardData } from "../../utils/staffCardData.js";
+import { staffCard } from "../../utils/ActionsCards";
 import Card from "./Card.js";
 const StaffCards = () => {
   return (
@@ -11,7 +11,7 @@ const StaffCards = () => {
       <section className="pt-10">
         <div className="container shadow-xl ">
           <div className="flex flex-wrap justify-evenly -mx-4">
-            {staffCardData.map((items) => {
+            {staffCard.map((items) => {
               return <Card key={items.id} {...items} />;
             })}
           </div>

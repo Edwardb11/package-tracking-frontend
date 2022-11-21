@@ -11,7 +11,16 @@ export const addStaff = async (
   email,
   password,
   studyLevels,
-  getRol
+  getRol,
+  setName,
+  setBirthDate,
+  setEmail,
+  setGetRol,
+  setLastName,
+  setSex,
+  setPassword,
+  setStudyLevels,
+  setPhone
 ) => {
   if (name.trim() === " ") {
     Swal.fire({
@@ -45,6 +54,17 @@ export const addStaff = async (
     });
     return;
   }
+
+  /* Reseting the form. */
+  setBirthDate("");
+  setEmail("");
+  setGetRol(1);
+  setLastName("");
+  setName("");
+  setSex("m");
+  setPassword("");
+  setStudyLevels("primario");
+  setPhone("");
 
   //   constants for ref staff
   let idStaff = "";

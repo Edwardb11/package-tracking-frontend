@@ -16,7 +16,20 @@ const AddPackage = async (
   phoneUser,
   houseDestination,
   destinationMunicipality,
-  destinationProvince
+  destinationProvince,
+  setNamePackage,
+  setWeightPackage,
+  setQuantityPackage,
+  setProvinceLocated,
+  setHouseNumberLocated,
+  setMunicipalityLocated,
+  setNameUser,
+  setLastNameUser,
+  setSexUser,
+  setPhoneUser,
+  setHouseDestination,
+  setDestinationMunicipality,
+  setDestinationProvince
 ) => {
   // Validation for package
   if (provinceLocated.trim() === " ") {
@@ -119,6 +132,22 @@ const AddPackage = async (
     });
     return;
   }
+
+
+/* Reseting the form. */
+  setNamePackage("");
+  setWeightPackage("");
+  setQuantityPackage(1)
+  setProvinceLocated("");
+  setHouseNumberLocated(1)
+  setMunicipalityLocated("");
+  setNameUser("");
+  setLastNameUser("");
+  setSexUser("m")
+  setPhoneUser("");
+  setHouseDestination(1)
+  setDestinationMunicipality("");
+  setDestinationProvince("") 
 
   //   Concatenate drop and pick up location
   const locationPackage = `${provinceLocated}, ${municipalityLocated}, Casa:${houseNumberLocated}`;
