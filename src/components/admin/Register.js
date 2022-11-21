@@ -10,7 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [studyLevels, setStudyLevels] = useState("Primario");
-  const [getRol, setGetRol] = useState("Primario");
+  const [getRol, setGetRol] = useState(1);
 
   const Validate = async (e) => {
     e.preventDefault();
@@ -23,7 +23,16 @@ const Register = () => {
       email,
       password,
       studyLevels,
-      getRol
+      getRol,
+      setName,
+      setBirthDate,
+      setEmail,
+      setGetRol,
+      setLastName,
+      setSex,
+      setPassword,
+      setStudyLevels,
+      setPhone
     );
   };
 
@@ -112,10 +121,10 @@ const Register = () => {
                         value={studyLevels}
                         onChange={(e) => setStudyLevels(e.target.value)}
                         required>
-                        <option value="m">Primario</option>
-                        <option value="f">Secundarios</option>
-                        <option value="f">Universitarios</option>
-                        <option value="f">Tecnicos</option>
+                        <option value="Primario">Primario</option>
+                        <option value="Secundarios">Secundarios</option>
+                        <option value="Universitarios">Universitarios</option>
+                        <option value="Tecnicos">Tecnicos</option>
                       </select>
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
