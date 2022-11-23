@@ -1,78 +1,91 @@
-# Package Tracking System
+## Sistema de seguimientos de paquetes
 
-It is a package monitoring system, where a client registers his package and a system staff searches for the package, registers it and sends it to the end user.
+__Sistema básicamente de envió, funciona de la siguiente manera__
 
-## Features
-![image](https://user-images.githubusercontent.com/37183622/177357813-65852c99-a923-4ba6-b61c-5b33717bdd87.png)
+__Seguimiento Usuario:__
+_Entrada de paquetes: El sistema contará con la opción para darle entrada al paquete, este módulo podría ser usado para las personas que recogerían los paquetes en los hogares, trabajos, etc. También se le entregará una factura de envío al usuario._
 
+_Seguimiento de paquetes: El sistema dará una opción para que el usuario de seguimiento a sus paquetes en tiempo real._
 
-## Screenshots
+__Seguimiento administrativo:__
+_El sistema daría un seguimiento a nivel administrativo para saber los paquetes recogidos de igual manera llevar un control del dinero recolectado._
 
+_A nivel administrador se podrán crear los usuarios y asignarle los permisos a los diferentes módulos que tendrá el sistema para así centralizar el trabajo y limitar el acceso a módulos no autorizados para ciertos usuarios._
+
+## Características
+
+- Entrada de paquetes
+- Seguimientos de paquetes
+- Manejo de roles (Delivery, Trabajador y Administrador)
+- Manejo de paquetes
+- Responsive -Mobile 375px -Desktop 1400px
+- PWA
+
+## Capturas del sistemas
+
+__NOTA⚠️:__  100% Responsive
+
+### _Cliente_
 __Desktop__
-![image](https://user-images.githubusercontent.com/37183622/177358005-8ccb1465-ce43-4967-9672-91549e284034.png)
+![image](https://user-images.githubusercontent.com/37183622/203577582-5c4bcfc8-f61f-407b-9661-6e13e0451de4.png)
 
+### _Administrador_
+__Desktop__
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/37183622/203580180-4a1ec309-0f38-404c-8a09-0cce5e34f896.png">
 
-__Mobile__
+### _Delivery_
+__Desktop__
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/37183622/203580371-86ef4a8e-9668-4eef-a04b-4cfe69d11ce7.png">
 
-![image](https://user-images.githubusercontent.com/37183622/177358005-8ccb1465-ce43-4967-9672-91549e284034.png)
-
+### _Trabajador_
+__Desktop__
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/37183622/203580793-daf1647b-030b-4ce4-a8d3-99c9a1a3dd48.png">
 
 ## Demo
 
-![image](https://user-images.githubusercontent.com/37183622/177358005-8ccb1465-ce43-4967-9672-91549e284034.png)
+[Sistema de paqueteria](https://package-tracking-frontend.vercel.app/)
 
-## Run Locally
+## Despliegue local
 
-Clone the project
-
+Clonar el proyecto
 ```bash
   git clone https://github.com/Edwardb11/package-tracking-frontend
 ```
 
-Go to the project directory
+Ir al directorio del proyecto
 
 ```bash
   cd package-tracking-frontend
 ```
 
-Install dependencies
+Instalar dependencias
 
 ```bash
   npm install
 ```
 
-Start the server _Frontend_
+Inicie el servidor _Frontend_
 
 ```bash
   npm start
 ```
 
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-```env
-NODE_ENV=development
-
-```
-
-
 ## Documentation
 
 
-Go to project docs
+Ir a documentación del proyecto
 
 ```bash
-  cd package-tracking-frontend/doc
+  cd package-tracking-frontend/wiki
 ```
+O
 
+[CLick Aqui](https://github.com/Edwardb11/package-tracking-frontend/wiki)
 
-## Authors
+## Autor
 
-- [@Edwardb11](https://www.github.com/Edwardb11)
-- [@yessica60](https://github.com/yessica60)
+[@Edwardb11](https://www.github.com/Edwardb11)
   
-
-## License
+## Licencia
 
 [GNU General Public License v3.0](https://github.com/Edwardb11/nominal-calculator/blob/main/license)
