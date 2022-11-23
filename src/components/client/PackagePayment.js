@@ -31,10 +31,18 @@ const PackagePayment = () => {
   const PackageTracking = data.data?.invoice[0]?.paquete.id_paquete;
   const PackageName = data.data?.invoice[0]?.paquete.nombre;
   const AmountPay = data.data?.invoice[0]?.cantidad_a_pagar;
+  const locationP = data.data?.invoice[0]?.paquete?.ubicacion;
 
   const Validate = async (e) => {
     e.preventDefault();
-    await PayBill(paymentMethod, id, amount, AmountPay, PackageTracking);
+    await PayBill(
+      paymentMethod,
+      id,
+      amount,
+      AmountPay,
+      PackageTracking,
+      locationP
+    );
     const timer = setTimeout(() => {
       history.push(`/myPackages`);
     }, 1000);

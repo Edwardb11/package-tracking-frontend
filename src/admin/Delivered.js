@@ -8,7 +8,6 @@ import Alerts from "../utils/Alerts";
 const Delivered = () => {
   const { data, setData } = useSent();
   const state = data?.data;
-
   const [getTracking, setGetTracking] = useState({
     view: false,
     data: {},
@@ -26,7 +25,7 @@ const Delivered = () => {
           </div>
         </div>
       </div>
-      <div className=" w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-2">
+      <div className=" w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-2">
         <div className="relative  flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
           <div className="block w-full overflow-x-auto">
             <table className="items-center bg-transparent w-full border-collapse ">

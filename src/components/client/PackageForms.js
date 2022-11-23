@@ -29,6 +29,7 @@ const PackageForms = () => {
   const [destinationMunicipality, setDestinationMunicipality] = useState("");
   const [destinationProvince, setDestinationProvince] = useState("");
 
+
   const Validate = async (e) => {
     e.preventDefault();
     const clientId = user.userId;
@@ -46,7 +47,20 @@ const PackageForms = () => {
       phoneUser,
       houseDestination,
       destinationMunicipality,
-      destinationProvince
+      destinationProvince,
+      setNamePackage,
+      setWeightPackage,
+      setQuantityPackage,
+      setProvinceLocated,
+      setHouseNumberLocated,
+      setMunicipalityLocated,
+      setNameUser,
+      setLastNameUser,
+      setSexUser,
+      setPhoneUser,
+      setHouseDestination,
+      setDestinationMunicipality,
+      setDestinationProvince
     );
   };
 

@@ -56,7 +56,7 @@ const ProceedSend = ({
                           packagesShipped(
                             idStaff,
                             data?.paquete.id_paquete,
-                            data?.ubicacion,
+                            data?.paquete?.usuario_finale?.ubicacion,
                             setData,
                             setShowModals
                           )
@@ -114,10 +114,6 @@ const ProceedSend = ({
                             Costo del envio: $
                             {data?.paquete?.facturas[0]?.cantidad_a_pagar}
                           </li>
-                          <li>
-                            Ultima ubicaciòn:
-                            {data?.ubicacion}
-                          </li>
                         </ol>
                       </div>
                     </div>
@@ -134,7 +130,7 @@ const ProceedSend = ({
                           sendPackage(
                             idStaff,
                             data?.paquete.id_paquete,
-                            data?.ubicacion,
+                            data?.paquete?.usuario_finale?.ubicacion,
                             setData,
                             setShowModals
                           )

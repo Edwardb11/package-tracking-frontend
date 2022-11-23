@@ -13,6 +13,7 @@ const Delivery = () => {
     view: false,
     data: {},
   });
+console.log(state)
   return (
     <>
       <NavBar />
@@ -26,7 +27,7 @@ const Delivery = () => {
           </div>
         </div>
       </div>
-      <div className=" w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-2">
+      <div className=" w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-2">
         <div className="relative  flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
           <div className="block w-full overflow-x-auto">
             <table className="items-center bg-transparent w-full border-collapse ">

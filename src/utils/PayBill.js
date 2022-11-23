@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { url } from "../api/api";
 import { AddStatePackage } from "./AddStatePackage";
 
-const PayBill = async (paymentMethod, id, amount, AmountPay, tracking) => {
+const PayBill = async (paymentMethod, id, amount, AmountPay, tracking, locationP) => {
   if (amount < AmountPay) {
     Swal.fire({
       title: "¡Error!",
@@ -28,7 +28,7 @@ const PayBill = async (paymentMethod, id, amount, AmountPay, tracking) => {
       monto: amount,
     });
     AddStatePackage(
-      "BILL: Pago de usuario",
+      locationP,
       5,
       0,
       tracking,

@@ -78,7 +78,7 @@ export const packagesShipped = async (
           id_paquetes: tracking,
           id_estado: 7,
           id_personal: idStaff,
-          ubicacion: locationP,
+          ubicacion: `Entregado en direccion: ${locationP}`,
           activo: 1,
         });
         ChangeLastState(6, tracking);
@@ -126,7 +126,7 @@ export const sendPackage = async (
           id_paquetes: tracking,
           id_estado: 6,
           id_personal: idStaff,
-          ubicacion: locationP,
+          ubicacion: `Envio en curso: ${locationP}`,
           activo: 1,
         });
         fetch(`${url}/getPendingShipping`)
