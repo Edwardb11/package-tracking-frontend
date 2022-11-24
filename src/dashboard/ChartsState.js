@@ -8,7 +8,7 @@ const ChartsState = () => {
   let result = data.data.map((e) => {
     return e;
   });
-  return <AreaCharts data={result} title={"Estados activos"} />;
+  return <AreaCharts data={result} title={"Paquetes activos"} />;
 };
 
 export default ChartsState;
