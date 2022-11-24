@@ -119,10 +119,10 @@ export const removeStaff = async (id, setData, isOld) => {
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
       confirmButtonText: "Si",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        axios.put(`${url}/changeStateStaff/${id}`, { activo: 1 });
-        fetch(`${url}/getStaff`)
+        await axios.put(`${url}/changeStateStaff/${id}`, { activo: 1 });
+        await fetch(`${url}/getStaff`)
           .then((response) => response.json())
           .then((data) => setData(data));
       }
