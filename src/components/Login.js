@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import Imagen from "../components/Imagen";
 import User from "../context/userContext";
 import { Auth, AuthAdmin } from "../utils/auth";
+import QuickAccess from "./QuickAccess";
 
 const Login = ({ admin }) => {
   const { setLog } = useContext(User);
@@ -43,6 +44,7 @@ const Login = ({ admin }) => {
             "@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css')",
         }}
       />
+      <QuickAccess/>
       <div className="min-w-screen min-h-screen bg-teal-300 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
