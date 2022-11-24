@@ -6,7 +6,9 @@ const CardPackage = ({ title, description }) => {
       <p className="text-base font-medium text-gray-800 leading-none">
         {title || ""}
       </p>
-      <p className="text-sm text-gray-500">{description || ""}</p>
+      <p className="text-sm text-gray-500">
+        {description === undefined ? "" : description}
+      </p>
     </div>
   );
 };
