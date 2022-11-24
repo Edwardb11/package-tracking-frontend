@@ -14,7 +14,7 @@ const useNavigation = (user) => {
         { name: "Inicio", href: "/", current: true },
         { name: "Seguimiento", href: "/tracking", current: false },
         { name: "Mis paquetes", href: "/myPackages", current: false },
-        { name: "Agregar", href: "/package", current: false },
+        { name: "Paquetes", href: "/package", current: false },
       ]);
     } else if (
       rol[0]?.id_roles === 1 ||
@@ -25,6 +25,7 @@ const useNavigation = (user) => {
         { name: "Dashboard", href: "/admin/dashboard", current: true },
         { name: "Paquetes", href: "/admin/package", current: false },
         { name: "Personal", href: "/admin/staff", current: false },
+        { name: "Delivery", href: "/admin/actionsDelivery", current: false },
       ]);
     } else if (
       rol[0]?.id_roles === 2 ||
@@ -41,15 +42,11 @@ const useNavigation = (user) => {
     ) {
       return setNavigation([
         {
-          name: "Pendientes de envio",
-          href: "/admin/delivery",
+          name: "Delivery",
+          href: "/admin/actionsDelivery",
           current: false,
         },
-        {
-          name: "Paquetes enviados",
-          href: "/admin/packageShipped",
-          current: false,
-        },
+
       ]);
     }
     return () => {};
