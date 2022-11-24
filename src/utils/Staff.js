@@ -203,20 +203,20 @@ export const removeRol = async (idStaff, idRol, setData, setRol) => {
     cancelButtonColor: "#d33",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Si",
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      axios.delete(`${url}/removeRol`, {
+      await axios.delete(`${url}/removeRol`, {
         data: {
           id_personal: idStaff,
           id_roles: idRol,
         },
       });
       // Update table
-      fetch(`${url}/getStaff`)
+      await fetch(`${url}/getStaff`)
         .then((response) => response.json())
         .then((data) => setData(data));
       // Update modal
-      fetch(`${url}/getStaffID/${idStaff}`)
+      await fetch(`${url}/getStaffID/${idStaff}`)
         .then((response) => response.json())
         .then((data) => setRol(data));
     }
