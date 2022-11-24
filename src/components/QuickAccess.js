@@ -4,11 +4,17 @@ import { Link } from "react-router-dom";
 const QuickAccess = () => {
   return (
     <nav class="flex flex-col  sm:flex-row  sm:justify-between py-4 px-6 bg-gray-800 shadow  shadow-lg sm:items-baseline w-full">
-      <div class="">
+      <div className="flex">
         <Link
           className=" font-bold text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          aria-current="page"
-          to="/tracking"
+          to="/landingPage"
+          >
+          Inicio
+        </Link>
+
+        <Link
+          className=" font-bold text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          to="/trackingPublic"
           >
           Seguimiento
         </Link>

@@ -62,7 +62,7 @@ const TrackingForms = () => {
             value={tracking}
             onChange={(e) => setTracking(e.target.value)}
             className="w-full rounded-md border bg-gray-50 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-            placeholder="Tracking UPS "
+            placeholder="Tracking"
           />
           <button
             type="submit"

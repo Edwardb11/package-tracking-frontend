@@ -31,6 +31,7 @@ import Delivery from "../admin/Delivery";
 import Delivered from "../admin/Delivered";
 import AdminDelivery from "../admin/AdminDelivery";
 import LandingPage from "../components/LandingPage";
+import TrackingPublic from "../components/TrackingPublic";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -50,6 +51,7 @@ const AppRouter = () => {
         <PrivateRouter exact path="/about" log={log} component={About} />{" "}
         <PrivateRouter exact path="/package" log={log} component={Package} />{" "}
         <PrivateRouter exact path="/tracking" log={log} component={Tracking} />{" "}
+        <PublicRouter exact path="/trackingPublic" component={TrackingPublic} />{" "}
         <PrivateRouter
           exact
           path="/packagePayment/:id"

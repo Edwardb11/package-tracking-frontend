@@ -11,7 +11,6 @@ const useNavigation = (user) => {
     }
     if (rol === undefined) {
       return setNavigation([
-        { name: "Inicio", href: "/", current: true },
         { name: "Seguimiento", href: "/tracking", current: false },
         { name: "Mis paquetes", href: "/myPackages", current: false },
         { name: "Paquetes", href: "/package", current: false },
@@ -46,7 +45,6 @@ const useNavigation = (user) => {
           href: "/admin/actionsDelivery",
           current: false,
         },
-
       ]);
     }
     return () => {};
