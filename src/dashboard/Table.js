@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import useGetLasState from "../hooks/useGetLastState";
+import Alerts from "../utils/Alerts";
 import convertDate from "../utils/convertDate";
 const Table = () => {
   const data = useGetLasState();
   const state = data.state;
-    // JavaScript DOM to access the selected value of the select field
-    const $select = document.getElementById("select");
+  // JavaScript DOM to access the selected value of the select field
+  const $select = document.getElementById("select");
 
-    // Get ID
-    const [Index, setIndex] = useState(9);
+  // Get ID
+  const [Index, setIndex] = useState(9);
 
-
-    /* Filtering the data to show only the number of rows selected in the select field. */
-    const filters = state.slice(0,Index)
+  /* Filtering the data to show only the number of rows selected in the select field. */
+  const filters = state.slice(0, Index);
 
   return (
     <>
@@ -30,12 +30,13 @@ const Table = () => {
               onChange={() => {
                 setIndex(
                   parseInt($select.options[$select.selectedIndex].value)
-                )
+                );
               }}>
-                
               <option value={3}>03</option>
               <option value={6}>06</option>
-              <option selected value={9}>09</option>
+              <option selected value={9}>
+                09
+              </option>
               <option value={12}>12</option>
               <option value={15}>15</option>
               <option value={18}>18</option>
@@ -68,8 +69,7 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {filters.map((item, key) =>  {
-             
+            {filters.map((item, key) => {
               return (
                 <tr key={key} className=" border-b text-sm text-gray-600">
                   <td className=" px-6 p-2 border-r text-md whitespace-nowrap p-4">
@@ -100,6 +100,7 @@ const Table = () => {
           </tbody>
         </table>
       </div>
+      <Alerts state={state} alert={"No hay actividad reciente."} />
     </>
   );
 };

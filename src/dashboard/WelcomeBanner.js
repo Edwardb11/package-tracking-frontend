@@ -6,10 +6,10 @@ const WelcomeBanner = () => {
     hour = today.getHours();
   const { user } = useContext(User);
   return (
-    <div className="relative p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
+    <div className="relative p-6 sm:p-6 rounded-sm overflow-hidden mb-8 mt-6">
       {/* Background illustration */}
       <div
-        className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block"
+        className="absolute right-0 top-0 -mt-4 mr-16  hidden xl:block "
         aria-hidden="true">
         <svg width="319" height="198" xmlnsXlink="http://www.w3.org/1999/xlink">
           <defs>
@@ -78,7 +78,7 @@ const WelcomeBanner = () => {
             : "Buenas noches"}
           , {user.name}. 👋
         </h1>
-        <p>Esto es un resumen  de lo que  ha sucedido con los paquetes:</p>
+        <p>Esto es un resumen de lo que ha sucedido con los paquetes:</p>
       </div>
     </div>
   );

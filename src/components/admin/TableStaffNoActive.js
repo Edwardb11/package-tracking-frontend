@@ -13,6 +13,7 @@ const TableStaffNoActive = () => {
     staffId: "",
   });
   const { user } = useContext(User);
+  const inactiveCount = data.data?.filter((e) => e.personal.activo === false);
   return (
     <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -48,8 +49,7 @@ const TableStaffNoActive = () => {
             </tbody>
           </table>
         </div>
-        <Alerts state={data?.data} alert={"No hay personal inactivo."} />
-
+        <Alerts state={inactiveCount} alert={"No hay personal inactivo."} />
         {getStaff.view && (
           <EditRol
             id={getStaff.staffId}

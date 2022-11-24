@@ -9,6 +9,10 @@ import Suport from "../img/suport.png";
 import packagReady from "../img/packagReady.png";
 import invoice from "../img/invoice.png";
 
+// deliveryCard
+import delivery from "../img/delivery.png";
+import delivered from "../img/delivered.png";
+
 export const packageCard = [
   {
     id: 1,
@@ -61,5 +65,23 @@ export const staffCard = [
     link: "/admin/listStaffOld",
     name: "Personal inactivo",
     description: "Personales inactivos ",
+  },
+];
+
+export const deliveryCard = [
+  {
+    id: 1,
+    img: delivery,
+    link: "/admin/delivery",
+    name: "Pendientes de envio",
+    description: "Todos los paquetes pendiente de envio",
+  },
+
+  {
+    id: 2,
+    img: delivered,
+    link: "/admin/packageShipped",
+    name: "Paquetes enviados",
+    description: "Todos los paquetes enviado, pediente de entrega",
   },
 ];

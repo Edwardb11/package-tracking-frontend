@@ -4,8 +4,8 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import User from "../context/userContext";
 import Dashboard from "../admin/Dashboard";
-import Delivery from "../admin/Delivery";
 import AdminPackage from "../admin/AdminPackage";
+import AdminDelivery from "../admin/AdminDelivery";
 
 const Home = () => {
   const { user } = useContext(User);
@@ -48,7 +48,7 @@ const Home = () => {
   ) {
     return (
       <div>
-        <Delivery />
+        <AdminDelivery />
       </div>
     );
   }
