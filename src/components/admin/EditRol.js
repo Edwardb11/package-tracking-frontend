@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { url } from "../../api/api";
 import useGetRoles from "../../hooks/useGetRoles";
+import Alerts from "../../utils/Alerts";
 import { AddRolStaff, removeRol } from "../../utils/Staff";
 
 import ButtonsModal from "./ButtonsModal";
@@ -50,13 +51,17 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                         <li>
                           Esta vista es especializada eliminar y agregar roles.
                         </li>
-                        <li>Eliminar rol funciona inmediatamente.</li>
+                        <li>Sea cuidadoso.</li>
                       </ol>
                     </div>
                   </div>
-                  <span className="font-bold pb-10">
-                    NOTA: Debes darle a agregar para guardar un nuevo rol!
-                  </span>
+
+                  <h3 className="font-bold flew-row">
+                    ⚠️NOTA: Para eliminar un rol: Clik en eliminar!
+                  </h3>
+                  <h3 className="font-bold pb-4">
+                    ⚠️NOTA: Para agregar un nuevo rol: Clik en agregar!
+                  </h3>
                   <div className="pt-5 flex flex-wrap justify-around	 ">
                     <table className="items-center bg-transparent w-1/2 border-collapse ">
                       <thead>
@@ -99,8 +104,13 @@ const EditRol = ({ id, setData, showModal, setShowModals }) => {
                           );
                         })}
                       </tbody>
+                      <Alerts
+                        alert={"Este empleado no posee rol."}
+                        key={1}
+                        state={state}
+                      />
                     </table>
-                    <form className="flex-end pt-10" onSubmit={Validate}>
+                    <form className="flex-end -pt-6" onSubmit={Validate}>
                       <h1 className="font-bold"> Agregar rol</h1>
                       <label
                         for="rol"
