@@ -11,10 +11,9 @@ const useNavigation = (user) => {
     }
     if (rol === undefined) {
       return setNavigation([
-        { name: "Inicio", href: "/", current: true },
         { name: "Seguimiento", href: "/tracking", current: false },
-        { name: "Mis paquetes", href: "/myPackages", current: false },
-        { name: "Paquetes", href: "/package", current: false },
+        { name: "Paquetes", href: "/myPackages", current: false },
+        { name: "Nuevo Paquete", href: "/package", current: false },
       ]);
     } else if (
       rol[0]?.id_roles === 1 ||
@@ -46,7 +45,6 @@ const useNavigation = (user) => {
           href: "/admin/actionsDelivery",
           current: false,
         },
-
       ]);
     }
     return () => {};

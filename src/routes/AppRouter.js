@@ -30,6 +30,8 @@ import ListHistoryStaff from "../admin/ListHistoryStaff";
 import Delivery from "../admin/Delivery";
 import Delivered from "../admin/Delivered";
 import AdminDelivery from "../admin/AdminDelivery";
+import LandingPage from "../components/LandingPage";
+import TrackingPublic from "../components/TrackingPublic";
 
 const AppRouter = () => {
   const { log, setLog } = useContext(User);
@@ -42,12 +44,14 @@ const AppRouter = () => {
     <Router>
       <Switch>
         <PublicRouter path="/auth" component={AuthRouter} log={log} />{" "}
+        <PublicRouter path="/landingPage" component={LandingPage} />
         <PrivateRouter exact path="/" component={Home} log={log} />{" "}
         <PrivateRouter exact path="/NoFound" log={log} component={NoFound} />{" "}
         <PrivateRouter exact path="/faq" log={log} component={Faq} />{" "}
         <PrivateRouter exact path="/about" log={log} component={About} />{" "}
         <PrivateRouter exact path="/package" log={log} component={Package} />{" "}
         <PrivateRouter exact path="/tracking" log={log} component={Tracking} />{" "}
+        <PublicRouter exact path="/trackingPublic" component={TrackingPublic} />{" "}
         <PrivateRouter
           exact
           path="/packagePayment/:id"
