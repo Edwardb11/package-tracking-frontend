@@ -12,8 +12,8 @@ const useNavigation = (user) => {
     if (rol === undefined) {
       return setNavigation([
         { name: "Seguimiento", href: "/tracking", current: false },
-        { name: "Mis paquetes", href: "/myPackages", current: false },
-        { name: "Paquetes", href: "/package", current: false },
+        { name: "Paquetes", href: "/myPackages", current: false },
+        { name: "Nuevo Paquete", href: "/package", current: false },
       ]);
     } else if (
       rol[0]?.id_roles === 1 ||
