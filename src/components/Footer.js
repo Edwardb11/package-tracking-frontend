@@ -26,7 +26,7 @@ const Footer = () => {
                   <Link
                     to="/package"
                     className="text-blue-700  text-md hover:text-blue-500">
-                    Agregar
+                    Agregar Paquetes
                   </Link>
                 </span>
               </div>

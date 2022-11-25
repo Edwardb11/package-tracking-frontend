@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
-import LandingPage from "../components/client/LandingPage";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 import User from "../context/userContext";
 import Dashboard from "../admin/Dashboard";
 import AdminPackage from "../admin/AdminPackage";
 import AdminDelivery from "../admin/AdminDelivery";
+import Tracking from "./TrackingUPS";
 
 const Home = () => {
   const { user } = useContext(User);
@@ -13,9 +11,7 @@ const Home = () => {
   if (rol === undefined) {
     return (
       <div>
-        <NavBar />
-        <LandingPage />
-        <Footer />
+        <Tracking />
       </div>
     );
   }
