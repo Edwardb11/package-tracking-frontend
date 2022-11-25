@@ -75,7 +75,7 @@ const TablePackage = () => {
                     )
                   );
                 }}>
-                <option value="none" className="selected disabled hidden">
+                <option value="none" className=" disabled hidden">
                   Seleccione
                 </option>
                 {states.data.map((state) => {
